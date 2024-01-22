@@ -1,14 +1,15 @@
 .sidenav {
     background: #263238;
-    position: sticky; 
+    position:relative; 
     z-index: 1;  
     left: 0;
     top: 0;
     width: 7rem;
     height: 102vh;
     float: left;
-    margin-top: -10px;
-    margin-left: -10px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
 }
 
 .logo-container {

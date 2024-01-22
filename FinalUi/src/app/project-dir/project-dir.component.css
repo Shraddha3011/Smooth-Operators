@@ -185,6 +185,7 @@
   } */
 
   *{
+    overflow: hidden;
     margin: 0;
     padding: 0;
   }
@@ -233,7 +234,6 @@
   
     }
   
-    
     .search-bar-icon {
       width: 45px;
       display: flex;
@@ -242,7 +242,9 @@
       font-size: 1.2rem;
       color: #0f1111;
     }
+
   
+
     @media screen and (max-width: 768px) {
       .header {
         flex-direction: column;
@@ -372,49 +374,8 @@
    margin-top: 20px;
   } 
   
-  .custom-dropdown {
-    position: relative;
-    display: inline-block;
-  }
   
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    padding: 8px;
-    z-index: 1;
-    float: inline-end;
-    max-height: 150px;
-    overflow-y: auto;
-  }
-  
-  .custom-dropdown input[type="checkbox"] {
-    margin-right: 6px;
-    /* Adjust the size of the checkbox */
-    transform: scale(1.2);
-  }
-  
-  
-  .custom-dropdown:hover .dropdown-content,
-  .custom-dropdown:focus-within .dropdown-content {
-    display: block;
-  }
-  
-  
-  .add-user {
-  font-size: 2rem;
-  position: fixed;
-  bottom: 2rem;
-  right: 1rem;
-  bottom: 1rem;
-  text-decoration: none;
-  border-radius: 10px;
-  background-color: #dcdcdc;
-  box-shadow: 0 4px 6px rgb(33, 32, 32);
-  text-align: center;
-  width: 50px;
-  }
+
   .custom-select {
   position: relative;
   display: inline-block;
@@ -510,3 +471,53 @@
       width: 100%; 
       margin-left: 0;
   }
+/* styles.css */
+/* Add your styles for the dropdown and accordion here */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  font-size: 16px;
+  border: 0.8px solid #d5d5d5;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family:inherit;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #c3e7ff;
+}
+
+.accordion-item {
+  font-size:x-small;
+  font-style: normal;
+  font-family:inherit;
+}

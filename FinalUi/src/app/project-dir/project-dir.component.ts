@@ -7,6 +7,15 @@ import { ProjectApiService } from '../project-api.service';
   styleUrls: ['./project-dir.component.css']
 })
 export class ProjectDirComponent {
+
+  dropdownOptions = ['Vaidehi', 'Sairaj', 'Ayush', 'Prasad'];
+  accordionItems: string[] = [];
+
+  addItemToAccordion(option: string) {
+    // Add the selected option to the accordionItems array
+    this.accordionItems.push(option);
+  }
+
   projectform = new FormGroup(
     {
       name:new FormControl(''),
@@ -17,16 +26,17 @@ export class ProjectDirComponent {
   )
   title = 'user';
   selectedValue: string = '';
-  dropdownOpen: boolean = false;
+  dropdownOpen: boolean = true;
   name: string = "";
   startDate:string="";
   endDate:string="";
   description:string="";
   issubmitted: boolean = false;
   projectinfo: any[] = [];
-  toggleDropdown() {
-    this.dropdownOpen = !this.dropdownOpen;
-  }
+  // toggleDropdown() {
+  //   this.dropdownOpen = !this.dropdownOpen;
+  // }
+
   onsubmit() {
     this.issubmitted = true;
     this.projectinfo.push({

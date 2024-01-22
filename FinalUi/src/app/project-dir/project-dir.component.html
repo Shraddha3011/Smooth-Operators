@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>
-    <div class="accordian" style="background-color: white; width: 1000px;margin-left: 315px; padding: 20px ; margin-top: 20px;box-shadow: 1px 1px 5px rgb(255, 205, 255);">
+    <!-- <div class="accordian" style="background-color: white; width: 1000px;margin-left: 315px; padding: 20px ; margin-top: 20px;box-shadow: 1px 1px 5px rgb(255, 205, 255);">
         <div class="question" style="display: flex;
         align-items: center;
         justify-content: space-between;">
@@ -94,7 +94,7 @@
             <h3 style="color: black;">Status </h3>
             <h3 style="color: black;">Operations</h3>
         </div>
-    </div>
+    </div> -->
     <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus"></i></div>
     <form id="myform" #projectForm = "ngForm" (ngSubmit)="saveProjectFormData(projectForm.value)">
 
@@ -118,14 +118,23 @@
         <input type="date" ngModel  name="pendDate" placeholder="Enter the End Date">
         <br>
 
-        <div class="custom-dropdown">
-            <span>Select Users  <i> <option class="fa-solid fa-caret-down"></i></span>
+
+        <div class="dropdown">
+            <button class="dropbtn">Select Users</button>
             <div class="dropdown-content">
-                <label><input type="checkbox" name="item1"> User 1</label>
-                <label><input type="checkbox" name="item2"> User 2</label>
-                <label><input type="checkbox" name="item3"> User 3</label>
+              <a *ngFor="let option of dropdownOptions" (click)="addItemToAccordion(option)">{{ option }}</a>
             </div>
-        </div>
+          </div>
+          
+          <div class="accordion">
+            <div class="accordion-item" *ngFor="let item of accordionItems">
+              <div class="accordion-header">
+                <h2>{{ item }}</h2>
+              </div>
+        
+            </div>
+          </div>
+  
         <!-- (click)="onsubmit()" type="submit" -->
         <button  [disabled]="!projectform.valid" class="btn" >Add </button>   
         <button class="close" (click)="closeform()">Close</button>
