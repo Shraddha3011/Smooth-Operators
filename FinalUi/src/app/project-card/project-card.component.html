@@ -1,0 +1,96 @@
+<!-- <div *ngFor="let accordion of accordions" class="accordion">
+    <div class="question" (click)="toggleAccordion(accordion)">
+      <h2>{{ projectinfo.name }}</h2>
+      <i class="icon" [ngClass]="{'active': accordion.active}"></i>
+      <h3>{{projectinfo.startDate}}</h3>
+      <h3>{{projectinfo.endDate}}</h3>
+      <h3 style="color:rgb(89, 255, 0)">Completed </h3>
+      <div>
+          <i class="fa-solid fa-pen" style="color:rgb(89, 255, 0);margin-right: 20px;" ></i>
+          <i class="fa-solid fa-trash" style="color: red;;margin-right: 20px;"></i>
+      </div>
+      
+    </div>
+    <div class="answer" [style.maxHeight]="accordion.active ? '100%' : '0'">
+      <div>
+          <section>
+              <h2>Project Description</h2>
+              <p>{{projectinfo.description}}</p>
+          </section>
+      
+          <section>
+              <h2>Dates:</h2>
+              <p><strong>Start Date:</strong> {{projectinfo.startDate}}</p>
+              <p><strong>End Date:</strong> {{projectinfo.endDate}}</p>
+          </section>
+      
+          <section>
+              <h2>List of Users</h2>
+              <ul>
+                  <li>User 1</li>
+                  <li>User 2</li>
+                  <li>User 3</li>
+              </ul>
+          </section>
+      
+          <section>
+              <h2>Project Status</h2>
+              <label>
+                  <input type="radio" name="projectStatus" checked> Project is active
+              </label>
+              <label>
+                  <input type="radio" name="projectStatus"> Project is inactive
+              </label>
+          </section>
+      </div>
+    </div>
+  </div>
+   -->
+   <div *ngFor="let accordion of accordions" class="accordion">
+    <div class="question" (click)="toggleAccordion(accordion)">
+      <h2>{{ projectArr.projectDetails.pname }}</h2>
+      <i class="icon" [ngClass]="{'active': accordion.active}"></i>
+      <h3>{{projectArr.projectDetails.pstartDate}}</h3>
+      <h3>{{projectArr.projectDetails.pendDate}}</h3>
+      <h3 style="color:rgb(89, 255, 0)">Completed </h3>
+      <div>
+          <i class="fa-solid fa-pen" style="color:rgb(89, 255, 0);margin-right: 20px;" ></i>
+          <i class="fa-solid fa-trash" style="color: red;;margin-right: 20px;" ></i>
+      </div>
+      
+    </div>
+    <div class="answer" [style.maxHeight]="accordion.active ? '100%' : '0'">
+      <div>
+          <section>
+              <h2 >Project Description</h2>
+              <p style="display: block;">{{projectArr.projectDetails.pdescription}}</p>
+          </section>
+      
+          <section>
+              <h2>Dates:</h2>
+              <p><strong>Start Date:</strong> {{projectArr.projectDetails.pstartDate}}</p>
+              <p><strong>End Date:</strong> {{projectArr.projectDetails.pendDate}}</p>
+          </section>
+      
+          <section>
+              <h2>List of Users</h2>
+              <ul>
+                  <li>User 1</li>
+                  <li>User 2</li>
+                  <li>User 3</li>
+              </ul>
+          </section>
+      
+          <section>
+              <h2>Project Status</h2>
+              <label>
+                  <input type="radio" name="projectStatus" checked> Project is active
+              </label>
+              <label>
+                  <input type="radio" name="projectStatus"> Project is inactive
+              </label>
+          </section>
+      </div>
+    </div>
+  </div>
+  

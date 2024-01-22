@@ -1,0 +1,140 @@
+<!-- <app-side-nav></app-side-nav>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header">
+            <p>Project Directory</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Project" class="search-bar-input">
+                <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="accordian" style="background-color: white; width: 1000px;margin-left: 315px; padding: 20px ; margin-top: 20px;box-shadow: 1px 1px 5px rgb(255, 205, 255);">
+        <div class="question" style="display: flex;
+        align-items: center;
+        justify-content: space-between;">
+            <h2 style="color: black;margin-right: 280px;">Title</h2>
+            <h3 style="color: black;"> Start Date</h3>
+            <h3 style="color: black;">End Date</h3>
+            <h3 style="color: black;">Status </h3>
+            <h3 style="color: black;">Operations</h3>
+        </div>
+    </div>
+    <div class="add-project" (click)="openform()"><a routerLink="form"><i class="fa-solid fa-plus"></i></a></div>
+    <form id="myform" [formGroup]="projectform" >
+        <label for="name">Name:</label>
+        <input type="text" [(ngModel)]="name" formControlName="name" name="user" placeholder="Enter the name">
+        <br>
+        <label for="description">Description:</label>
+        <input type="text" [(ngModel)]="description" formControlName="description" name="description" placeholder="Enter the Description">
+        <br>
+        <label for="startDate">Start Date:</label>
+        <input type="text" [(ngModel)]="startDate" formControlName="startDate" name="startDate" placeholder="Enter the Start Date">
+        <br>
+        <label for="role">End Date:</label>
+        <input type="text" [(ngModel)]="endDate" formControlName="endDate" name="endDate" placeholder="Enter the End Date">
+        <br>
+        <button type="submit" [disabled]="!projectform.valid" class="btn" (click)="onsubmit()">Add </button>
+        <button class="close" (click)="closeform()">Close</button>
+    </form>
+   <div>
+   </div>
+    <div *ngIf="issubmitted" class="flex-container">
+            <app-project-card *ngFor="let msg of projectinfo" [projectinfo]="msg"></app-project-card>
+    </div>
+</body>
+
+</html> -->
+
+
+
+
+<app-side-nav></app-side-nav>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header">
+            <p>Project Directory</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Project" class="search-bar-input">
+                <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="accordian" style="background-color: white; width: 1000px;margin-left: 315px; padding: 20px ; margin-top: 20px;box-shadow: 1px 1px 5px rgb(255, 205, 255);">
+        <div class="question" style="display: flex;
+        align-items: center;
+        justify-content: space-between;">
+            <h2 style="color: black;margin-right: 280px;">Title</h2>
+            <h3 style="color: black;"> Start Date</h3>
+            <h3 style="color: black;">End Date</h3>
+            <h3 style="color: black;">Status </h3>
+            <h3 style="color: black;">Operations</h3>
+        </div>
+    </div>
+    <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus"></i></div>
+    <form id="myform" #projectForm = "ngForm" (ngSubmit)="saveProjectFormData(projectForm.value)">
+
+        <label for="name">Project Id:</label>
+        <input type="number" name="id" ngModel placeholder=" Enter id" >
+
+
+        <label for="name">Project Title:</label>
+        <input type="text" ngModel name="pname" placeholder="Enter the title">
+        <br>
+
+        <label for="description">Description:</label>
+        <input type="text" ngModel  name="pdescription" placeholder="Enter the Description">
+        <br>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" ngModel  name="pstartDate" placeholder="Enter the Start Date">
+        <br>
+
+        <label for="role">End Date:</label>
+        <input type="date" ngModel  name="pendDate" placeholder="Enter the End Date">
+        <br>
+
+        <div class="custom-dropdown">
+            <span>Select Users  <i> <option class="fa-solid fa-caret-down"></i></span>
+            <div class="dropdown-content">
+                <label><input type="checkbox" name="item1"> User 1</label>
+                <label><input type="checkbox" name="item2"> User 2</label>
+                <label><input type="checkbox" name="item3"> User 3</label>
+            </div>
+        </div>
+        <!-- (click)="onsubmit()" type="submit" -->
+        <button  [disabled]="!projectform.valid" class="btn" >Add </button>   
+        <button class="close" (click)="closeform()">Close</button>
+    </form>
+   <div>
+   </div>
+    <div  class="flex-container">
+            <app-project-card *ngFor="let msg of projectArr" [projectArr]="msg"></app-project-card>
+    </div>
+</body>
+
+</html>

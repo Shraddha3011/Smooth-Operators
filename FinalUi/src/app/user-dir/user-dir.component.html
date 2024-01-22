@@ -1,0 +1,163 @@
+<!-- <app-side-nav></app-side-nav>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <div class="header">
+            <p>User Directory</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search User" class="search-bar-input">
+                <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="add-user" (click)="openform()"><a routerLink="form"><i class="fa-solid fa-plus"></i></a></div>
+    <form id="myform" [formGroup]="userform" >
+        <header>User Details</header>
+        <label for="name">Name:</label>
+        <input type="text" [(ngModel)]="name" formControlName="name" name="user" placeholder="Enter the name">
+        <br>
+        <div *ngIf="userform.controls.name.invalid && userform.controls.name.touched" style="color: red;">name is
+            required</div>
+        <label for="email">Email:</label>
+        <input type="email" [(ngModel)]="email" formControlName="email" name="email" placeholder="Enter the email">
+        <br>
+        <div
+            *ngIf="userform.controls.email.invalid && userform.controls.name.touched && userform.controls.email.errors">
+            <div *ngIf="userform.controls.email.errors['required'] " style="color: red;">Email is required</div>
+            <div *ngIf="userform.controls.email.errors['email']" style="color: red;">invalid email</div>
+        </div>
+        <label for="role">Role:</label>
+        <input type="text" [(ngModel)]="role" formControlName="role" name="rle" placeholder="Enter the role">
+        <br>
+        <div *ngIf="userform.controls.role.invalid && userform.controls.role.touched" style="color: red;">role is
+            required</div>
+        <label for="phone">Phone:</label>
+        <input type="tel" [(ngModel)]="phone" formControlName="phone" name="phone" placeholder="Enter Phone No">
+        <br>
+        <div *ngIf="userform.controls.phone.invalid && userform.controls.phone.touched" style="color: red;">phone is
+            required</div>
+        <label for="address">Address:</label>
+        <input type="text" [(ngModel)]="address" formControlName="address" name="address" placeholder="Enter Address">
+        <br>
+        <div *ngIf="userform.controls.address.invalid && userform.controls.address.touched" style="color: red;">address
+            is required</div>
+       
+
+        <br>
+        <button type="submit" [disabled]="!userform.valid" class="btn" (click)="onsubmit() " (click)="closeform()">Add user</button>
+        <button class="close" (click)="closeform()">Close</button>
+    </form>
+   <div>
+   </div>
+    <div *ngIf="issubmitted" class="flex-container">
+            <app-user-card *ngFor="let msg of userinfo" [userinfo]="msg"></app-user-card>
+    </div>
+</body>
+
+</html> -->
+
+
+<app-side-nav></app-side-nav>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <div class="header">
+            <p>User Directory</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search User" class="search-bar-input">
+                <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
+                <!-- <div class="search-bar-drop-down">
+                    <select name="" id="" class="search-select">
+                        <option><i class="fa-solid fa-caret-down"></i></option>
+                    </select>
+                </div> -->
+
+
+            </div>
+        </div>
+    </div>
+    <div class="add-user" (click)="openform()"><i class="fa-solid fa-plus"></i></div>
+    <div  class="form-div">
+       
+        <form  id="myform" #userForm="ngForm" (ngSubmit)="saveUserFormData(userForm.value)" >
+            <header>User Details</header>
+            <label for="Id">Id:</label>
+            <input type="number" ngModel  name="id" placeholder="Enter the Id">
+            <br>
+            <label for="name">Name:</label>
+            <input type="text" ngModel  name="uname" placeholder="Enter the name">
+            <br>
+            <!-- <div *ngIf="userform.controls.name.invalid && userform.controls.name.touched" style="color: red;">name is
+                required</div> -->
+            <label for="email">Email:</label>
+            <input type="text" ngModel  name="uemail" placeholder="Enter the email">
+            <br>
+            <!-- <div
+                *ngIf="userform.controls.email.invalid && userform.controls.name.touched && userform.controls.email.errors">
+                <div *ngIf="userform.controls.email.errors['required'] " style="color: red;">Email is required</div>
+                <div *ngIf="userform.controls.email.errors['email']" style="color: red;">invalid email</div>
+            </div> -->
+            <label for="role">Role:</label>
+            <input type="text" ngModel  name="urole" placeholder="Enter the role">
+            <br>
+            <!-- <div *ngIf="userform.controls.role.invalid && userform.controls.role.touched" style="color: red;">role is
+                required</div> -->
+            <label for="phone">Phone:</label>
+            <input type="text" ngModel  name="uphone">
+            <br>
+            <!-- <div *ngIf="userform.controls.phone.invalid && userform.controls.phone.touched" style="color: red;">phone is
+                required</div> -->
+            <label for="address">Address:</label>
+            <input type="text" ngModel  name="uaddress">
+            <br>
+            <!-- <div *ngIf="userform.controls.address.invalid && userform.controls.address.touched" style="color: red;">address
+                is required</div> -->
+            <label for="photo">Photo:</label>
+            <input type="file" accept="image/*" (change)="onFileSelected($event)" name="photo" class="ph">
+     
+            <br>
+            
+            <button class="close" (click)="closeform()">Add user</button>
+            <!-- <button class="close" (click)="closeform()"</button> -->
+        </form>
+    </div>
+
+   <div>
+   </div>
+    <div  class="flex-container">
+     
+            <app-user-card *ngFor="let msg of userArr" [userArr]="msg"></app-user-card>
+
+    
+    </div>
+</body>
+
+</html>
