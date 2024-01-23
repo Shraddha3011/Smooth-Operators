@@ -1,0 +1,182 @@
+<!-- <div *ngFor="let accordion of accordions" class="accordion">
+    <div class="question" (click)="toggleAccordion(accordion)">
+      <h2>{{ projectinfo.name }}</h2>
+      <i class="icon" [ngClass]="{'active': accordion.active}"></i>
+      <h3>{{projectinfo.startDate}}</h3>
+      <h3>{{projectinfo.endDate}}</h3>
+      <h3 style="color:rgb(89, 255, 0)">Completed </h3>
+      <div>
+          <i class="fa-solid fa-pen" style="color:rgb(89, 255, 0);margin-right: 20px;" ></i>
+          <i class="fa-solid fa-trash" style="color: red;;margin-right: 20px;"></i>
+      </div>
+      
+    </div>
+    <div class="answer" [style.maxHeight]="accordion.active ? '100%' : '0'">
+      <div>
+          <section>
+              <h2>Project Description</h2>
+              <p>{{projectinfo.description}}</p>
+          </section>
+      
+          <section>
+              <h2>Dates:</h2>
+              <p><strong>Start Date:</strong> {{projectinfo.startDate}}</p>
+              <p><strong>End Date:</strong> {{projectinfo.endDate}}</p>
+          </section>
+      
+          <section>
+              <h2>List of Users</h2>
+              <ul>
+                  <li>User 1</li>
+                  <li>User 2</li>
+                  <li>User 3</li>
+              </ul>
+          </section>
+      
+          <section>
+              <h2>Project Status</h2>
+              <label>
+                  <input type="radio" name="projectStatus" checked> Project is active
+              </label>
+              <label>
+                  <input type="radio" name="projectStatus"> Project is inactive
+              </label>
+          </section>
+      </div>
+    </div>
+  </div>
+   -->
+   <!-- <div *ngFor="let accordion of accordions" class="accordion">
+    <div class="question" >
+      <h2>{{ projectArr.projectDetails.pname }}</h2>
+      <i class="icon" [ngClass]="{'active': accordion.active}"></i>
+      <h3>{{projectArr.projectDetails.pstartDate}}</h3>
+      <h3>{{projectArr.projectDetails.pendDate}}</h3>
+      <h3 style="color:rgb(89, 255, 0)">Completed </h3>
+      <div>
+          <i class="fa-solid fa-pen" style="color:rgb(89, 255, 0);margin-right: 20px;" (click)="onEdit(projectArr)" ></i>
+          <i class="fa-solid fa-trash" style="color: red;;margin-right: 20px;" (click)="deleteItem(projectArr.pid)"></i>
+          <i class="fa-solid fa-eye" style="color: blue;" (click)="toggleAccordion(accordion)"></i>
+      </div>
+      
+    </div>
+    <div class="answer" [style.maxHeight]="accordion.active ? '100%' : '0'">
+      <div>
+          <section>
+              <h2 >Project Description</h2>
+              <p style="display: block;">{{projectArr.projectDetails.pdescription}}</p>
+          </section>
+      
+          <section>
+              <h2>Dates:</h2>
+              <p><strong>Start Date:</strong> {{projectArr.projectDetails.pstartDate}}</p>
+              <p><strong>End Date:</strong> {{projectArr.projectDetails.pendDate}}</p>
+          </section>
+      
+          <section>
+              <h2>List of Users</h2>
+              <ul *ngFor="let item of accordionItems">
+                  <li>{{item}}</li>
+              </ul>
+          </section>
+      
+          <section>
+              <h2>Project Status</h2>
+              <label>
+                  <input type="radio" name="projectStatus" checked> Project is active
+              </label>
+              <label>
+                  <input type="radio" name="projectStatus"> Project is inactive
+              </label>
+          </section>
+      </div>
+    </div>
+  </div> -->
+  
+
+
+
+  <!-- *ngIf="searchText===''||project.projectDetails.pname.includes(searchText)" -->
+
+  <table class="table" >
+    <thead>
+        <tr>
+            <!-- <th>ID</th> -->
+            <th>Project Title</th>
+            <th class="text-center">Start Date</th>
+            <th class="text-center">End Date</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let project of projectArr" >
+            
+                <td class="project-info" style="text-align:left">{{ project.projectDetails.pname }}</td>
+
+                <td class="start-date">{{project.projectDetails.pstartDate}}</td>
+
+                <td class="end-date">{{project.projectDetails.pendDate}}</td>
+
+                <td class="status">Completed</td>
+
+                <td class="text-center">
+                    <div>
+                        <i class="fa-solid fa-pen" style="color:rgb(89, 255, 0);margin-right: 20px;" ></i>
+                        <i class="fa-solid fa-trash" style="color: red;;margin-right: 20px;" (click)="deleteItem(projectArr.pid)" ></i>
+                        <i class="fa-solid fa-eye" style="color: blue;" (click)="openDetails()"></i>
+                    </div>               
+                </td>    
+        </tr> 
+    </tbody>
+</table>
+
+
+    <div class="answer" id="ans" style="display: none;
+    width: 500px;
+    height: 500px;
+    padding-left: 25px;
+     position: fixed;
+    top: 50%;left: 50%;transform: translate(-50%,-50%);background-color: #ebe8e8 ;border: 1px solid black;
+    " *ngFor="let project of projectArr" >
+    
+        <div >
+            <i class="fa-solid fa-xmark" style="margin-top: 0 ;margin-left: 480px; background-color: black;color: white;" (click)="closeDetails()"></i>
+            <section>
+                <h2>Project Name</h2>
+                <p style="display: block;">{{project.projectDetails.pname}}</p>
+            </section>
+            <section>
+                <h2 >Project Description</h2>
+                <p style="display: block;">{{project.projectDetails.pdescription}}</p>
+            </section>
+            
+            <section>
+                <h2>Dates:</h2>
+                <p><strong>Start Date:</strong> {{project.projectDetails.pstartDate}}</p>
+                <p><strong>End Date:</strong> {{project.projectDetails.pendDate}}</p>
+            </section>
+        
+            <section>
+                <h2>List of Users</h2>
+                <ul *ngFor="let item of accordionItems">
+                    <li>{{item}}</li>
+                </ul>
+            </section>
+        
+            <section>
+                <h2>Project Status</h2>
+                <label>
+                    <input type="radio" name="projectStatus" checked> Project is active
+                </label>
+                <label>
+                    <input type="radio" name="projectStatus"> Project is inactive
+                </label>
+            </section>
+        </div>
+      </div>
+
+
+
+      
