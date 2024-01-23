@@ -1,0 +1,99 @@
+  <!-- <section class="user">
+
+    <div class="userinfo">
+        <div class="img">
+
+        </div>
+
+        <div class="un">
+            <p class="uns">{{userinfo.name}}</p>
+            <p class="uns">{{userinfo.role}}</p>
+        </div>
+    </div>
+
+    <div class="details">
+        <table>
+            <tr>
+                <td>
+                    <div class="delta">
+                        <div class="delta-icon"><i class="fa-solid fa-phone"></i></div>
+                        <p class="s1">{{userinfo.phone}}</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="delta">
+                        <div class="delta-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <p class="s1">{{userinfo.address}}</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="delta">
+                        <div class="delta-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <p class="s1">{{userinfo.email}}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</section>   
+ -->
+<div *ngIf="searchText===''||userArr.userDetails.uname.includes(searchText)" >
+    <section class="user">
+        <div class="userinfo">
+            <div class="img">
+                <img  src="assets/user.jpg" alt="User Photo">
+            </div>
+    
+            <div class="un">
+                <!-- <p class="uns">User name</p>
+                <p class="uns">Role</p> -->
+                <p class="uns">{{userArr.userDetails.uname}}</p>
+                <p class="uns">{{userArr.userDetails.urole}}</p>
+            </div>
+        </div>
+    
+        <div class="details">
+            <table>
+                <tr>
+                    <td>
+                        <div class="delta">
+                            <div class="delta-icon"><i class="fa-solid fa-phone"></i></div>
+                            <!-- <p class="s1">mobile</p> -->
+                            <p class="s1">{{userArr.userDetails.uphone}}</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="delta">
+                            <div class="delta-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <!-- <p class="s1">address</p> -->
+                            <p class="s1">{{userArr.userDetails.uaddress}}</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="delta">
+                            <div class="delta-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <!-- <p class="s1">mail</p> -->
+                            <p class="s1">{{userArr.userDetails.uemail}}</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+            <button   class="btn" style="background: #263238;">Edit user</button>
+            <button class="close" style="background-color:#6C757D ">Remove User</button>
+       
+    </section>   
+</div>
+
+
+ 
