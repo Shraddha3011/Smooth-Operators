@@ -13,6 +13,15 @@ export class ProjectDirComponent {
 
   addItemToAccordion(option: any) {
     this.accordionItems.push(option);
+    const indexToRemove = this.dropdownOptions.indexOf(option);
+    if (indexToRemove !== -1) {
+      this.dropdownOptions.splice(indexToRemove, 1);
+
+    }
+    const myFormElement = document.getElementById('select');
+    if (myFormElement) {
+      myFormElement.style.display = 'block';
+    }
   }
   
   

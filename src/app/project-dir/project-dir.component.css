@@ -302,7 +302,12 @@
       background-color: #c3e7ff;
     }
     
+    .sel{
+      display: none;
+    }
     .accordion-item {
+      display: inline-block;
+      margin-right: 15px;
       font-size:x-small;
       font-style: normal;
       font-family:inherit;
