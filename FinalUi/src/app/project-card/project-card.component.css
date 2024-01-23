@@ -1,7 +1,6 @@
 
-
 .table{
-  margin: 20px;
+  margin: 4px;
 }
 table {
   width: 100%;
@@ -12,7 +11,9 @@ table {
 th, td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
+  text-align: center;
+    width: 210px;
+   height: 20px;
 }
 
 th {

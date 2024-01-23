@@ -10,12 +10,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let accordion of accordions">
-            <td class="project-info">{{ projectArr.projectDetails.pname }}</td>
+        <tr *ngFor="let project of projectArr">
+            <td style="text-align:left" class="project-info">{{ project.projectDetails.pname }}</td>
             
-            <td class="start-date">{{projectArr.projectDetails.pstartDate}}</td>
+            <td class="start-date">{{project.projectDetails.pstartDate}}</td>
 
-            <td class="end-date">{{projectArr.projectDetails.pendDate}}</td>
+            <td class="end-date">{{project.projectDetails.pendDate}}</td>
 
             <td class="status">Completed</td>
 

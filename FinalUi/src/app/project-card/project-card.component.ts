@@ -11,10 +11,8 @@ export class ProjectCardComponent {
     accordions = [
       { question: 'Lorem ipsum dolor sit amet consectetur.', answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi incidunt doloremque eius recusandae quibusdam nihil beatae laudantium nesciunt praesentium?', active: false },
     ];
-  
-    // toggleAccordion(accordion: any): void {
-    //   accordion.active = !accordion.active;
-    // }
 
+
+    // public searchTerm: string = '';
     
 }
