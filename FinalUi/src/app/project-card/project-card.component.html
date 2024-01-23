@@ -1,0 +1,34 @@
+<table class="table">
+    <thead>
+        <tr>
+            <!-- <th>ID</th> -->
+            <th>Project Title</th>
+            <th class="text-center">Start Date</th>
+            <th class="text-center">End Date</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let project of projectArr">
+            <td style="text-align:left" class="project-info">{{ project.projectDetails.pname }}</td>
+            
+            <td class="start-date">{{project.projectDetails.pstartDate}}</td>
+
+            <td class="end-date">{{project.projectDetails.pendDate}}</td>
+
+            <td class="status">Completed</td>
+
+            <td class="text-center">
+                <div>
+                    <i class="fa-solid fa-pen" style="color:rgb(89, 255, 0);margin-right: 20px;" ></i>
+                    <i class="fa-solid fa-trash" style="color: red;;margin-right: 20px;" ></i>
+                </div>               
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+  
