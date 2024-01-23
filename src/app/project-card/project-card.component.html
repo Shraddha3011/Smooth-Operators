@@ -112,7 +112,7 @@
     
     <tbody>
         <tr *ngFor="let project of projectArr" >
-            
+            <!-- <div *ngIf="searchText===''||project.projectDetails.pname.includes(searchText)"> -->
                 <td class="project-info" style="text-align:left">{{ project.projectDetails.pname }}</td>
 
                 <td class="start-date">{{project.projectDetails.pstartDate}}</td>
@@ -127,7 +127,9 @@
                         <i class="fa-solid fa-trash" style="color: red;;margin-right: 20px;" (click)="deleteItem(projectArr.pid)" ></i>
                         <i class="fa-solid fa-eye" style="color: blue;" (click)="openDetails()"></i>
                     </div>               
-                </td>    
+                </td>   
+            <!-- </div> -->
+                 
         </tr> 
     </tbody>
 </table>

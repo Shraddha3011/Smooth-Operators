@@ -9,6 +9,8 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import {HttpClientModule} from '@angular/common/http'
+
+
 @NgModule({
   declarations: [
     AppComponent,
