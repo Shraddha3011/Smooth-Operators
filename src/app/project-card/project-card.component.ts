@@ -1,5 +1,7 @@
 import { Component,Input } from '@angular/core';
 import { ProjectApiService } from '../project-api.service';
+import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
@@ -29,16 +31,38 @@ export class ProjectCardComponent {
     constructor(private user:ProjectApiService){}
     
     deleteItem(id:any){
-      if(confirm("Are you sure to Delete ?")){
-        this.user.deleteUser(id).subscribe((result)=>{
+      // if(confirm("Are you sure to Delete ?")){
+      //   this.user.deleteUser(id).subscribe((result)=>{
           
-          console.log(id);
-        })
-        // this.projectArr.splice(0,1);
-        delete this.projectArr.pid;
-        alert("Deleted");
-      }
-      
+      //     console.log(id);
+      //   })
+      //   // this.projectArr.splice(0,1);
+      //   delete this.projectArr.pid;
+      //   alert("Deleted");
+      // }
+      Swal.fire({
+        title: 'Confirm Deletion',
+        text: 'Are you sure you want to delete this project?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result:any) => {
+        if (result.isConfirmed) {
+          this.user.deleteUser(id).subscribe(
+            (response) => {
+              console.log('Job deleted successfully');
+              Swal.fire('Success!', 'Job deleted successfully!', 'success');
+              
+            },
+            (error: any) => {
+              console.error('Error deleting job', error);
+              Swal.fire('Error', 'Failed to delete the job', 'error');
+            }
+          );
+        }
+      });
     }
     
     onEdit(obj:any){
