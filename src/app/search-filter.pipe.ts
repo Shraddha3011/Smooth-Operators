@@ -14,7 +14,7 @@ export class SearchFilterPipe implements PipeTransform {
       const uname = user.projectDetails.pname; 
       
   
-      return uname.includes(searchText);
+      return uname.toLowerCase().includes(searchText.toLowerCase());
     });
   }
 
