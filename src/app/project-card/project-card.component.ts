@@ -1,6 +1,7 @@
 import { Component,Input } from '@angular/core';
 import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
+import { SearchFilterPipe } from '../search-filter.pipe';
 // import Swal from 'sweetalert2';
 @Component({
   selector: 'app-project-card',
