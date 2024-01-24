@@ -322,10 +322,12 @@
     text-decoration: none;
     border-radius: 10px;
    background-color: #dcdcdc;
+   /* background: #263238; */
+   /* color: white; */
    box-shadow: 0 4px 6px rgb(33, 32, 32);
     text-align: center;
   width: 60px;
-  padding-top: 6px;
+  
 }
 .custom-select {
   position: relative;
