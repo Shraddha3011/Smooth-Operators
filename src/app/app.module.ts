@@ -8,7 +8,8 @@ import { UserDirComponent } from './user-dir/user-dir.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { FilterPipe } from './filter.pipe'
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {HttpClientModule} from '@angular/common/http'
     UserDirComponent,
     ProjectCardComponent,
     UserCardComponent,
-    SideNavComponent
+    SideNavComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
