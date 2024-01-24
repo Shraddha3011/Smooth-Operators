@@ -144,7 +144,7 @@
     </thead>
     
     <tbody>
-        <tr *ngFor="let project of projectArr" >
+        <tr *ngFor="let project of projectArr| searchFilter: searchText" >
             <!-- <div *ngIf="searchText===''||project.projectDetails.pname.includes(searchText)"> -->
                 <td class="project-info" style="text-align:left">{{ project.projectDetails.pname }}</td>
 
