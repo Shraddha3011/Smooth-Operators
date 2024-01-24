@@ -13,6 +13,7 @@ export class ProjectCardComponent {
     accordions = [
       { question: 'Lorem ipsum dolor sit amet consectetur.', answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi incidunt doloremque eius recusandae quibusdam nihil beatae laudantium nesciunt praesentium?', active: false },
     ];
+  style: any;
   
     toggleAccordion(accordion: any): void {
       accordion.active = !accordion.active;
@@ -69,18 +70,35 @@ export class ProjectCardComponent {
       
     }
 
-    openDetails(){
-      const myFormElement = document.getElementById('ans');
-    if (myFormElement) {
-      myFormElement.style.display = 'block';
+    selectedItem: any = null;
+
+    viewItem(project: any) {
+      this.selectedItem = this.selectedItem === project.projectDetails ? null : project.projectDetails; 
+      if(this.selectedItem){
+        this.selectedItem.style.display="block";
+      }
+        
     }
-    }
+
     closeDetails(){
-      const myFormElement = document.getElementById('ans');
-    if (myFormElement) {
-      myFormElement.style.display = 'none';
-    }
-    }
+      this.selectedItem = null;
+      }
+  
+
+    // viewItem(){
+    //   const myFormElement = document.getElementById('ans');
+    // if (myFormElement) {
+    //   myFormElement.style.display = 'block';
+    // }
+    // }
+
+    // closeDetails(){
+    //   const myFormElement = document.getElementById('ans');
+    // if (myFormElement) {
+    //   myFormElement.style.display = 'none';
+    // }
+    // }
+
 
     @Input()
   searchText:string="";
