@@ -3,7 +3,7 @@ import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
 import { SearchFilterPipe } from '../search-filter.pipe';
 import { NgForm } from '@angular/forms';
-// import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
@@ -61,7 +61,7 @@ export class ProjectCardComponent {
             (response) => {
               console.log('Project deleted successfully');
               Swal.fire('Success!', 'Project deleted successfully!', 'success');
-              
+              this.updateProjectArr(id);
             },
             (error: any) => {
               console.error('Error deleting Project', error);
@@ -112,6 +112,14 @@ export class ProjectCardComponent {
     // }
     // }
 
+    private updateProjectArr(deletedProjectId: any) {
+
+      const deletedIndex = this.projectArr.findIndex((project: any) => project.id === deletedProjectId);
+  
+      if (deletedIndex !== -1) {
+        this.projectArr.splice(deletedIndex, 1);
+      }
+    }
 
 
 
@@ -119,3 +127,5 @@ export class ProjectCardComponent {
     @Input()
   searchText:string="";
 }
+
+

@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router'; 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -7,7 +11,7 @@ export class ProjectApiService {
   url = "https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject";
   url1 = "https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   saveProjectData(body:any){
     console.log("body is",body);
@@ -33,7 +37,6 @@ export class ProjectApiService {
     console.log(body);
     return this.http.post(this.url1,body);
   }
-
   // deleteUser(id:any){
   //     console.log(id);
   //     let url4 = 'https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject'
@@ -44,9 +47,14 @@ export class ProjectApiService {
     const requestBody = { id: id };
     return this.http.request('delete', url4, { body: requestBody });
   }
-  deleteUser(id: any)  {
-    let url4 = 'https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser'
+  deleteUser(id: any) {
+    const url = 'https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser';
     const requestBody = { id: id };
-    return this.http.request('delete', url4, { body: requestBody });
+    return this.http.request('delete', url, { body: requestBody });
+  }
+
+   navigateOnSuccess(): void {
+    // You can modify the route or navigate to a different component
+    this.router.navigate(['/users']);
   }
 }
