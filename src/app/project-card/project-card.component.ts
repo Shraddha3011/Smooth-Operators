@@ -2,6 +2,7 @@ import { Component,Input } from '@angular/core';
 import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
 import { SearchFilterPipe } from '../search-filter.pipe';
+import { NgForm } from '@angular/forms';
 // import Swal from 'sweetalert2';
 @Component({
   selector: 'app-project-card',
@@ -9,6 +10,8 @@ import { SearchFilterPipe } from '../search-filter.pipe';
   styleUrls: ['./project-card.component.css']
 })
 export class ProjectCardComponent {
+
+  // @ViewChild('#projectForm') form: NgForm;
   @Input()
   projectArr:any={};
     accordions = [
@@ -67,9 +70,16 @@ export class ProjectCardComponent {
       });
     }
     
-    onEdit(obj:any){
+
+    // onEditClicked(pid : string){
+    //   let currentProject = this.projectArr.find((p: { pid: string; })=> {return p.pid ===pid})
+    //   console.log(currentProject);
       
-    }
+
+    //   // this.form.setValue({
+    //   //   pname:currentProject.pname,
+    //   // });
+    // }
 
     selectedItem: any = null;
 
@@ -99,6 +109,9 @@ export class ProjectCardComponent {
     //   myFormElement.style.display = 'none';
     // }
     // }
+
+
+
 
 
     @Input()

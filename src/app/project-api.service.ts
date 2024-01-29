@@ -24,6 +24,11 @@ export class ProjectApiService {
     return this.http.get(url3);
   }
 
+  // updateProjectData(){
+  //   let url4 = 'https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject'
+  //   return this.http.put(url4);
+  // }
+
   saveUserData(body:any){
     console.log(body);
     return this.http.post(this.url1,body);
