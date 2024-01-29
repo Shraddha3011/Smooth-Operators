@@ -134,7 +134,13 @@ export class UserDirComponent {
       myFormElement.style.display = 'none';
     }
 }
-
+close() {
+  const myFormElement = document.getElementById('myform');
+  if (myFormElement) {
+    myFormElement.style.display = 'none';
+  }
+  
+}
 error=null;
 userArr:any[] = [];
 
@@ -169,5 +175,6 @@ saveUserFormData(details:any){
   this.proj.saveUserData(body).subscribe((result)=>{
     console.log(result);
   })
+  this.close();
 }
 }
