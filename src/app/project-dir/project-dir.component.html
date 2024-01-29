@@ -99,14 +99,14 @@
         </div>
     </div> -->
     <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus" style="margin-top: 6px;margin-bottom: -8px;"></i></div>
-    <form id="myform" #projectForm = "ngForm" (ngSubmit)="saveProjectFormData(projectForm.value)" [formGroup]="projectform">
+    <form id="myform" #projectForm = "ngForm" [formGroup]="projectform">
         <header>Project Details</header>
-        <label for="name">Project Id:</label>
+        <!-- <label for="name">Project Id:</label>
         
         <input type="number" [(ngModel)]="pid"  name="pid" placeholder="Enter the Id" formControlName="pid">
             <br>
             <div *ngIf="projectform.controls.pid.invalid && projectform.controls.pid.touched" style="color: red;">id is
-                required</div>
+                required</div> -->
 
         <label for="name">Project Title:</label>
         <input type="text" [(ngModel)]="pname"  name="pname" placeholder="Enter the title" formControlName="pname">
@@ -146,8 +146,8 @@
                 </div>
               </div>
         <!-- (click)="onsubmit()" type="submit" -->
-        <button  [disabled]="!projectform.valid" class="btn" style="background-color: #263238;">Add </button>   
-        <button class="close" (click)="closeform()">Close</button>
+        <button  [disabled]="!projectform.valid" class="btn" style="background-color: #263238;" (click)="saveProjectFormData(projectForm.value)">Add </button>   
+        <button class="close" (click)="close()">Close</button>
     </form>
    <div>
    </div>

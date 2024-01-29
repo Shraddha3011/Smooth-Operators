@@ -10,7 +10,7 @@ export class ProjectApiService {
   constructor(private http:HttpClient) { }
 
   saveProjectData(body:any){
-    console.log(body);
+    console.log("body is",body);
     return this.http.post(this.url,body);
   }
 
@@ -30,10 +30,9 @@ export class ProjectApiService {
   }
 
   deleteUser(id:any){
-    
-      return this.http.delete(`${this.url}/${id}`);
-    
-    
+      console.log(id);
+      let url4 = 'https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject'
+      return this.http.delete(`${url4}/${id}`); 
   }
 
 }

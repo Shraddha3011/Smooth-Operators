@@ -42,6 +42,8 @@ export class ProjectCardComponent {
       //   delete this.projectArr.pid;
       //   alert("Deleted");
       // }
+      console.log(id);
+      
       Swal.fire({
         title: 'Confirm Deletion',
         text: 'Are you sure you want to delete this project?',
