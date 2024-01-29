@@ -104,7 +104,7 @@
     <div class="add-user" (click)="openform()"><i class="fa-solid fa-plus"></i></div>
     <div  class="form-div">
        
-        <form  id="myform" #userForm="ngForm" (ngSubmit)="saveUserFormData(userForm.value)" style="display: none;" [formGroup]="userform" >
+        <form  id="myform" #userForm="ngForm"  style="display: none;" [formGroup]="userform" >
             <header>User Details</header>
             <label for="Id">Id:</label>
             <input type="number" [(ngModel)]="uid"  name="uid" placeholder="Enter the Id" formControlName="uid">
@@ -143,8 +143,8 @@
             <input type="file" accept="image/*" (change)="onFileSelected($event)" name="photo" class="ph"> -->
      
             <br>
-            <button  [disabled]="!userform.valid" class="btn" style="background-color: #263238;">Add </button>   
-        <button class="close" (click)="closeform()">Close</button>
+            <button  [disabled]="!userform.valid" class="btn" style="background-color: #263238;" (click)="saveUserFormData(userForm.value)">Add </button>   
+        <button class="close" (click)="close()">Close</button>
             <!-- <button class="close" (click)="closeform()">Add user</button> -->
             <!-- <button class="close" (click)="closeform()"</button> -->
         </form>
