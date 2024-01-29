@@ -42,6 +42,8 @@ export class ProjectCardComponent {
       //   delete this.projectArr.pid;
       //   alert("Deleted");
       // }
+      console.log(id);
+      
       Swal.fire({
         title: 'Confirm Deletion',
         text: 'Are you sure you want to delete this project?',
@@ -52,15 +54,15 @@ export class ProjectCardComponent {
         confirmButtonText: 'Yes, delete it!'
       }).then((result:any) => {
         if (result.isConfirmed) {
-          this.user.deleteUser(id).subscribe(
+          this.user.deleteProject(id).subscribe(
             (response) => {
-              console.log('Job deleted successfully');
-              Swal.fire('Success!', 'Job deleted successfully!', 'success');
+              console.log('Project deleted successfully');
+              Swal.fire('Success!', 'Project deleted successfully!', 'success');
               
             },
             (error: any) => {
-              console.error('Error deleting job', error);
-              Swal.fire('Error', 'Failed to delete the job', 'error');
+              console.error('Error deleting Project', error);
+              Swal.fire('Error', 'Failed to delete the Project', 'error');
             }
           );
         }

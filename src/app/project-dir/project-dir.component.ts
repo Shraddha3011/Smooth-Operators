@@ -29,7 +29,7 @@ export class ProjectDirComponent {
 
   projectform = new FormGroup(
     {
-      pid:new FormControl('',Validators.required),
+      // pid:new FormControl('',Validators.required),
       pname:new FormControl('',Validators.required),
       pstartDate:new FormControl('',Validators.required),
       pendDate:new FormControl('',Validators.required),
@@ -39,7 +39,7 @@ export class ProjectDirComponent {
   title = 'user';
   selectedValue: string = '';
   dropdownOpen: boolean = false;
-  pid:number=1;
+  // pid:number=1;
   pname: string = "";
   pstartDate:string="";
   pendDate:string="";
@@ -73,6 +73,13 @@ export class ProjectDirComponent {
     }
     
   }
+  close() {
+    const myFormElement = document.getElementById('myform');
+    if (myFormElement) {
+      myFormElement.style.display = 'none';
+    }
+    
+  }
 
   searchText:string="";
 setSearch(inputel:HTMLInputElement){
@@ -100,23 +107,18 @@ setSearch(inputel:HTMLInputElement){
 
   saveProjectFormData(details:any){
     let body = {
-      "id":details.pid,
+      // "id":details.pid,
       "projectDetails":{
         "pname":details.pname,
         "pdescription":details.pdescription,
         "pstartDate":details.pstartDate,
         "pendDate":details.pendDate
-      }
-      
-      
+      } 
     }
     this.proj.saveProjectData(body).subscribe((result)=>{
       console.log(result);
       console.log(this.accordionItems);
     })
+    this.close();
   }
-  
-  
-
-  
 }
