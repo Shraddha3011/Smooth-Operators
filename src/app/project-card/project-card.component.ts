@@ -32,6 +32,8 @@ export class ProjectCardComponent {
     accordionItems: any[] = [];
 
     constructor(private user:ProjectApiService){}
+
+    
     
     deleteItem(id:any){
       // if(confirm("Are you sure to Delete ?")){
