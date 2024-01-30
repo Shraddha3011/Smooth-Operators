@@ -304,26 +304,39 @@
     
     .table{
       margin: 4px;
+      margin-left: -140px;
+      margin-top: 30px;
+      
   
     }
     table {
-      width: 100%;
+      width: 130%;
       border-collapse: collapse;
-      margin-top: 10px;
+
    
     }
     
     th, td {
-      border: 1px solid #dbdbdb;
+      border: none;
       padding: 8px;
       text-align: center;
         width: 210px;
        height: 20px;
+       border-bottom: 1px solid #ddd;
+       
        
     }
+    td {
+      border-right: none; /* Remove vertical border for table data cells */
+    }
+    tr {
+      border: 1px solid #ddd; /* Left and right borders for rows */
+    }
+
     
     th {
       background-color: #e9eaea;
+      
     }
     
     tr:hover {
@@ -349,7 +362,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: #00305a;
+      background-color: white;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -366,7 +379,7 @@
     .popup-content {
       font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
-      color: white;
+      color: #263038;
     }
     
     .popup button {

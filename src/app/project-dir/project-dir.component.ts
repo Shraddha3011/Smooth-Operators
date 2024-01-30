@@ -94,6 +94,9 @@ setSearch(inputel:HTMLInputElement){
     
   }
 
+  // toggleDarkMode(): void {
+  //   this.proj.toggleDarkMode();}
+
   ngOnInit(){
     this.retrieveProjects();
   }

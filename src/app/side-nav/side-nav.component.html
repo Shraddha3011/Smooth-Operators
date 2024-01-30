@@ -8,8 +8,17 @@
             <a href="" class="sidenav-nav-link" [routerLink]="[data.routeLink]"
             routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                 <i class="sidenav-link-icon" [class]="data.icon"></i>
+                
             </a>
+            
         </li>
+        <div [ngClass]="{'dark-mode': sid.isDarkMode}">
+        <label class="switch">
+            <input type="checkbox" (click)="toggleDarkMode()" [checked]="sid.isDarkMode" /> 
+            <span class="slider"></span>
+            <p style="margin-left: 5px;color: white;">Theme</p>
+          </label>
+        </div>
         <i id="switch" class = "fas fa-power-off"></i>
     </ul>
 </div>

@@ -206,7 +206,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 11px;
-    background-color: #f0f0f0; 
+    background: linear-gradient(to right, #263038, #edf8ff);
+
+    /* background: #263238; */
     margin-top: -10px;
   }
   

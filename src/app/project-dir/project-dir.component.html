@@ -61,7 +61,8 @@
 
 
 
-<app-side-nav></app-side-nav>
+<app-side-nav> </app-side-nav>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,7 +82,7 @@
             <div class="search-bar" >
                 <input type="text" placeholder="Search Project" class="search-bar-input" [(ngModel)]="searchText">
 
-
+                
                 <!-- <input type="text" placeholder="Search Project" class="search-bar-input" #searchInput> -->
                 <div class="search-bar-icon" ><i class="fa-sharp fa-solid fa-magnifying-glass" ></i></div>
             </div>
@@ -98,7 +99,7 @@
             <h3 style="color: black;">Operations</h3>
         </div>
     </div> -->
-    <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus" style="margin-top: 6px;margin-bottom: -8px;"></i></div>
+    <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus" style="margin-top: 6px;margin-bottom: -8px; color: #263038;"></i></div>
     <form id="myform" #projectForm = "ngForm" [formGroup]="projectform">
         <header>Project Details</header>
         <!-- <label for="name">Project Id:</label>
@@ -114,17 +115,18 @@
         <div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched" style="color: red;">name is
             required</div>
         <label for="description">Description:</label>
-        <textarea name="pdescription" id="" cols="60" rows="5" [(ngModel)]="pdescription" formControlName="pdescription" placeholder="Enter the Description"></textarea>
+        <textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription" formControlName="pdescription" placeholder="Enter the Description"></textarea>
         
         <br>
-
+<div style="display: inline-block; columns: 2; column-gap: 100px;">
         <label for="startDate">Start Date:</label>
-        <input type="date" [(ngModel)]="pstartDate"   name="pstartDate" placeholder="Enter the Start Date" formControlName="pstartDate">
+        <input type="date" [(ngModel)]="pstartDate"   name="pstartDate"  formControlName="pstartDate">
         <br>
         <div *ngIf="projectform.controls.pstartDate.invalid && projectform.controls.pstartDate.touched" style="color: red;">start is
             required</div>
         <label for="role">End Date:</label>
-        <input type="date" [(ngModel)]="pendDate"  name="pendDate" placeholder="Enter the End Date" formControlName="pendDate">
+        <input type="date" [(ngModel)]="pendDate"  name="pendDate"  formControlName="pendDate">
+        </div>
         <br>
         <div *ngIf="projectform.controls.pendDate.invalid && projectform.controls.pendDate.touched" style="color: red;">name is
             required</div>

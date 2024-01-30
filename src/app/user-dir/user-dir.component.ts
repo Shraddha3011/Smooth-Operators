@@ -147,6 +147,11 @@ userArr:any[] = [];
 
 constructor(private obj:ProjectApiService){ }
 
+
+// toggleDarkMode(): void {
+//   this.obj.toggleDarkMode();}
+
+
 ngOnInit(){
   this.retrieveUsers();
 }

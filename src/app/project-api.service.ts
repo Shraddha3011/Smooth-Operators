@@ -8,6 +8,15 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ProjectApiService {
+
+  isDarkMode: boolean = false;
+
+  toggleDarkMode(): void {
+    this.isDarkMode = !this.isDarkMode;
+    document.body.classList.toggle('dark-mode', this.isDarkMode);
+  }
+
+
   url = "https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject";
   url1 = "https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser";
 

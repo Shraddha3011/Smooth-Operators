@@ -90,7 +90,8 @@
     <div class="main-container">
 
         <div class="header">
-            <p style="color: rgb(9, 23, 73); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">User Directory</p>
+            <p style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">User Directory</p>
+            <!-- <button (click)="toggleDarkMode()">Toggle Dark Mode</button> -->
             <div class="search-bar">
                 <input type="text" placeholder="Search User" class="search-bar-input" [(ngModel)]="searchText">
                 <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
@@ -144,6 +145,8 @@
      
             <br>
             <button  [disabled]="!userform.valid" class="btn" style="background-color: #263238;" (click)="saveUserFormData(userForm.value)">Add </button>   
+
+
         <button class="close" (click)="close()">Close</button>
             <!-- <button class="close" (click)="closeform()">Add user</button> -->
             <!-- <button class="close" (click)="closeform()"</button> -->

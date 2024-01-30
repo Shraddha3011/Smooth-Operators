@@ -10,6 +10,9 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent {
+
+
+
   @Input() userArr: any = {};
   @Input() searchText: string = '';
 
