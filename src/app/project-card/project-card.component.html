@@ -152,7 +152,7 @@
 
                 <td class="end-date">{{project.projectDetails.pendDate}}</td>
 
-                <td class="status">Completed</td>
+                <td class="status">{{status}}</td>
 
                 <td class="text-center">
                     <div>
@@ -192,10 +192,10 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
     <section>
         <h3>Project Status :</h3>
         <label>
-            <input type="radio" name="projectStatus" checked> Completed
+            <input type="radio" name="projectStatus" (change)="updateStatus('Completed')" > Completed
         </label>
         <label>
-            <input type="radio" name="projectStatus"> In progress
+            <input type="radio" name="projectStatus" (change)="updateStatus('Completed')"> In progress
         </label>
     </section>
     <div class="accordion">
