@@ -93,6 +93,14 @@ setSearch(inputel:HTMLInputElement){
   unameArray: string[]=[];
 
   constructor(private proj:ProjectApiService){
+    
+  }
+
+  ngOnInit(){
+    this.retrieveProjects();
+  }
+
+  retrieveProjects(){
     this.proj.getProjectData().subscribe(
       (details:any)=>{
         this.projectArr = details.response.Items;
@@ -118,6 +126,8 @@ setSearch(inputel:HTMLInputElement){
       this.error = error.message;
     })
   }
+
+  
   
   
   
@@ -135,8 +145,14 @@ setSearch(inputel:HTMLInputElement){
     }
     this.proj.saveProjectData(body).subscribe((result)=>{
       console.log("res is",result);
-      
+      this.retrieveProjects();
     })
     this.close();
+    this.projectform.reset();
+    this.accordionItems=[]
+    const myFormElement = document.getElementById('select');
+    if (myFormElement) {
+      myFormElement.style.display = 'none';
+    }
   }
 }
