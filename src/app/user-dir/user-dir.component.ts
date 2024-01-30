@@ -144,8 +144,11 @@ close() {
 error=null;
 userArr:any[] = [];
 
+ngOnInit(){
+  this.retrieveUser();
+}
 
-constructor(private proj:ProjectApiService){
+retrieveUser(){
   this.proj.getUserData().subscribe(
     (details:any)=>{
       this.userArr = details.response.Items;
@@ -155,6 +158,10 @@ constructor(private proj:ProjectApiService){
     console.log(error);
     this.error = error.message;
   })
+}
+
+constructor(private proj:ProjectApiService){
+  
 }
 searchText:string="";
 setSearch(inputel:HTMLInputElement){
@@ -174,7 +181,9 @@ saveUserFormData(details:any){
   }
   this.proj.saveUserData(body).subscribe((result)=>{
     console.log(result);
+    this.retrieveUser();
   })
+  
   this.close();
 }
 }

@@ -1,4 +1,4 @@
-import { Component ,Input} from '@angular/core';
+import { Component ,Input,Output,EventEmitter} from '@angular/core';
 import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -34,7 +34,7 @@ export class UserCardComponent {
             (response) => {
               console.log('User deleted successfully');
               Swal.fire('Success!', 'User deleted successfully!', 'success');
-              
+              this.childMethod()
             },
             (error: any) => {
               console.error('Error deleting User', error);
@@ -44,4 +44,10 @@ export class UserCardComponent {
         }
       });
   }
+
+  @Output() testEvent = new EventEmitter();
+
+      childMethod(){
+        this.testEvent.emit();
+      }
 }

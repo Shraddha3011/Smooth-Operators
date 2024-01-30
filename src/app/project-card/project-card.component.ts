@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,Output,EventEmitter } from '@angular/core';
 import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
 import { SearchFilterPipe } from '../search-filter.pipe';
@@ -61,7 +61,7 @@ export class ProjectCardComponent {
             (response) => {
               console.log('Project deleted successfully');
               Swal.fire('Success!', 'Project deleted successfully!', 'success');
-              
+              this.childMethod();
             },
             (error: any) => {
               console.error('Error deleting Project', error);
@@ -113,5 +113,12 @@ export class ProjectCardComponent {
 
       updateStatus(newStatus: string) {
         this.status = newStatus;
+      }
+
+
+      @Output() testEvent = new EventEmitter();
+
+      childMethod(){
+        this.testEvent.emit();
       }
 }
