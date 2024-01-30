@@ -86,7 +86,11 @@ export class ProjectCardComponent {
     closeDetails(){
       this.selectedItem = null;
       }
-  
+      status: string = 'Completed';
+
+      updateStatus() {
+        
+      }
 
     // viewItem(){
     //   const myFormElement = document.getElementById('ans');
