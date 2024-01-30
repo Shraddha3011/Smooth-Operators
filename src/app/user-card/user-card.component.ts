@@ -31,7 +31,7 @@ export class UserCardComponent {
             console.log('User deleted successfully');
             Swal.fire('Success!', 'User deleted successfully!', 'success');
             this.cdr.detectChanges();
-            this.updateUserArr(id);
+            // this.updateUserArr(id);
             this.obj.navigateOnSuccess(); // Navigate after deletion
           },
           (error: any) => {
@@ -43,11 +43,11 @@ export class UserCardComponent {
     });
   }
 
-  private updateUserArr(deletedUserId: any) {
-    const deletedIndex = this.userArr.findIndex((user: any) => user.id === deletedUserId);
+  // private updateUserArr(deletedUserId: any) {
+  //   const deletedIndex = this.userArr.findIndex((user: any) => user.id === deletedUserId);
 
-    if (deletedIndex !== -1) {
-      this.userArr.splice(deletedIndex, 1);
-    }
-  }
+  //   if (deletedIndex !== -1) {
+  //     this.userArr.splice(deletedIndex, 1);
+  //   }
+  // }
 }
