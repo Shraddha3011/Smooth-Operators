@@ -56,6 +56,6 @@ export class ProjectApiService {
 
    navigateOnSuccess(): void {
     // You can modify the route or navigate to a different component
-    this.router.navigate(['/users']);
+    this.router.navigate(['/user-dir']);
   }
 }

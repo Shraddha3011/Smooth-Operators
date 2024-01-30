@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-user-card',
@@ -12,7 +13,7 @@ export class UserCardComponent {
   @Input() userArr: any = {};
   @Input() searchText: string = '';
 
-  constructor(private obj: ProjectApiService, private router: Router) {}
+  constructor(private obj: ProjectApiService, private router: Router,private cdr: ChangeDetectorRef) {}
 
   deleteUser(id: any) {
     Swal.fire({
@@ -29,6 +30,7 @@ export class UserCardComponent {
           (response) => {
             console.log('User deleted successfully');
             Swal.fire('Success!', 'User deleted successfully!', 'success');
+            this.cdr.detectChanges();
             this.updateUserArr(id);
             this.obj.navigateOnSuccess(); // Navigate after deletion
           },

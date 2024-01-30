@@ -200,7 +200,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 11px;
-      background-color: #ebe8e8; 
+      background: linear-gradient(to right, #263038, #edf8ff);
+ 
       /* background: #263238; */
       margin-top: -10px;
 
@@ -250,12 +251,12 @@
       display: flex;
       margin-left: 20px;
       align-items: center;
-      border: 2px solid #ccc; 
+      border: 2px solid #263038; 
       background-color: #fff;
       height: 40px; 
       width: 400px; 
       border-radius: 20px; 
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+      box-shadow: 0 2px 5px rgba(76, 110, 214, 0.1); 
     }
     .dropdown {
       position: relative;
