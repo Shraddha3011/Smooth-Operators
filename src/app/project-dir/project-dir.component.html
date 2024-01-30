@@ -131,7 +131,7 @@
             <div class="dropdown">
                 <button class="dropbtn">Select Users</button>
                 <div class="dropdown-content">
-                  <a *ngFor="let option of dropdownOptions" (click)="addItemToAccordion(option)">{{ option }}</a>
+                  <a *ngFor="let option of unameArray" (click)="addItemToAccordion(option)">{{ option }}</a>
                 </div>
               </div>
               
@@ -152,7 +152,7 @@
    <div>
    </div>
     <div  class="flex-container">
-            <app-project-card  [projectArr]="projectArr" [searchText]="searchText"></app-project-card>
+            <app-project-card  [projectArr]="projectArr" [searchText]="searchText" ></app-project-card>
     </div>
 </body>
 

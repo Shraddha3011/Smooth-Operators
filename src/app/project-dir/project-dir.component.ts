@@ -8,14 +8,14 @@ import { ProjectApiService } from '../project-api.service';
 })
 export class ProjectDirComponent {
 
-  dropdownOptions = ['Vaidehi', 'Sairaj', 'Ayush', 'Prasad'];
+ 
   accordionItems: any[] = [];
 
   addItemToAccordion(option: any) {
     this.accordionItems.push(option);
-    const indexToRemove = this.dropdownOptions.indexOf(option);
+    const indexToRemove = this.unameArray.indexOf(option);
     if (indexToRemove !== -1) {
-      this.dropdownOptions.splice(indexToRemove, 1);
+      this.unameArray.splice(indexToRemove, 1);
 
     }
     const myFormElement = document.getElementById('select');
@@ -24,7 +24,7 @@ export class ProjectDirComponent {
     }
   }
   
-  
+ 
 
 
   projectform = new FormGroup(
@@ -89,9 +89,18 @@ setSearch(inputel:HTMLInputElement){
 
   error=null;
   projectArr:any[] = [];
-
+  selectUserArr:any={};
+  unameArray: string[]=[];
 
   constructor(private proj:ProjectApiService){
+    
+  }
+
+  ngOnInit(){
+    this.retrieveProjects();
+  }
+
+  retrieveProjects(){
     this.proj.getProjectData().subscribe(
       (details:any)=>{
         this.projectArr = details.response.Items;
@@ -102,9 +111,27 @@ setSearch(inputel:HTMLInputElement){
       console.log(error);
       this.error = error.message;
     })
+
+    this.proj.getUserData().subscribe(
+      (details:any)=>{
+        this.selectUserArr = details.response.Items;
+         this.unameArray= this.selectUserArr.map((user: { userDetails: { uname: string } }) => user.userDetails.uname);
+
+
+      console.log(details);
+      // console.log("user array is",unameArray);
+      
+    },(error: { message: null; })=>{
+      console.log(error);
+      this.error = error.message;
+    })
   }
 
-
+  
+  
+  
+  
+  
   saveProjectFormData(details:any){
     let body = {
       // "id":details.pid,
@@ -112,13 +139,20 @@ setSearch(inputel:HTMLInputElement){
         "pname":details.pname,
         "pdescription":details.pdescription,
         "pstartDate":details.pstartDate,
-        "pendDate":details.pendDate
+        "pendDate":details.pendDate,
+        "selectUsers": this.accordionItems
       } 
     }
     this.proj.saveProjectData(body).subscribe((result)=>{
-      console.log(result);
-      console.log(this.accordionItems);
+      console.log("res is",result);
+      this.retrieveProjects();
     })
     this.close();
+    this.projectform.reset();
+    this.accordionItems=[]
+    const myFormElement = document.getElementById('select');
+    if (myFormElement) {
+      myFormElement.style.display = 'none';
+    }
   }
 }
