@@ -53,7 +53,7 @@
   
 
 .sidenav {
-    background: #263038;
+    background-color: var(--primary-color);
     position: sticky; 
     z-index: 1;  
     left: 0;

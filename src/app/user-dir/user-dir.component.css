@@ -206,7 +206,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 11px;
-    background: linear-gradient(to right, #263038, #edf8ff);
+    background: linear-gradient(to right, var(--primary-color), #edf8ff);
 
     /* background: #263238; */
     margin-top: -10px;
@@ -258,6 +258,7 @@
     width: 400px; 
     border-radius: 20px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    border: 2px solid var(--primary-color); 
   }
   
   .search-bar-input {

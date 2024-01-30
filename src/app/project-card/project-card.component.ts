@@ -130,7 +130,7 @@ export class ProjectCardComponent {
   searchText:string="";
 
 
-  status: string = 'Completed';
+  status: string = 'Pending';
 
       updateStatus(newStatus: string) {
         this.status = newStatus;

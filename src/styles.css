@@ -3,6 +3,12 @@ body {
   }
   
   body.dark-mode {
-    background-color: #263038;
-    color: #00b9d6;
+    background-color: var(--primary-color);
+    color: #58e9ff;
   }
+
+  :root {
+    --primary-color: #000d3a; /* Define your primary color here */
+  }
+  
+  /* Use the variable in different components */
