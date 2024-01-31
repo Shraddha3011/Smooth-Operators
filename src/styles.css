@@ -8,7 +8,8 @@ body {
   }
 
   :root {
-    --primary-color: #000d3a; /* Define your primary color here */
+    --primary-color: #000d3a; 
+    --secondary-color: #57669b;
   }
   
-  /* Use the variable in different components */
+ 
