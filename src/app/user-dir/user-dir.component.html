@@ -90,7 +90,8 @@
     <div class="main-container">
 
         <div class="header">
-            <p style="color: rgb(9, 23, 73); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">User Directory</p>
+            <p style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">User Directory</p>
+            <!-- <button (click)="toggleDarkMode()">Toggle Dark Mode</button> -->
             <div class="search-bar">
                 <input type="text" placeholder="Search User" class="search-bar-input" [(ngModel)]="searchText">
                 <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
@@ -101,7 +102,8 @@
             </div>
         </div>
     </div>
-    <div class="add-user" (click)="openform()"><i class="fa-solid fa-plus"></i></div>
+    
+    <div class="add-user" (click)="openform()">+ Add User</div>
     <div  class="form-div">
        
         <form  id="myform" #userForm="ngForm"  style="display: none;" [formGroup]="userform" >
@@ -135,16 +137,18 @@
             <div *ngIf="userform.controls.uphone.invalid && userform.controls.uphone.touched" style="color: red;">phone is
                 required</div>
             <label for="address">Address:</label>
-            <textarea name="uaddress" id="" cols="60" rows="5" [(ngModel)]="uaddress" formControlName="uaddress"></textarea>
+            <textarea style="width:max-content;" name="uaddress" id="" cols="67" rows="5" [(ngModel)]="uaddress" formControlName="uaddress"></textarea>
             <br>
             <div *ngIf="userform.controls.uaddress.invalid && userform.controls.uaddress.touched" style="color: red;">address
                 is required</div>
-            <!-- <label for="photo">Photo:</label>
-            <input type="file" accept="image/*" (change)="onFileSelected($event)" name="photo" class="ph"> -->
+            <label for="photo">Photo:</label>
+            <input type="file" accept="image/*" (change)="onFileSelected($event)" name="photo" class="ph">
      
             <br>
-            <button  [disabled]="!userform.valid" class="btn" style="background-color: #263238;" (click)="saveUserFormData(userForm.value)">Add </button>   
-        <button class="close" (click)="close()">Close</button>
+            <button  [disabled]="!userform.valid" class="btn" style="background-color: var(--primary-color);" (click)="saveUserFormData(userForm.value)">Add </button>   
+
+
+        <button style="background-color: var(--secondary-color);" class="close" (click)="close()">Close</button>
             <!-- <button class="close" (click)="closeform()">Add user</button> -->
             <!-- <button class="close" (click)="closeform()"</button> -->
         </form>
@@ -154,7 +158,7 @@
    </div>
     <div  class="flex-container">
      
-            <app-user-card *ngFor="let msg of userArr|filter:searchText" [userArr]="msg" [searchText]="searchText" (testEvent)="retrieveUser()"></app-user-card>
+            <app-user-card *ngFor="let msg of userArr|filter:searchText" [userArr]="msg" [searchText]="searchText" (testEvent)="retrieveUsers()"></app-user-card>
 
     
     </div>

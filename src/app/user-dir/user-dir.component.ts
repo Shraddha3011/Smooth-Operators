@@ -145,11 +145,24 @@ error=null;
 userArr:any[] = [];
 
 ngOnInit(){
-  this.retrieveUser();
+  this.retrieveUsers();
 }
 
-retrieveUser(){
-  this.proj.getUserData().subscribe(
+constructor(private obj:ProjectApiService){ }
+
+
+// toggleDarkMode(): void {
+//   this.obj.toggleDarkMode();}
+
+
+// ngOnInit(){
+//   this.retrieveUsers();
+// }
+
+retrieveUsers(){
+  this.obj.getUserData().subscribe(
+// retrieveUser(){
+//   this.proj.getUserData().subscribe(
     (details:any)=>{
       this.userArr = details.response.Items;
     console.log(details);
@@ -159,13 +172,9 @@ retrieveUser(){
     this.error = error.message;
   })
 }
-
-constructor(private proj:ProjectApiService){
-  
-}
 searchText:string="";
-setSearch(inputel:HTMLInputElement){
-  this.searchText=inputel.value;  
+setSearch(inputl:HTMLInputElement){
+  this.searchText=inputl.value;  
   }
 
 saveUserFormData(details:any){
@@ -179,11 +188,13 @@ saveUserFormData(details:any){
       "uaddress":details.uaddress
     }
   }
-  this.proj.saveUserData(body).subscribe((result)=>{
+  this.obj.saveUserData(body).subscribe((result)=>{
     console.log(result);
-    this.retrieveUser();
+    this.retrieveUsers();
+
   })
-  
+  this.userform.reset();
   this.close();
 }
+
 }

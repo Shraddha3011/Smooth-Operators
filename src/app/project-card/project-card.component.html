@@ -133,7 +133,7 @@
 
   <table class="table" >
     <thead>
-        <tr>
+        <tr style="color: var(--primary-color); font-size: larger;font-weight: bold; height:60px">
             <!-- <th>ID</th> -->
             <th>Project Title</th>
             <th class="text-center">Start Date</th>
@@ -178,36 +178,46 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
 
 
 <div *ngIf="selectedItem" class="popup">
-    <div class="popup-content">
-    <i class="fa-solid fa-xmark" style="margin-top: 0 ;margin-left: 480px; background-color: rgb(189, 26, 26);color: white;padding-right: 2px; padding-left: 2px; margin-top: 1px;" (click)="closeDetails()"></i>
+   
 
-    <h2 style=" color:rgb(255, 255, 255);text-transform:uppercase; ">{{ selectedItem.pname}}</h2>
-    <h4>Description :</h4>
-    <p>      {{ selectedItem.pdescription }}<p>
+     <div style="border-bottom: 2px solid #ccc;"> 
+    <i class="fa-solid fa-xmark" style="margin-top: -40 ;margin-left: 580px; background-color: rgb(189, 26, 26);color: white;padding-right: 2px; padding-left: 2px; margin-top: 1px; " (click)="closeDetails()"></i>
+    <h1 style="text-align:left ;margin-top: -20px;font-weight: lighter;"> Project Details</h1>
+</div> 
+<div  class="popup-content" >
+        
+    <div style="columns: 2;">
+        <p>Project Title : </p>
+    <h4 style=" color:rgb(0, 0, 0);">{{ selectedItem.pname}}</h4>
+
         <br>
-    <h4>Start Date :</h4>
-    <p>       {{ selectedItem.pstartDate}}</p><br>
-    <h4>End Date :</h4>
-    <p>        {{ selectedItem.pendDate }}</p><br>
+    <p style="display: inline;">Start Date :   </p>
+    <h4 style="display: inline;">{{ selectedItem.pstartDate}}</h4>
+    <br>
+    <p style="display: inline;">End Date :   </p>
+    <h4 style="display: inline;">{{ selectedItem.pendDate }}</h4><br> <br>
     <section>
-        <h3>Project Status :</h3>
-        <label>
+        <p>Project Status :</p>
+        <!-- <h4>
             <input type="radio" name="projectStatus" (change)="updateStatus('Completed')" > Completed
-        </label>
-        <label>
+        </h4>
+        <h4>
             <input type="radio" name="projectStatus" (change)="updateStatus('Completed')"> In progress
-        </label>
+        </h4> -->
     </section>
     <div class="accordion">
         <br>
-        <h4 class="sel" id="select" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: lighter;">Selected Users :</h4> 
-        <!-- <div  class="accordion-item" *ngFor="let project of projectArr"> -->
-          <!-- <div style="font-weight: lighter"class="accordion-header"> -->
-            <h2 *ngFor="let uname of selectedItem.selectUsers">{{ uname }}</h2>
-          <!-- </div> -->
+        <p class="sel" id="select" >Selected Users :</p> 
+        <div class="usercard">
 
-  <!-- </div> -->
+         <h5 style="display: list-item;margin-top: -2px;" *ngFor="let uname of selectedItem.selectUsers">{{ uname }}</h5>
+        </div>
+    </div>
+
 </div>
+<br>
+<p >Description :</p>
+    <h4>      {{ selectedItem.pdescription }}</h4>
 </div>
 </div>
 

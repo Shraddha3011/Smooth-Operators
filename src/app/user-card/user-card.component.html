@@ -42,7 +42,7 @@
 
 </section>   
  -->
-<div>
+<!-- <div>
     <section class="user">
         <div class="userinfo">
             <div class="img">
@@ -50,8 +50,7 @@
             </div>
     
             <div class="un">
-                <!-- <p class="uns">User name</p>
-                <p class="uns">Role</p> -->
+
                 <p class="uns">{{userArr.userDetails.uname}}</p>
                 <p class="uns">{{userArr.userDetails.urole}}</p>
             </div>
@@ -63,7 +62,7 @@
                     <td>
                         <div class="delta">
                             <div class="delta-icon"><i class="fa-solid fa-phone"></i></div>
-                            <!-- <p class="s1">mobile</p> -->
+
                             <p class="s1">{{userArr.userDetails.uphone}}</p>
                         </div>
                     </td>
@@ -81,7 +80,7 @@
                     <td>
                         <div class="delta">
                             <div class="delta-icon"><i class="fa-solid fa-envelope"></i></div>
-                            <!-- <p class="s1">mail</p> -->
+
                             <p class="s1">{{userArr.userDetails.uemail}}</p>
                         </div>
                     </td>
@@ -89,11 +88,35 @@
             </table>
         </div>
         
-            <button   class="btn" style="background: #263238;">Edit user</button>
-            <button class="close" style="background-color:#6C757D" (click)="deleteUser(userArr.id)">Remove User</button>
+            <button   class="btn" style="background: var(--primary-color)">Edit user</button>
+            <button class="close" style="background-color:var(--secondary-color)" (click)="deleteUser(userArr.id)">Remove User</button>
        
     </section>   
+   
 </div>
+  -->
 
+  <div id="card">
+ <h2>{{userArr.userDetails.uname}}  <h6 style="margin-bottom: 1px; margin-top: 2px;">{{userArr.userDetails.urole}}</h6></h2>
+    <!-- <h3 style="margin-left: 43%;color: white;">{{userArr.userDetails.urole}}</h3> </div> -->
+	<div class="image-crop">
+        <img class="avatar" style="height: 100px; width: 180px;"  src="assets/user.jpg" alt="User Photo">	</div>
+	<div id="bio">
 
- 
+        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-phone" style="margin-right: 20px;font-size: 20px; margin-top: -2px;"></i></div>
+        <p style="display: inline;" class="s1">{{userArr.userDetails.uphone}}</p>
+        <br>
+        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-location-dot" style="margin-right: 20px;font-size: 20px;"></i></div>
+        <p style="display: inline;" class="s1">{{userArr.userDetails.uaddress}}</p>
+        <br>
+        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-envelope" style="margin-right: 20px;font-size: 20px;"></i></div>
+        <p style="display: inline;" class="s1">{{userArr.userDetails.uemail}}</p>
+        <div >
+            <button   class="addbtn" style="background: var(--primary-color);">Edit</button>
+            <button class="closebtn" style="background-color:var(--secondary-color);" (click)="deleteUser(userArr.id)">Delete</button>
+       
+        </div>
+
+	</div>
+	
+</div>

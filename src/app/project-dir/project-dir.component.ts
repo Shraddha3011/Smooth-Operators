@@ -24,8 +24,6 @@ export class ProjectDirComponent {
     }
   }
   
- 
-
 
   projectform = new FormGroup(
     {
@@ -95,6 +93,9 @@ setSearch(inputel:HTMLInputElement){
   constructor(private proj:ProjectApiService){
     
   }
+
+  // toggleDarkMode(): void {
+  //   this.proj.toggleDarkMode();}
 
   ngOnInit(){
     this.retrieveProjects();

@@ -2,13 +2,16 @@ import { Component,Input,Output,EventEmitter } from '@angular/core';
 import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
 import { SearchFilterPipe } from '../search-filter.pipe';
-// import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
   styleUrls: ['./project-card.component.css']
 })
 export class ProjectCardComponent {
+
+  // @ViewChild('#projectForm') form: NgForm;
   @Input()
   projectArr:any={};
   
@@ -16,6 +19,7 @@ export class ProjectCardComponent {
       { question: 'Lorem ipsum dolor sit amet consectetur.', answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi incidunt doloremque eius recusandae quibusdam nihil beatae laudantium nesciunt praesentium?', active: false },
     ];
   style: any;
+  router: any;
   
     toggleAccordion(accordion: any): void {
       accordion.active = !accordion.active;
@@ -33,6 +37,11 @@ export class ProjectCardComponent {
 
     constructor(private user:ProjectApiService){}
 
+
+    // redirectToUserDetails(userId: string) {
+    //   // Assuming you have a route named 'user-details' with a parameter 'id'
+    //   this.router.navigate(['/user-card',userArr.userDetails.uname]);
+    // }
     
     
     deleteItem(id:any){
@@ -62,6 +71,7 @@ export class ProjectCardComponent {
               console.log('Project deleted successfully');
               Swal.fire('Success!', 'Project deleted successfully!', 'success');
               this.childMethod();
+              // this.updateProjectArr(id);
             },
             (error: any) => {
               console.error('Error deleting Project', error);
@@ -73,8 +83,16 @@ export class ProjectCardComponent {
     }
     
     onEdit(obj:any){
+    // onEditClicked(pid : string){
+    //   let currentProject = this.projectArr.find((p: { pid: string; })=> {return p.pid ===pid})
+    //   console.log(currentProject)
+    };
       
-    }
+
+    //   // this.form.setValue({
+    //   //   pname:currentProject.pname,
+    //   // });
+    // }
 
     selectedItem: any = null;
 
@@ -104,12 +122,23 @@ export class ProjectCardComponent {
     // }
     // }
 
+    // private updateProjectArr(deletedProjectId: any) {
+
+    //   const deletedIndex = this.projectArr.findIndex((project: any) => project.id === deletedProjectId);
+  
+    //   if (deletedIndex !== -1) {
+    //     this.projectArr.splice(deletedIndex, 1);
+    //   }
+    // }
+
+
+
 
     @Input()
   searchText:string="";
 
 
-  status: string = 'Completed';
+  status: string = 'Pending';
 
       updateStatus(newStatus: string) {
         this.status = newStatus;
@@ -122,3 +151,5 @@ export class ProjectCardComponent {
         this.testEvent.emit();
       }
 }
+
+

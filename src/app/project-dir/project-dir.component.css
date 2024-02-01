@@ -200,7 +200,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 11px;
-      background-color: #ebe8e8; 
+      background: linear-gradient(to right, var(--primary-color), #edf8ff);
+ 
       /* background: #263238; */
       margin-top: -10px;
 
@@ -250,12 +251,12 @@
       display: flex;
       margin-left: 20px;
       align-items: center;
-      border: 2px solid #ccc; 
+      border: 2px solid var(--primary-color); 
       background-color: #fff;
       height: 40px; 
       width: 400px; 
       border-radius: 20px; 
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+      box-shadow: 0 2px 5px rgba(76, 110, 214, 0.1); 
     }
     .dropdown {
       position: relative;
@@ -375,21 +376,23 @@
   
   
   .add-project {
-    font-size: 3rem;
+    font-size: 0.9rem;
+    padding:0.6rem;
+
     position: fixed;
-    bottom: 2rem;
-    right: 1rem;
-    bottom: 1rem;
-    text-decoration: none;
-    border-radius: 10px;
-   background-color: #dcdcdc;
-   /* background: #263238; */
+    bottom: 1.3rem;
+    right: 1.3rem;
+   background-color: var(--primary-color);
+   color: white;
+   /* background: #26rgb(5, 11, 78)/
    /* color: white; */
    box-shadow: 0 4px 6px rgb(33, 32, 32);
     text-align: center;
-  width: 60px;
+  cursor: pointer;
   
   }
+
+  
   
   .custom-select {
     position: relative;
