@@ -158,7 +158,7 @@
    </div>
     <div  class="flex-container">
      
-            <app-user-card *ngFor="let msg of userArr|filter:searchText" [userArr]="msg" [searchText]="searchText"></app-user-card>
+            <app-user-card *ngFor="let msg of userArr|filter:searchText" [userArr]="msg" [searchText]="searchText" (testEvent)="retrieveUsers()"></app-user-card>
 
     
     </div>

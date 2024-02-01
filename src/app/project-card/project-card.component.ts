@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,Output,EventEmitter } from '@angular/core';
 import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
 import { SearchFilterPipe } from '../search-filter.pipe';
@@ -19,6 +19,7 @@ export class ProjectCardComponent {
       { question: 'Lorem ipsum dolor sit amet consectetur.', answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi incidunt doloremque eius recusandae quibusdam nihil beatae laudantium nesciunt praesentium?', active: false },
     ];
   style: any;
+  router: any;
   
     toggleAccordion(accordion: any): void {
       accordion.active = !accordion.active;
@@ -36,6 +37,11 @@ export class ProjectCardComponent {
 
     constructor(private user:ProjectApiService){}
 
+
+    // redirectToUserDetails(userId: string) {
+    //   // Assuming you have a route named 'user-details' with a parameter 'id'
+    //   this.router.navigate(['/user-card',userArr.userDetails.uname]);
+    // }
     
     
     deleteItem(id:any){
@@ -64,7 +70,8 @@ export class ProjectCardComponent {
             (response) => {
               console.log('Project deleted successfully');
               Swal.fire('Success!', 'Project deleted successfully!', 'success');
-              this.updateProjectArr(id);
+              this.childMethod();
+              // this.updateProjectArr(id);
             },
             (error: any) => {
               console.error('Error deleting Project', error);
@@ -75,10 +82,11 @@ export class ProjectCardComponent {
       });
     }
     
-
+    onEdit(obj:any){
     // onEditClicked(pid : string){
     //   let currentProject = this.projectArr.find((p: { pid: string; })=> {return p.pid ===pid})
-    //   console.log(currentProject);
+    //   console.log(currentProject)
+    };
       
 
     //   // this.form.setValue({
@@ -114,14 +122,14 @@ export class ProjectCardComponent {
     // }
     // }
 
-    private updateProjectArr(deletedProjectId: any) {
+    // private updateProjectArr(deletedProjectId: any) {
 
-      const deletedIndex = this.projectArr.findIndex((project: any) => project.id === deletedProjectId);
+    //   const deletedIndex = this.projectArr.findIndex((project: any) => project.id === deletedProjectId);
   
-      if (deletedIndex !== -1) {
-        this.projectArr.splice(deletedIndex, 1);
-      }
-    }
+    //   if (deletedIndex !== -1) {
+    //     this.projectArr.splice(deletedIndex, 1);
+    //   }
+    // }
 
 
 
@@ -134,6 +142,13 @@ export class ProjectCardComponent {
 
       updateStatus(newStatus: string) {
         this.status = newStatus;
+      }
+
+
+      @Output() testEvent = new EventEmitter();
+
+      childMethod(){
+        this.testEvent.emit();
       }
 }
 

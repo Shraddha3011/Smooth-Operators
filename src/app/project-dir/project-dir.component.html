@@ -154,7 +154,7 @@
    <div>
    </div>
     <div  class="flex-container">
-            <app-project-card  [projectArr]="projectArr" [searchText]="searchText" ></app-project-card>
+            <app-project-card  [projectArr]="projectArr" [searchText]="searchText" (testEvent)="retrieveProjects()"></app-project-card>
     </div>
 </body>
 
