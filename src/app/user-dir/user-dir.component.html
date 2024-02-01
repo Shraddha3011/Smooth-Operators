@@ -141,8 +141,8 @@
             <br>
             <div *ngIf="userform.controls.uaddress.invalid && userform.controls.uaddress.touched" style="color: red;">address
                 is required</div>
-            <!-- <label for="photo">Photo:</label>
-            <input type="file" accept="image/*" (change)="onFileSelected($event)" name="photo" class="ph"> -->
+            <label for="photo">Photo:</label>
+            <input type="file" accept="image/*" (change)="onFileSelected($event)" name="photo" class="ph">
      
             <br>
             <button  [disabled]="!userform.valid" class="btn" style="background-color: var(--primary-color);" (click)="saveUserFormData(userForm.value)">Add </button>   

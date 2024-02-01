@@ -100,23 +100,23 @@
  <h2>{{userArr.userDetails.uname}}  <h6 style="margin-bottom: 1px; margin-top: 2px;">{{userArr.userDetails.urole}}</h6></h2>
     <!-- <h3 style="margin-left: 43%;color: white;">{{userArr.userDetails.urole}}</h3> </div> -->
 	<div class="image-crop">
-        <img class="avatar" style="height: 120px; width: 120px;"  src="assets/user.jpg" alt="User Photo">	</div>
+        <img class="avatar" style="height: 100px; width: 180px;"  src="assets/user.jpg" alt="User Photo">	</div>
 	<div id="bio">
 
-        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-phone" style="margin-right: 20px;"></i></div>
+        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-phone" style="margin-right: 20px;font-size: 20px; margin-top: -2px;"></i></div>
         <p style="display: inline;" class="s1">{{userArr.userDetails.uphone}}</p>
         <br>
-        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-location-dot" style="margin-right: 20px;"></i></div>
+        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-location-dot" style="margin-right: 20px;font-size: 20px;"></i></div>
         <p style="display: inline;" class="s1">{{userArr.userDetails.uaddress}}</p>
         <br>
-        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-envelope" style="margin-right: 20px;"></i></div>
+        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-envelope" style="margin-right: 20px;font-size: 20px;"></i></div>
         <p style="display: inline;" class="s1">{{userArr.userDetails.uemail}}</p>
-
+        <div >
+            <button   class="addbtn" style="background: var(--primary-color);">Edit</button>
+            <button class="closebtn" style="background-color:var(--secondary-color);" (click)="deleteUser(userArr.id)">Delete</button>
+       
+        </div>
 
 	</div>
-	<div >
-        <button   class="addbtn" style="background: var(--primary-color);">Edit</button>
-        <button class="closebtn" style="background-color:var(--secondary-color);" (click)="deleteUser(userArr.id)">Delete</button>
-   
-	</div>
+	
 </div>
