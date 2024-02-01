@@ -14,6 +14,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
     UserCardComponent,
     SideNavComponent,
     FilterPipe,
-    SearchFilterPipe,
+    SearchFilterPipe
   
   ],
   imports: [
