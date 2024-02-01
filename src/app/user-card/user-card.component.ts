@@ -48,6 +48,8 @@ export class UserCardComponent {
     });
   }
 
+  
+
   @Output() testEvent = new EventEmitter();
 
   childMethod(){

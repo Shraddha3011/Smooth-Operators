@@ -113,10 +113,52 @@ export class UserDirComponent {
     this.selectedFile = null; 
     this.userform.reset();
   }
-
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
+  file: File | null = null;
+  base64String: string | null = null;
+  url:any;
+  
+  async convertToBase64(file: File) {
+    return new Promise<void>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        if (reader.result) {
+          this.base64String = reader.result.toString().split(',')[1];
+          resolve();
+        } else {
+          reject(new Error('Reader result is null.'));
+        }
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+    });
   }
+
+  async onFileSelected(event: any): Promise<void> {
+    this.file = event.target.files[0];
+    if (this.file) {
+      await this.convertToBase64(this.file);
+      if(this.base64String!=null){
+        console.log(this.base64String)
+      }
+    }
+  }
+
+  // base64:any;
+  // onFileSelected(event: any) {
+  //   let targetEvent = event.target;
+  //   let file:File = targetEvent.files[0];
+  //   // this.selectedFile = event.target.files[0];
+  //   let fileReader = new FileReader();
+  //   console.log(this.base64)
+  //   fileReader.onload = (e)=>{
+  //     this.base64 = fileReader.result
+  //     console.log(this.base64);
+  //   }
+  //   fileReader.readAsDataURL(file)
+    
+  // }
  
   // openform() {
   //   this.isvisible=true;
@@ -185,15 +227,17 @@ saveUserFormData(details:any){
       "uemail":details.uemail,
       "urole":details.urole,
       "uphone":details.uphone,
-      "uaddress":details.uaddress
+      "uaddress":details.uaddress,
+      "imageUrl":this.base64String,
+      "imageName":this.file?.name
     }
   }
   this.obj.saveUserData(body).subscribe((result)=>{
     console.log(result);
     this.retrieveUsers();
-
+    this.userform.reset();
   })
-  this.userform.reset();
+  
   this.close();
 }
 

@@ -46,7 +46,7 @@
     <section class="user">
         <div class="userinfo">
             <div class="img">
-                <img  src="assets/user.jpg" alt="User Photo">
+                <img  src={{userArr.userDetails.imageUrl}} alt="User Photo">
             </div>
     
             <div class="un">
@@ -88,8 +88,8 @@
             </table>
         </div>
         
-            <button   class="btn" style="background: var(--primary-color)">Edit user</button>
-            <button class="close" style="background-color:var(--secondary-color)" (click)="deleteUser(userArr.id)">Remove User</button>
+            <button   class="btn" style="background: #263238;" >Edit user</button>
+            <button class="close" style="background-color:#6C757D" (click)="deleteUser(userArr.id)">Remove User</button>
        
     </section>   
    
@@ -100,7 +100,8 @@
  <h2>{{userArr.userDetails.uname}}  <h6 style="margin-bottom: 1px; margin-top: 2px;">{{userArr.userDetails.urole}}</h6></h2>
     <!-- <h3 style="margin-left: 43%;color: white;">{{userArr.userDetails.urole}}</h3> </div> -->
 	<div class="image-crop">
-        <img class="avatar" style="height: 100px; width: 180px;"  src="assets/user.jpg" alt="User Photo">	</div>
+        <img class="avatar" style="height: 100px; width: 180px;"  src={{userArr.userDetails.imageUrl}} alt="User Photo">	</div>
+        
 	<div id="bio">
 
         <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-phone" style="margin-right: 20px;font-size: 20px; margin-top: -2px;"></i></div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router'; 
 
 
@@ -19,6 +20,8 @@ export class ProjectApiService {
 
   url = "https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject";
   url1 = "https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser";
+  getUrl = 'https://hv6tu8l99i.execute-api.ca-central-1.amazonaws.com/Dev/newedit';
+  
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -31,7 +34,8 @@ export class ProjectApiService {
     let url2 = 'https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject';
     return this.http.get(url2);
   }
-
+  
+  
   getUserData(){
     let url3 = 'https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser'
     return this.http.get(url3);
@@ -65,6 +69,6 @@ export class ProjectApiService {
 
    navigateOnSuccess(): void {
     // You can modify the route or navigate to a different component
-    this.router.navigate(['/user-dir']);
+    // this.router.navigate(['/user-dir']);
   }
 }
