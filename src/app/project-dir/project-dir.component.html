@@ -160,10 +160,10 @@
             (click)="saveProjectFormData(projectForm.value)">Add </button>
         <button style="background-color: var(--secondary-color);" class="close" (click)="close()">Close</button>
     </form>
-    <div>
-    </div>
-    <div class="flex-container">
-        <app-project-card [projectArr]="projectArr" [searchText]="searchText"></app-project-card>
+   <div>
+   </div>
+    <div  class="flex-container">
+            <app-project-card  [projectArr]="projectArr" [searchText]="searchText" (testEvent)="retrieveProjects()"></app-project-card>
     </div>
 </body>
 

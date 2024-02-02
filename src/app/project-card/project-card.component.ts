@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component,Input,Output,EventEmitter } from '@angular/core';
 import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
 import { SearchFilterPipe } from '../search-filter.pipe';
@@ -21,10 +21,11 @@ export class ProjectCardComponent  {
     { question: 'Lorem ipsum dolor sit amet consectetur.', answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi incidunt doloremque eius recusandae quibusdam nihil beatae laudantium nesciunt praesentium?', active: false },
   ];
   style: any;
-
-  toggleAccordion(accordion: any): void {
-    accordion.active = !accordion.active;
-  }
+  router: any;
+  
+    toggleAccordion(accordion: any): void {
+      accordion.active = !accordion.active;
+    }
 
   // activeProject: any;
 
@@ -38,50 +39,51 @@ export class ProjectCardComponent  {
 
   constructor(private user: ProjectApiService) { }
 
+    
+    
+    deleteItem(id:any){
+      // if(confirm("Are you sure to Delete ?")){
+      //   this.user.deleteUser(id).subscribe((result)=>{
+          
+      //     console.log(id);
+      //   })
+      //   // this.projectArr.splice(0,1);
+      //   delete this.projectArr.pid;
+      //   alert("Deleted");
+      // }
+      console.log(id);
+      
+      Swal.fire({
+        title: 'Confirm Deletion',
+        text: 'Are you sure you want to delete this project?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result:any) => {
+        if (result.isConfirmed) {
+          this.user.deleteProject(id).subscribe(
+            (response) => {
+              console.log('Project deleted successfully');
+              Swal.fire('Success!', 'Project deleted successfully!', 'success');
+              this.childMethod();
+              // this.updateProjectArr(id);
+            },
+            (error: any) => {
+              console.error('Error deleting Project', error);
+              Swal.fire('Error', 'Failed to delete the Project', 'error');
+            }
+          );
+        }
+      });
+    }
+    
 
-
-  deleteItem(id: any) {
-    // if(confirm("Are you sure to Delete ?")){
-    //   this.user.deleteUser(id).subscribe((result)=>{
-
-    //     console.log(id);
-    //   })
-    //   // this.projectArr.splice(0,1);
-    //   delete this.projectArr.pid;
-    //   alert("Deleted");
-    // }
-    console.log(id);
-
-    Swal.fire({
-      title: 'Confirm Deletion',
-      text: 'Are you sure you want to delete this project?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result: any) => {
-      if (result.isConfirmed) {
-        this.user.deleteProject(id).subscribe(
-          (response) => {
-            console.log('Project deleted successfully');
-            Swal.fire('Success!', 'Project deleted successfully!', 'success');
-            this.updateProjectArr(id);
-          },
-          (error: any) => {
-            console.error('Error deleting Project', error);
-            Swal.fire('Error', 'Failed to delete the Project', 'error');
-          }
-        );
-      }
-    });
-  }
-
-
-  // onEditClicked(pid : string){
-  //   let currentProject = this.projectArr.find((p: { pid: string; })=> {return p.pid ===pid})
-  //   console.log(currentProject);
-
+    // onEditClicked(pid : string){
+    //   let currentProject = this.projectArr.find((p: { pid: string; })=> {return p.pid ===pid})
+    //   console.log(currentProject);
+      
 
   //   // this.form.setValue({
   //   //   pname:currentProject.pname,
@@ -95,23 +97,6 @@ export class ProjectCardComponent  {
     this.selectedItem = this.selectedItem === project.projectDetails ? null : project.projectDetails;
     if (this.selectedItem) {
       this.selectedItem.style.display = "block";
-    }
-  }
- 
-  @Input()
-  unameArray: string[]=[];
-
-
-  addItemToAccordion(option: any) {
-    this.accordionItems.push(option);
-    const indexToRemove = this.unameArray.indexOf(option);
-    if (indexToRemove !== -1) {
-      this.unameArray.splice(indexToRemove, 1);
-
-    }
-    const myFormElement = document.getElementById('select');
-    if (myFormElement) {
-      myFormElement.style.display = 'block';
     }
   }
     uname: string = "";
@@ -160,14 +145,14 @@ export class ProjectCardComponent  {
   // }
   // }
 
-  private updateProjectArr(deletedProjectId: any) {
+    // private updateProjectArr(deletedProjectId: any) {
 
-    const deletedIndex = this.projectArr.findIndex((project: any) => project.id === deletedProjectId);
-
-    if (deletedIndex !== -1) {
-      this.projectArr.splice(deletedIndex, 1);
-    }
-  }
+    //   const deletedIndex = this.projectArr.findIndex((project: any) => project.id === deletedProjectId);
+  
+    //   if (deletedIndex !== -1) {
+    //     this.projectArr.splice(deletedIndex, 1);
+    //   }
+    // }
 
 
 
@@ -178,9 +163,14 @@ export class ProjectCardComponent  {
 
   status: string = 'Pending';
 
-  updateStatus(newStatus: string) {
-    this.status = newStatus;
-  }
+      updateStatus(newStatus: string) {
+        this.status = newStatus;
+      }
+      @Output() testEvent = new EventEmitter();
+
+      childMethod(){
+        this.testEvent.emit();
+      }
 }
 
 
