@@ -18,8 +18,8 @@ export class ProjectApiService {
   }
 
 
-  url = "https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject";
-  url1 = "https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser";
+  url = "https://um0xzq5u4f.execute-api.ca-central-1.amazonaws.com/projectDev/projectDir";
+  url1 = "https://k5kjv9bne2.execute-api.ca-central-1.amazonaws.com/userDev/userDir";
   getUrl = 'https://hv6tu8l99i.execute-api.ca-central-1.amazonaws.com/Dev/newedit';
   
 
@@ -31,13 +31,13 @@ export class ProjectApiService {
   }
 
   getProjectData(){
-    let url2 = 'https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject';
+    let url2 = 'https://um0xzq5u4f.execute-api.ca-central-1.amazonaws.com/projectDev/projectDir';
     return this.http.get(url2);
   }
   
   
   getUserData(){
-    let url3 = 'https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser'
+    let url3 = 'https://k5kjv9bne2.execute-api.ca-central-1.amazonaws.com/userDev/userDir'
     return this.http.get(url3);
   }
 
@@ -51,18 +51,13 @@ export class ProjectApiService {
     return this.http.post(this.url1,body);
     
   }
-  // deleteUser(id:any){
-  //     console.log(id);
-  //     let url4 = 'https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject'
-  //     return this.http.delete(`${url4}/${id}`); 
-  // }
   deleteProject(id: any)  {
-    let url4 = 'https://erhtgn40k9.execute-api.ca-central-1.amazonaws.com/newdev/newproject'
+    let url4 = 'https://um0xzq5u4f.execute-api.ca-central-1.amazonaws.com/projectDev/projectDir'
     const requestBody = { id: id };
     return this.http.request('delete', url4, { body: requestBody });
   }
   deleteUser(id: any) {
-    const url = 'https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser';
+    const url = 'https://k5kjv9bne2.execute-api.ca-central-1.amazonaws.com/userDev/userDir';
     const requestBody = { id: id };
     return this.http.request('delete', url, { body: requestBody });
   }

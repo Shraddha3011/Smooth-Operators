@@ -7,8 +7,6 @@ const routes: Routes = [
   {path:'',component:ProjectDirComponent},
   {path:'project-dir',component:ProjectDirComponent},
   {path:'user-dir',component:UserDirComponent}
-
-
 ];
 
 @NgModule({
