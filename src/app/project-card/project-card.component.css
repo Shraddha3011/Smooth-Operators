@@ -509,7 +509,7 @@
     }
     
   #pform input {
-        width: 100%;
+        /* width: 100%; */
         padding: 5px;
         margin-bottom: 10px;
         box-sizing: border-box;
@@ -606,3 +606,25 @@
         }
     }
     
+/* Add this to your styles.css or component styles */
+.main-label {
+  display: block;
+  margin-bottom: 5px; /* Adjust as needed to maintain spacing */
+}
+
+.status-container {
+  display: flex;
+
+  /* align-items: left; */
+  margin-bottom: 5px;
+}
+
+.status-label {
+  width:25%;
+  margin-right: -10px; 
+  
+}
+
+/* ... Your existing CSS ... */
+
+

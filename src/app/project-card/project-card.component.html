@@ -272,15 +272,50 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
 
     <form  id="pform">
         <label for="name">Project Title:</label>
-        <input type="text" name="name" value={{uname}}>
+        <input type="text" name="name" value={{uname}} style="width: 100%;">
 
         <label for="stdate">Start Date:</label>
-        <input type="date" value={{stdate}}>
+        <input type="date" value={{stdate}} style="width: 100%;">
       
         <label for="endate">End Date:</label>
-        <input type="date"  value={{endate}}>
+        <input type="date"  value={{endate}} style="width: 100%;">
         <label for="des">Description:</label>
         <textarea style="width:max-content;" name="pdescription" id="" cols="15" rows="5"style="width: 391px; height: 123px;" value={{des}} ></textarea>
+       
+
+<!-- <label for="status">Project Status:</label>
+<div>
+    <input type="radio" id="completed" name="status" [(ngModel)]="projectStatus" value="completed">
+    <label for="completed">Completed</label>
+
+    <input type="radio" id="pending" name="status" [(ngModel)]="projectStatus" value="pending">
+    <label for="pending">Pending</label>
+</div> -->
+<!-- <label for="status">Project Status:</label>
+<div class="status-container">
+    <input type="radio" id="completed" name="status" [(ngModel)]="projectStatus" value="completed">
+    <label for="completed">Completed</label>
+
+    <input type="radio" id="pending" name="status" [(ngModel)]="projectStatus" value="pending">
+    <label for="pending">Pending</label>
+</div> -->
+<!-- ... Your existing code ... -->
+
+<label class="main-label" for="projectStatus">Project Status:</label>
+
+<div class="status-container">
+  
+  <input type="radio" id="completed" name="status" [(ngModel)]="projectStatus" value="completed">
+  <label class="status-label" for="completed">Completed</label>
+ 
+  <input type="radio" id="pending" name="status" [(ngModel)]="projectStatus" value="pending">
+  <label class="status-label" for="pending">Pending</label>
+</div>
+
+<!-- ... Your existing code ... -->
+
+
+    
         <div class="dropdown">
             <button class="dropbtn" >Select Users</button>
             <div class="dropdown-content">
