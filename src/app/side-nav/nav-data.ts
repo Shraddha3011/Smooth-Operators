@@ -7,6 +7,10 @@ export const navbarData = [
     {
         routeLink:'user-dir',
         icon:'fal fa-user'
+    },
+
+    {
+        routeLink:'signUp',
+        icon:'icon-chevron-sign-up',
     }
-   
 ];

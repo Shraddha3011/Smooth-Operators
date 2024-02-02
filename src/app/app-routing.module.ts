@@ -7,11 +7,15 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'signIn',
-    pathMatch: 'full',
-  },
+ 
+  {path:'',component:ProjectDirComponent},
+  {path:'project-dir',component:ProjectDirComponent},
+  {path:'user-dir',component:UserDirComponent},
+   // {
+  //   path: '',
+  //   redirectTo: 'signIn',
+  //   pathMatch: 'full',
+  // },
   {
     path: 'profile',
     component: ProfileComponent,
@@ -24,14 +28,10 @@ const routes: Routes = [
     path: 'signUp',
     component: SignUpComponent,
   },
-  {
-    path: '**',
-    redirectTo: 'signIn',
-  },
-  
-  {path:'',component:ProjectDirComponent},
-  {path:'project-dir',component:ProjectDirComponent},
-  {path:'user-dir',component:UserDirComponent}
+  // {
+  //   path: '**',
+  //   redirectTo: 'signIn',
+  // },
 
 
 ];
