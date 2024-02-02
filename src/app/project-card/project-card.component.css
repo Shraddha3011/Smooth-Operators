@@ -518,12 +518,21 @@
         border-radius: 10px;
         color: black;
     }
+    .dropbtn {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      font-size: 16px;
+      border: 0.8px solid #d5d5d5;
+      cursor: pointer;
+      
+    }
     
-  #pform button,
+  #pform .bttn,
   #pform .close {
         width: calc(50% - 5px); 
         box-sizing: border-box;
-        background-color: #4681f4; /* Adjust the color as needed */
+        background-color: #4681f4; 
         color: white;
         padding: 10px;
         border: none;
@@ -533,7 +542,53 @@
         justify-content: center;
         display: inline-block; 
     }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
     
+    
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-family:inherit;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown:hover .dropbtn {
+      background-color: #c3e7ff;
+    }
+    
+    .sel{
+      display: none;
+      color: black;
+    }
+    .accordion-item {
+      display: inline-block;
+      margin-right: 15px;
+      font-size:x-small;
+      font-style: normal;
+      font-family:inherit;
+    }
   #pform .close {
         background-color: #6C757D; /* Adjust the color as needed */
         margin-left: 10px; 
