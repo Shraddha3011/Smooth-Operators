@@ -3,21 +3,23 @@ import { ProjectApiService } from '../project-api.service';
 import Swal from 'sweetalert2';
 import { SearchFilterPipe } from '../search-filter.pipe';
 import { NgForm } from '@angular/forms';
+import { OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
   styleUrls: ['./project-card.component.css']
 })
-export class ProjectCardComponent {
+export class ProjectCardComponent  {
 
   // @ViewChild('#projectForm') form: NgForm;
   @Input()
-  projectArr:any={};
-  
-    accordions = [
-      { question: 'Lorem ipsum dolor sit amet consectetur.', answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi incidunt doloremque eius recusandae quibusdam nihil beatae laudantium nesciunt praesentium?', active: false },
-    ];
+  projectArr: any = {};
+
+  accordions = [
+    { question: 'Lorem ipsum dolor sit amet consectetur.', answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi incidunt doloremque eius recusandae quibusdam nihil beatae laudantium nesciunt praesentium?', active: false },
+  ];
   style: any;
   router: any;
   
@@ -25,23 +27,18 @@ export class ProjectCardComponent {
       accordion.active = !accordion.active;
     }
 
-    // activeProject: any;
+  // activeProject: any;
 
-    // // Toggle accordion function
-    // toggleAccordion(project: any): void {
-    //   this.activeProject = this.activeProject === project ? null : project;
-    // }
+  // // Toggle accordion function
+  // toggleAccordion(project: any): void {
+  //   this.activeProject = this.activeProject === project ? null : project;
+  // }
 
-    @Input()
-    accordionItems: any[] = [];
+  @Input()
+  accordionItems: any[] = [];
 
-    constructor(private user:ProjectApiService){}
+  constructor(private user: ProjectApiService) { }
 
-
-    // redirectToUserDetails(userId: string) {
-    //   // Assuming you have a route named 'user-details' with a parameter 'id'
-    //   this.router.navigate(['/user-card',userArr.userDetails.uname]);
-    // }
     
     
     deleteItem(id:any){
@@ -82,45 +79,71 @@ export class ProjectCardComponent {
       });
     }
     
-    onEdit(obj:any){
+
     // onEditClicked(pid : string){
     //   let currentProject = this.projectArr.find((p: { pid: string; })=> {return p.pid ===pid})
-    //   console.log(currentProject)
-    };
+    //   console.log(currentProject);
       
 
-    //   // this.form.setValue({
-    //   //   pname:currentProject.pname,
-    //   // });
-    // }
+  //   // this.form.setValue({
+  //   //   pname:currentProject.pname,
+  //   // });
+  // }
 
-    selectedItem: any = null;
+  selectedItem: any = null;
 
-    viewItem(project: any) {
-      this.selectedItem = this.selectedItem === project.projectDetails ? null : project.projectDetails; 
-      if(this.selectedItem){
-        this.selectedItem.style.display="block";
-      }
+  viewItem(project: any) {
+    console.log(project.id);
+    this.selectedItem = this.selectedItem === project.projectDetails ? null : project.projectDetails;
+    if (this.selectedItem) {
+      this.selectedItem.style.display = "block";
     }
+  }
+    uname: string = "";
+    stdate:string="";
+    endate:string="";
+    des:string="";
 
-    closeDetails(){
-      this.selectedItem = null;
-      }
-      
 
-    // viewItem(){
-    //   const myFormElement = document.getElementById('ans');
-    // if (myFormElement) {
-    //   myFormElement.style.display = 'block';
-    // }
-    // }
+  updateItem(project: any) {
 
-    // closeDetails(){
-    //   const myFormElement = document.getElementById('ans');
-    // if (myFormElement) {
-    //   myFormElement.style.display = 'none';
-    // }
-    // }
+
+     this.uname = project.projectDetails.pname;
+     this.stdate = project.projectDetails.pstartDate;
+     this.endate = project.projectDetails.pendDate;
+     this.des = project.projectDetails.pdescription;
+     const myFormElement = document.getElementById('pform');
+    if (myFormElement) {
+      myFormElement.style.display = 'block';
+    }
+    
+    
+  }
+  closeform() {
+    const myFormElement = document.getElementById('pform');
+    if (myFormElement) {
+      myFormElement.style.display = 'none';
+    }
+    
+  }
+  closeDetails() {
+    this.selectedItem = null;
+  }
+
+
+  // viewItem(){
+  //   const myFormElement = document.getElementById('ans');
+  // if (myFormElement) {
+  //   myFormElement.style.display = 'block';
+  // }
+  // }
+
+  // closeDetails(){
+  //   const myFormElement = document.getElementById('ans');
+  // if (myFormElement) {
+  //   myFormElement.style.display = 'none';
+  // }
+  // }
 
     // private updateProjectArr(deletedProjectId: any) {
 
@@ -134,8 +157,8 @@ export class ProjectCardComponent {
 
 
 
-    @Input()
-  searchText:string="";
+  @Input()
+  searchText: string = "";
 
 
   status: string = 'Pending';
@@ -143,8 +166,6 @@ export class ProjectCardComponent {
       updateStatus(newStatus: string) {
         this.status = newStatus;
       }
-
-
       @Output() testEvent = new EventEmitter();
 
       childMethod(){
