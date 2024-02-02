@@ -364,16 +364,6 @@
       }
     }
    
-    .search-bar-drop-down{
-      width: 45px;
-     
-      display: grid;
-      justify-content: center;
-      align-items: center;
-      font-size: 3rem;
-      color: #0f1111;
-    }
-  
   
   .add-project {
     font-size: 0.9rem;
