@@ -171,6 +171,52 @@ export class ProjectCardComponent  {
       childMethod(){
         this.testEvent.emit();
       }
+
+
+
+
+
+
+
+
+      accordionItem: any[] = [];
+
+  addItemToAccordion(option: any) {
+    this.accordionItem.push(option);
+    const indexToRemove = this.unameArray.indexOf(option);
+    if (indexToRemove !== -1) {
+      this.unameArray.splice(indexToRemove, 1);
+
+    }
+    const myFormElement = document.getElementById('select');
+    if (myFormElement) {
+      myFormElement.style.display = 'block';
+    }
+  }
+  selectUserArr:any={};
+  unameArray: string[]=[];
+
+error=null;
+  ngOnInit(){
+    this.retrieveProjects();
+  }
+  retrieveProjects(){
+    
+
+    this.user.getUserData().subscribe(
+      (details:any)=>{
+        this.selectUserArr = details.response.Items;
+         this.unameArray= this.selectUserArr.map((user: { userDetails: { uname: string } }) => user.userDetails.uname);
+
+
+      console.log(details);
+      // console.log("user array is",unameArray);
+      
+    },(error: { message: null; })=>{
+      console.log(error);
+      this.error = error.message;
+    })
+  }
 }
 
 

@@ -281,8 +281,26 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
         <input type="date"  value={{endate}}>
         <label for="des">Description:</label>
         <textarea style="width:max-content;" name="pdescription" id="" cols="15" rows="5"style="width: 391px; height: 123px;" value={{des}} ></textarea>
-        <button  class="btn" style="background-color: var(--primary-color)" (click)="closeform()">update</button>   
+        <div class="dropdown">
+            <button class="dropbtn" >Select Users</button>
+            <div class="dropdown-content">
+                <a *ngFor="let option of unameArray" (click)="addItemToAccordion(option)">{{ option }}</a>
+            </div>
+        </div>
 
+        <div class="accordion">
+            <br>
+            <h4 class="sel" id="select"
+                style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: lighter;">
+                Selected Users :</h4>
+            <div class="accordion-item" *ngFor="let item of accordionItem">
+                <div style="font-weight: lighter" class="accordion-header">
+                    <h2>{{ item }}</h2>
+                </div>
+
+            </div>
+        </div>
+        <button  class="bttn" style="background-color: var(--primary-color)" (click)="closeform()">update</button>   
         <button style="background-color: var(--secondary-color);" class="close" (click)="closeform()">Close</button>
 
       </form>
