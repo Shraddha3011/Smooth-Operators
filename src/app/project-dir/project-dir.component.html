@@ -78,13 +78,15 @@
 <body>
     <div class="main-container">
         <div class="header">
-            <p style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">Project Directory</p>
-            <div class="search-bar" >
+            <p
+                style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">
+                Project Directory</p>
+            <div class="search-bar">
                 <input type="text" placeholder="Search Project" class="search-bar-input" [(ngModel)]="searchText">
 
-                
+
                 <!-- <input type="text" placeholder="Search Project" class="search-bar-input" #searchInput> -->
-                <div class="search-bar-icon" ><i class="fa-sharp fa-solid fa-magnifying-glass" ></i></div>
+                <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
             </div>
         </div>
     </div>
@@ -100,7 +102,7 @@
         </div>
     </div> -->
     <div class="add-project" (click)="openform()">+ Create Project</div>
-    <form id="myform" #projectForm = "ngForm" [formGroup]="projectform">
+    <form id="myform" #projectForm="ngForm" [formGroup]="projectform">
         <header>Project Details</header>
         <!-- <label for="name">Project Id:</label>
         
@@ -110,51 +112,58 @@
                 required</div> -->
 
         <label for="name">Project Title:</label>
-        <input type="text" [(ngModel)]="pname"  name="pname" placeholder="Enter the title" formControlName="pname">
+        <input type="text" [(ngModel)]="pname" name="pname" placeholder="Enter the title" formControlName="pname">
         <br>
-        <div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched" style="color: red;">name is
+        <div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched" style="color: red;">name
+            is
             required</div>
         <label for="description">Description:</label>
-        <textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription" formControlName="pdescription" placeholder="Enter the Description"></textarea>
-        
+        <textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription"
+            formControlName="pdescription" placeholder="Enter the Description"></textarea>
+
         <br>
-<div style="display: inline-block; columns: 2; column-gap: 100px;">
-        <label for="startDate">Start Date:</label>
-        <input type="date" [(ngModel)]="pstartDate"   name="pstartDate"  formControlName="pstartDate">
-        <br>
-        <div *ngIf="projectform.controls.pstartDate.invalid && projectform.controls.pstartDate.touched" style="color: red;">start is
-            required</div>
-        <label for="role">End Date:</label>
-        <input type="date" [(ngModel)]="pendDate"  name="pendDate"  formControlName="pendDate">
+        <div style="display: inline-block; columns: 2; column-gap: 100px;">
+            <label for="startDate">Start Date:</label>
+            <input type="date" [(ngModel)]="pstartDate" name="pstartDate" formControlName="pstartDate">
+            <br>
+            <div *ngIf="projectform.controls.pstartDate.invalid && projectform.controls.pstartDate.touched"
+                style="color: red;">start is
+                required</div>
+            <label for="role">End Date:</label>
+            <input type="date" [(ngModel)]="pendDate" name="pendDate" formControlName="pendDate">
         </div>
         <br>
-        <div *ngIf="projectform.controls.pendDate.invalid && projectform.controls.pendDate.touched" style="color: red;">name is
+        <div *ngIf="projectform.controls.pendDate.invalid && projectform.controls.pendDate.touched" style="color: red;">
+            name is
             required</div>
-            <div class="dropdown">
-                <button class="dropbtn">Select Users</button>
-                <div class="dropdown-content">
-                  <a *ngFor="let option of unameArray" (click)="addItemToAccordion(option)">{{ option }}</a>
+        <div class="dropdown">
+            <button class="dropbtn">Select Users</button>
+            <div class="dropdown-content">
+                <a *ngFor="let option of unameArray" (click)="addItemToAccordion(option)">{{ option }}</a>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <br>
+            <h4 class="sel" id="select"
+                style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: lighter;">
+                Selected Users :</h4>
+            <div class="accordion-item" *ngFor="let item of accordionItems">
+                <div style="font-weight: lighter" class="accordion-header">
+                    <h2>{{ item }}</h2>
                 </div>
-              </div>
-              
-              <div class="accordion">
-                <br>
-                <h4 class="sel" id="select" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: lighter;">Selected Users :</h4> 
-                <div  class="accordion-item" *ngFor="let item of accordionItems">
-                  <div style="font-weight: lighter"class="accordion-header">
-                    <h2 >{{ item }}</h2>
-                  </div>
-            
-                </div>
-              </div>
+
+            </div>
+        </div>
         <!-- (click)="onsubmit()" type="submit" -->
-        <button  [disabled]="!projectform.valid" class="btn" style="background-color: var(--primary-color)" (click)="saveProjectFormData(projectForm.value)">Add </button>   
+        <button [disabled]="!projectform.valid" class="btn" style="background-color: var(--primary-color)"
+            (click)="saveProjectFormData(projectForm.value)">Add </button>
         <button style="background-color: var(--secondary-color);" class="close" (click)="close()">Close</button>
     </form>
-   <div>
-   </div>
-    <div  class="flex-container">
-            <app-project-card  [projectArr]="projectArr" [searchText]="searchText" ></app-project-card>
+    <div>
+    </div>
+    <div class="flex-container">
+        <app-project-card [projectArr]="projectArr" [searchText]="searchText"></app-project-card>
     </div>
 </body>
 

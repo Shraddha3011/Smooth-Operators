@@ -485,3 +485,69 @@
           column-rule-width: 1px;
         }
       } */
+    #pform {
+        display: none;
+        width: 30%; /* Adjust the width as needed */
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 1px 8px 20px;
+        position: fixed;
+        background-color: white;
+        z-index: 1000; 
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+  #pform label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+    
+  #pform input {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        outline: none;
+        border-radius: 10px;
+        color: black;
+    }
+    
+  #pform button,
+  #pform .close {
+        width: calc(50% - 5px); 
+        box-sizing: border-box;
+        background-color: #4681f4; /* Adjust the color as needed */
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        display: inline-block; 
+    }
+    
+  #pform .close {
+        background-color: #6C757D; /* Adjust the color as needed */
+        margin-left: 10px; 
+    }
+    
+    @media (max-width: 600px) {
+      #pform {
+            max-width: 100%;
+        }
+    
+      #pform button,
+      #pform .close {
+            width: 100%; 
+            margin-left: 0;
+        }
+    }
+    
