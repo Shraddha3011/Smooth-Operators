@@ -11,6 +11,9 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FilterPipe } from './filter.pipe';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -24,7 +27,10 @@ import { SearchFilterPipe } from './search-filter.pipe';
     UserCardComponent,
     SideNavComponent,
     FilterPipe,
-    SearchFilterPipe
+    SearchFilterPipe,
+    SignUpComponent,
+    SignInComponent,
+    ProfileComponent
   
   ],
   imports: [

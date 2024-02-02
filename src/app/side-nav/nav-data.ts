@@ -8,4 +8,5 @@ export const navbarData = [
         routeLink:'user-dir',
         icon:'fal fa-user'
     }
+   
 ];
