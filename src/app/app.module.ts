@@ -11,6 +11,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FilterPipe } from './filter.pipe';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 
@@ -24,7 +25,8 @@ import { SearchFilterPipe } from './search-filter.pipe';
     UserCardComponent,
     SideNavComponent,
     FilterPipe,
-    SearchFilterPipe
+    SearchFilterPipe,
+    LandingPageComponent
   
   ],
   imports: [
