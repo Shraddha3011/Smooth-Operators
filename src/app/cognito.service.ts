@@ -29,8 +29,10 @@ export class CognitoService {
     Amplify.configure({
       Auth: {
         Cognito: {
-          userPoolId: 'ca-central-1_iQSGcsct3',
-          userPoolClientId: '5i8o1mon9e4noeg4t1vpfb2crb',
+          userPoolId: 'ca-central-1_j0buT0gKX',
+          userPoolClientId: 'ivnfilu1ugronvj3j7h5jmgcv',
+          // userPoolId: 'ca-central-1_iQSGcsct3',
+          // userPoolClientId: '5i8o1mon9e4noeg4t1vpfb2crb',
         },
       },
     });

@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUser, CognitoService } from '../cognito.service';
+// import { ProjectDirComponent } from '../project-dir/project-dir.component';
 
 @Component({
+  // standalone:true,
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
+  // imports:[ProjectDirComponent],
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {

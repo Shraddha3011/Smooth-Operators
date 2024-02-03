@@ -1,3 +1,5 @@
+<div class="box">
+  <div class="outer-area">
 <div class="row justify-content-center my-5">
     <div class="col-4">
       <div class="card">
@@ -5,8 +7,10 @@
           <div class="row">
             <div class="col mb-2">
               <label for="email" class="form-label">Email:</label>
+              <div>
               <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control form-control-sm">
             </div>
+          </div>
           </div>
           <div class="row">
             <div class="col mb-2">
@@ -47,3 +51,5 @@
       </div>
     </div>
   </div>
+</div>
+</div>

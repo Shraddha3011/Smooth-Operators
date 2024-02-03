@@ -9,18 +9,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 const routes: Routes = [
   {path:'',component:LandingPageComponent},
   {path:'landing-page',component:LandingPageComponent},
-  // {path:'',component:ProjectDirComponent},
   {path:'project-dir',component:ProjectDirComponent},
   {path:'user-dir',component:UserDirComponent},
-   // {
-  //   path: '',
-  //   redirectTo: 'signIn',
-  //   pathMatch: 'full',
-  // },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-  },
   {
     path: 'signIn',
     component: SignInComponent,
@@ -29,11 +19,6 @@ const routes: Routes = [
     path: 'signUp',
     component: SignUpComponent,
   },
-  // {
-  //   path: '**',
-  //   redirectTo: 'signIn',
-  // },
-
 
 ];
 

@@ -9,8 +9,5 @@ export const navbarData = [
         icon:'fal fa-user'
     },
 
-    {
-        routeLink:'signUp',
-        icon:'icon-chevron-sign-up',
-    }
+
 ];
