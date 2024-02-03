@@ -421,3 +421,102 @@ button,
   transform: scale(0.8);
   transition: transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
 } */
+
+form {
+
+  /* display: none; */
+  width: 30%;
+  /* height: 40%; */
+ margin: 20px auto;
+ padding: 20px;
+ border: 1px solid #ccc;
+ justify-content: center;
+ border-radius: 5px;
+ box-shadow: 1px 8px 20px;
+ position: fixed;
+ background-color: white;
+ z-index: 10; /* Adjust z-index as needed */
+ left: 48%;
+ top: 46%;
+ transform: translate(-40%, -40%);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+textarea{
+  width: 50%;
+  padding:  5px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  outline:none;
+  border-radius: 10px;
+  color:black;
+}
+input {
+  width: 100%;
+  padding:  5px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  outline:none;
+  border-radius: 10px;
+  color:black;
+}
+
+button,
+.close {
+  margin-top: 2px;
+  width: 100%; /* 50% width with a small gap between buttons */
+  box-sizing: border-box;
+  background-color: #4681f4; /* Use the desired background color */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: inline-block; /* Display as inline-block to make them side by side */
+}
+
+.close {
+  background-color: #6C757D; /* Use the desired background color for the close button */
+  /* margin-left: 10px;  */
+}
+@media (max-width: 1230px) {
+  form {
+      width: 50%;
+      top: 57%;
+  }
+  label{
+    margin-top: -4px;
+  }
+ header{
+  margin-top: -14px;
+ }
+ /* .main-container{
+  width: 102%;
+  margin-left: -1%;
+ } */
+ }
+ 
+  @media (max-width: 770px) {
+    form {
+        width: 50%;
+        left: 42%;
+        top: 370px;
+    }
+    .sidenav-nav{
+      height: 0px;
+    }
+    label{
+      margin-top: -10px;
+    }
+  header{
+    margin-top: -14px;
+  }
+  }

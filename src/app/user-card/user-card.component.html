@@ -1,4 +1,4 @@
-  <!-- <section class="user">
+<!-- <section class="user">
 
     <div class="userinfo">
         <div class="img">
@@ -96,28 +96,69 @@
 </div>
   -->
 
-  <div id="card">
- <h2>{{userArr.userDetails.uname}}  <h6 style="margin-bottom: 1px; margin-top: 2px;">{{userArr.userDetails.urole}}</h6></h2>
+<div id="card" *ngFor="let user of userArr |filter:searchText">
+    <h2>{{user.userDetails.uname}} <h6 style="margin-bottom: 1px; margin-top: 2px;">{{user.userDetails.urole}}
+        </h6>
+    </h2>
     <!-- <h3 style="margin-left: 43%;color: white;">{{userArr.userDetails.urole}}</h3> </div> -->
-	<div class="image-crop">
-        <img class="avatar" style="height: 100px; width: 180px;"  src={{userArr.userDetails.imageUrl}} alt="User Photo">	</div>
-        
-	<div id="bio">
+    <div class="image-crop">
+        <img class="avatar" style="height: 100px; width: 180px;" src={{user.userDetails.imageUrl}} alt="User Photo">
+    </div>
 
-        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-phone" style="margin-right: 20px;font-size: 20px; margin-top: -2px;"></i></div>
-        <p style="display: inline;" class="s1">{{userArr.userDetails.uphone}}</p>
+    <div id="bio" >
+
+        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-phone"
+                style="margin-right: 20px;font-size: 20px; margin-top: -2px;"></i></div>
+        <p style="display: inline;" class="s1">{{user.userDetails.uphone}}</p>
         <br>
-        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-location-dot" style="margin-right: 20px;font-size: 20px;"></i></div>
-        <p style="display: inline;" class="s1">{{userArr.userDetails.uaddress}}</p>
+        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-location-dot"
+                style="margin-right: 20px;font-size: 20px;"></i></div>
+        <p style="display: inline;" class="s1">{{user.userDetails.uaddress}}</p>
         <br>
-        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-envelope" style="margin-right: 20px;font-size: 20px;"></i></div>
-        <p style="display: inline;" class="s1">{{userArr.userDetails.uemail}}</p>
-        <div >
-            <button   class="addbtn" style="background: var(--primary-color);">Edit</button>
-            <button class="closebtn" style="background-color:var(--secondary-color);" (click)="deleteUser(userArr.id)">Delete</button>
-       
+        <div style="display: inline;" class="delta-icon"><i class="fa-solid fa-envelope"
+                style="margin-right: 20px;font-size: 20px;"></i></div>
+        <p style="display: inline;" class="s1">{{user.userDetails.uemail}}</p>
+        <div>
+            <button class="addbtn" style="background: var(--primary-color);" (click)="editUser(user)">Edit</button>
+            <button class="closebtn" style="background-color:var(--secondary-color);"
+                (click)="deleteUser(user.id)">Delete</button>
+
         </div>
 
-	</div>
-	
+    </div>
+
 </div>
+
+<form  id="uform" #userForm="ngForm"  style="display: none;" >
+    <header>User Details</header>
+   
+    <label for="name">Name:</label>
+    <input type="text"   name="uname"  [(ngModel)]="uname">
+    <br>
+    
+    <label for="email">Email:</label>
+    <input type="text"    name="uemail"  [(ngModel)]="uemail">
+    <br>
+    
+    <label for="role">Role:</label>
+    <input type="text"  name="urole"  [(ngModel)]="urole">
+    <br>
+    
+    <label for="phone">Phone:</label>
+    <input type="text"  name="uphone"  [(ngModel)]="uphone">
+    <br>
+    
+    <label for="address">Address:</label>
+    <textarea style="width:max-content;" name="uaddress" id="" cols="55" rows="5"  [(ngModel)]="uaddress"></textarea>
+    <br>
+    
+    <!-- <label for="photo">Photo:</label>
+    <input type="file"  name="photo" class="ph"> -->
+
+    <br>
+    <button type="button"  class="btn" style="background-color: var(--primary-color);" (click)="updateUserData(userForm.value)">Update</button>
+
+
+<button style="background-color: var(--secondary-color);" class="close" (click)="closeform()">Close</button>
+    
+</form>
