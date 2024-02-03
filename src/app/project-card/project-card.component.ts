@@ -12,7 +12,7 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./project-card.component.css']
 })
 export class ProjectCardComponent  {
-
+  projectStatus: string = '';
   // @ViewChild('#projectForm') form: NgForm;
   @Input()
   projectArr: any = {};
