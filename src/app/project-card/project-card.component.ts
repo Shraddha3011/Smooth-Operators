@@ -99,19 +99,22 @@ export class ProjectCardComponent  {
       this.selectedItem.style.display = "block";
     }
   }
+    id:string="";
     uname: string = "";
     stdate:string="";
     endate:string="";
     des:string="";
+    newSelectArr:any={}
 
 
   updateItem(project: any) {
 
-
+      this.id = project.id;
      this.uname = project.projectDetails.pname;
      this.stdate = project.projectDetails.pstartDate;
      this.endate = project.projectDetails.pendDate;
      this.des = project.projectDetails.pdescription;
+     this.newSelectArr=project.projectDetails.selectUsers;
      const myFormElement = document.getElementById('pform');
     if (myFormElement) {
       myFormElement.style.display = 'block';
@@ -182,7 +185,7 @@ export class ProjectCardComponent  {
       accordionItem: any[] = [];
 
   addItemToAccordion(option: any) {
-    this.accordionItem.push(option);
+    this.newSelectArr.push(option);
     const indexToRemove = this.unameArray.indexOf(option);
     if (indexToRemove !== -1) {
       this.unameArray.splice(indexToRemove, 1);
@@ -201,7 +204,16 @@ error=null;
     this.retrieveProjects();
   }
   retrieveProjects(){
-    
+    this.user.getProjectData().subscribe(
+      (details:any)=>{
+        this.projectArr = details.response.Items;
+      console.log(details);
+      console.log("array is",this.projectArr);
+      
+    },(error: { message: null; })=>{
+      console.log(error);
+      this.error = error.message;
+    })
 
     this.user.getUserData().subscribe(
       (details:any)=>{
@@ -216,6 +228,32 @@ error=null;
       console.log(error);
       this.error = error.message;
     })
+  }
+
+
+  saveProjectFormData(details:any){
+    console.log("details is",details)
+    let body = {
+      "id":details.id,
+      "projectDetails":{
+        "pname":details.name,
+        "pdescription":details.description,
+        "pstartDate":details.stdate,
+        "pendDate":details.endate,
+        "selectUsers": this.newSelectArr
+      } 
+    }
+    this.user.saveproject(body).subscribe((result)=>{
+      console.log("res is",result);
+      this.retrieveProjects();
+    })
+    
+    this.closeform()
+    this.accordionItems=[]
+    // const myFormElement = document.getElementById('select');
+    // if (myFormElement) {
+    //   myFormElement.style.display = 'none';
+    // }
   }
 }
 

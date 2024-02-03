@@ -270,52 +270,19 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
             </section>
     </div> -->
 
-    <form  id="pform">
+    <form  id="pform" #projectForm="ngForm">
+        <label for="name" style="display: none;">Project Id:</label >
+        <input type="text" name="id" [(ngModel)]="id" style="display: none;">
         <label for="name">Project Title:</label>
-        <input type="text" name="name" value={{uname}} style="width: 100%;">
+        <input type="text" name="name" [(ngModel)]="uname">
 
         <label for="stdate">Start Date:</label>
-        <input type="date" value={{stdate}} style="width: 100%;">
+        <input type="date" name="stdate"  [(ngModel)]="stdate">
       
         <label for="endate">End Date:</label>
-        <input type="date"  value={{endate}} style="width: 100%;">
+        <input type="date" name="endate"  [(ngModel)]="endate">
         <label for="des">Description:</label>
-        <textarea style="width:max-content;" name="pdescription" id="" cols="15" rows="5"style="width: 391px; height: 123px;" value={{des}} ></textarea>
-       
-
-<!-- <label for="status">Project Status:</label>
-<div>
-    <input type="radio" id="completed" name="status" [(ngModel)]="projectStatus" value="completed">
-    <label for="completed">Completed</label>
-
-    <input type="radio" id="pending" name="status" [(ngModel)]="projectStatus" value="pending">
-    <label for="pending">Pending</label>
-</div> -->
-<!-- <label for="status">Project Status:</label>
-<div class="status-container">
-    <input type="radio" id="completed" name="status" [(ngModel)]="projectStatus" value="completed">
-    <label for="completed">Completed</label>
-
-    <input type="radio" id="pending" name="status" [(ngModel)]="projectStatus" value="pending">
-    <label for="pending">Pending</label>
-</div> -->
-<!-- ... Your existing code ... -->
-
-<label class="main-label" for="projectStatus">Project Status:</label>
-
-<div class="status-container">
-  
-  <input type="radio" id="completed" name="status" [(ngModel)]="projectStatus" value="completed">
-  <label class="status-label" for="completed">Completed</label>
- 
-  <input type="radio" id="pending" name="status" [(ngModel)]="projectStatus" value="pending">
-  <label class="status-label" for="pending">Pending</label>
-</div>
-
-<!-- ... Your existing code ... -->
-
-
-    
+        <textarea style="width:max-content;" name="description" id="" cols="15" rows="5"style="width: 391px; height: 123px;" [(ngModel)]="des" ></textarea>
         <div class="dropdown">
             <button class="dropbtn" >Select Users</button>
             <div class="dropdown-content">
@@ -328,14 +295,14 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
             <h4 class="sel" id="select"
                 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: lighter;">
                 Selected Users :</h4>
-            <div class="accordion-item" *ngFor="let item of accordionItem">
+            <div class="accordion-item" *ngFor="let item of newSelectArr">
                 <div style="font-weight: lighter" class="accordion-header">
                     <h2>{{ item }}</h2>
                 </div>
 
             </div>
         </div>
-        <button  class="bttn" style="background-color: var(--primary-color)" (click)="closeform()">update</button>   
+        <button  class="bttn" style="background-color: var(--primary-color)" (click)="saveProjectFormData(projectForm.value)">update</button>   
         <button style="background-color: var(--secondary-color);" class="close" (click)="closeform()">Close</button>
 
       </form>

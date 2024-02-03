@@ -66,4 +66,18 @@ export class ProjectApiService {
     // You can modify the route or navigate to a different component
     // this.router.navigate(['/user-dir']);
   }
+
+
+  saveproject(body:any){
+    let urlnew='https://um0xzq5u4f.execute-api.ca-central-1.amazonaws.com/projectDev/projectDir';
+    // let urlnew = 'https://hv6tu8l99i.execute-api.ca-central-1.amazonaws.com/Dev/newedit';
+    console.log(body);
+    return this.http.put(urlnew,body);
+  }
+  saveuser(body:any){
+    let urlnew='https://k5kjv9bne2.execute-api.ca-central-1.amazonaws.com/userDev/userDir';
+    // let urlnew = 'https://hv6tu8l99i.execute-api.ca-central-1.amazonaws.com/Dev/newedit';
+    console.log(body);
+    return this.http.put(urlnew,body);
+  }
 }

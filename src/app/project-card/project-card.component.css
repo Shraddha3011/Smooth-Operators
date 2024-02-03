@@ -579,7 +579,7 @@
     }
     
     .sel{
-      display: none;
+      /* display: none; */
       color: black;
     }
     .accordion-item {

@@ -90,7 +90,82 @@ export class UserCardComponent {
   //       }
   //     });
   // }
+ 
+  updateUserData(details:any){
+    let body = {
+       "id":this.id,
+      "userDetails":{
+        "uname":details.uname,
+        "uemail":details.uemail,
+        "urole":details.urole,
+        "uphone":details.uphone,
+        "uaddress":details.uaddress,
+        "imageUrl":this.image,
+        "imageName":this.imname
+      }
+  
+    }
+    console.log("body is",body);
+    this.obj.saveuser(body).subscribe((result)=>{
+      console.log(result);
+      console.log("body is",body);
+      this.retrieveUsers();
+      
+    })
+    
+    this.closeform();
+  }
+  error=null
+  retrieveUsers(){
+    this.obj.getUserData().subscribe(
+  // retrieveUser(){
+  //   this.proj.getUserData().subscribe(
+      (details:any)=>{
+        this.userArr = details.response.Items;
+      console.log(details);
+      console.log("array is",this.userArr);
+    },(error: { message: null; })=>{
+      console.log(error);
+      this.error = error.message;
+    })
+  }
+  closeform() {
+    const myFormElement = document.getElementById('uform');
+    console.log('Close form button clicked!');
+    if (myFormElement) {
+      myFormElement.style.display = 'none';
+    }
+  }
+  uname: string = "";
+  uemail: string = "";
+  urole: string = "";
+  uphone: string = "";
+  uaddress: string = "";
+  id:string="";
+  selectedItem: any = null;
+  image:string="";
+  imname:string="";
 
 
+  editUser(user:any){
+    // this.selectedItem = this.selectedItem === user.userDetails ? null : user.userDetails;
+    // if (this.selectedItem) {
+    //   this.selectedItem.style.display = "block";
+    // }
+    console.log("id is :",user.id);
+    this.id=user.id;
+    this.uaddress=user.userDetails.uaddress;
+    this.uname=user.userDetails.uname;
+    this.urole=user.userDetails.urole;
+    this.uphone=user.userDetails.uphone;
+    this.uemail=user.userDetails.uemail;
+this.image=user.userDetails.imageUrl;
+this.imname=user.userDetails.imageName;
+
+      const myFormElement = document.getElementById('uform');
+  if (myFormElement) {
+    myFormElement.style.display = 'block';
+  }
+  }
 
 }
