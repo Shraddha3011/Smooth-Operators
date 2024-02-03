@@ -520,3 +520,10 @@ button,
     margin-top: -14px;
   }
   }
+  .flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+   
+  }
