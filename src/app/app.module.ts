@@ -14,7 +14,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { ProfileComponent } from './profile/profile.component';
+
 
 
 @NgModule({
@@ -29,8 +29,8 @@ import { ProfileComponent } from './profile/profile.component';
     SearchFilterPipe,
     LandingPageComponent,
     SignUpComponent,
-    SignInComponent,
-    ProfileComponent
+    SignInComponent
+  
   
   ],
   imports: [

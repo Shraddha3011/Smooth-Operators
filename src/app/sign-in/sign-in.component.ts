@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUser, CognitoService } from '../cognito.service';
-// import { ProjectDirComponent } from '../project-dir/project-dir.component';
+
 
 @Component({
   // standalone:true,
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  // imports:[ProjectDirComponent],
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
@@ -21,11 +20,16 @@ export class SignInComponent {
   }
 
   public signIn(): void {
+
+    console.log('Sign-in button clicked.');
+
     this.loading = true;
     this.cognitoService.signIn(this.user)
     .then(() => {
+      console.log('Sign-in successful. Navigating to /project-dir.');
       this.router.navigate(['/project-dir']);
-    }).catch(() => {
+    }).catch((error) => {
+      console.error('Sign-in error:', error);
       this.loading = false;
     });
   }
