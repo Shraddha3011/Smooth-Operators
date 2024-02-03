@@ -108,11 +108,11 @@
        
         <form  id="myform" #userForm="ngForm"  style="display: none;" [formGroup]="userform" >
             <header>User Details</header>
-            <label for="Id">Id:</label>
+            <!-- <label for="Id">Id:</label>
             <input type="number" [(ngModel)]="uid"  name="uid" placeholder="Enter the Id" formControlName="uid">
             <br>
             <div *ngIf="userform.controls.uid.invalid && userform.controls.uid.touched" style="color: red;">id is
-                required</div>
+                required</div> -->
             <label for="name">Name:</label>
             <input type="text" [(ngModel)]="uname"  name="uname" formControlName="uname" placeholder="Enter the name">
             <br>
@@ -158,7 +158,7 @@
    </div>
     <div  class="flex-container">
      
-            <app-user-card *ngFor="let msg of userArr|filter:searchText" [userArr]="msg" [searchText]="searchText" (testEvent)="retrieveUsers()"></app-user-card>
+            <app-user-card  [userArr]="userArr" [searchText]="searchText" (testEvent)="retrieveUsers()"></app-user-card>
 
     
     </div>

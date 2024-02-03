@@ -60,7 +60,7 @@ export class UserDirComponent {
   // }
   userform = new FormGroup(
     {
-      uid:new FormControl('',Validators.required),
+      // uid:new FormControl('',Validators.required),
       uname: new FormControl('', Validators.required),
       urole: new FormControl('', Validators.required),
       uemail: new FormControl('', [Validators.required, Validators.email]),
@@ -71,7 +71,7 @@ export class UserDirComponent {
   title = 'user';
   selectedValue: string = '';
   dropdownOpen: boolean = false;
-  uid:number=1;
+  // uid:number=1;
   uname: string = "";
   uemail: string = "";
   urole: string = "";
@@ -91,7 +91,7 @@ export class UserDirComponent {
 
     if (this.selectedFile) {
       this.userinfo.push({
-        "id":this.uid,
+        // "id":this.uid,
         "name": this.uname,
         "email": this.uemail,
         "role": this.urole,
@@ -101,7 +101,7 @@ export class UserDirComponent {
       });
     } else {
       this.userinfo.push({
-        "id":this.uid,
+        // "id":this.uid,
         "name": this.uname,
         "email": this.uemail,
         "role": this.urole,
@@ -221,7 +221,7 @@ setSearch(inputl:HTMLInputElement){
 
 saveUserFormData(details:any){
   let body = {
-    "id":details.uid,
+    // "id":details.uid,
     "userDetails":{
       "uname":details.uname,
       "uemail":details.uemail,
