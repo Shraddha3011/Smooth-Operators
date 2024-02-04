@@ -152,7 +152,7 @@
 
                 <td class="end-date">{{project.projectDetails.pendDate}}</td>
 
-                <td class="status">{{status}}</td>
+                <td class="status">{{project.projectDetails.selectedStatus}}</td>
 
                 <td class="text-center">
                     <div>
@@ -198,19 +198,14 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
     <h4 style="display: inline;">{{ selectedItem.pendDate }}</h4><br> <br>
     <section>
         <p>Project Status :</p>
-        <!-- <h4>
-            <input type="radio" name="projectStatus" (change)="updateStatus('Completed')" > Completed
-        </h4>
-        <h4>
-            <input type="radio" name="projectStatus" (change)="updateStatus('Completed')"> In progress
-        </h4> -->
+        <h4>{{selectedItem.selectedStatus}}</h4>
     </section>
     <div class="accordion">
         <br>
         <p class="sel" id="select" >Selected Users :</p> 
         <div class="usercard">
 
-         <h5 style="display: list-item;margin-top: -2px;" *ngFor="let uname of selectedItem.selectUsers">{{ uname }}</h5>
+         <h5 style="display: list-item;margin-top: -2px;" *ngFor="let uname of selectedItem.selectUsers">{{ uname }} </h5>
         </div>
     </div>
 
@@ -283,6 +278,14 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
         <input type="date" name="endate"  [(ngModel)]="endate">
         <label for="des">Description:</label>
         <textarea style="width:max-content;" name="description" id="" cols="15" rows="5"style="width: 391px; height: 123px;" [(ngModel)]="des" ></textarea>
+        <br>
+        <br>
+        <label for="radbtn">Project Status</label>
+        
+        <input type="radio" name="status" id="completed"  (change)="handleRadioChange('Completed')"> Completed
+        <input type="radio" name="status" id="pending"   (change)="handleRadioChange('Pending')" > Pending
+        <br>
+        <br>
         <div class="dropdown">
             <button class="dropbtn" >Select Users</button>
             <div class="dropdown-content">
@@ -297,7 +300,7 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
                 Selected Users :</h4>
             <div class="accordion-item" *ngFor="let item of newSelectArr">
                 <div style="font-weight: lighter" class="accordion-header">
-                    <h2>{{ item }}</h2>
+                    <h2>{{ item }} <i class="fa-solid fa-trash" (click)="deleteUser(item)" ></i></h2>
                 </div>
 
             </div>
