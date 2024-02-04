@@ -11,6 +11,8 @@ const routes: Routes = [
   {path:'landing-page',component:LandingPageComponent},
   {path:'project-dir',component:ProjectDirComponent},
   {path:'user-dir',component:UserDirComponent},
+  // {path:'**',component:UserDirComponent},
+  
   {
     path: 'signIn',
     component: SignInComponent,
