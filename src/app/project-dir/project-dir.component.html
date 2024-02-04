@@ -122,6 +122,12 @@
             formControlName="pdescription" placeholder="Enter the Description"></textarea>
 
         <br>
+        <!-- <label for="radbtn">Project Status</label>
+        
+        <input type="radio" name="status" id="completed"  (change)="handleRadioChange('Completed')"> Completed
+        <input type="radio" name="status" id="pending"   (change)="handleRadioChange('Pending')" > Pending
+        <br> -->
+           
         <div style="display: inline-block; columns: 2; column-gap: 100px;">
             <label for="startDate">Start Date:</label>
             <input type="date" [(ngModel)]="pstartDate" name="pstartDate" formControlName="pstartDate">
@@ -136,6 +142,7 @@
         <div *ngIf="projectform.controls.pendDate.invalid && projectform.controls.pendDate.touched" style="color: red;">
             name is
             required</div>
+            
         <div class="dropdown">
             <button class="dropbtn">Select Users</button>
             <div class="dropdown-content">
