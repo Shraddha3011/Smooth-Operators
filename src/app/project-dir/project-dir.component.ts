@@ -156,4 +156,10 @@ setSearch(inputel:HTMLInputElement){
       myFormElement.style.display = 'none';
     }
   }
+  selectedStatus: string = '';
+
+  handleRadioChange(status: string) {
+    this.selectedStatus = status;
+    console.log(this.selectedStatus);
+  }
 }

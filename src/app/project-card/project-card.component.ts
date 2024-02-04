@@ -240,7 +240,8 @@ error=null;
         "pdescription":details.description,
         "pstartDate":details.stdate,
         "pendDate":details.endate,
-        "selectUsers": this.newSelectArr
+        "selectUsers": this.newSelectArr,
+        "selectedStatus":this.selectedStatus
       } 
     }
     this.user.saveproject(body).subscribe((result)=>{
@@ -255,6 +256,20 @@ error=null;
     //   myFormElement.style.display = 'none';
     // }
   }
+
+  deleteUser(item:any){
+    const indexToRemove = this.newSelectArr.indexOf(item);
+    if (indexToRemove !== -1) {
+      this.newSelectArr.splice(indexToRemove, 1);
+    }
+  }
+  selectedStatus: string = '';
+
+  handleRadioChange(status: string) {
+    this.selectedStatus = status;
+    console.log(this.selectedStatus);
+  }
+ 
 }
 
 
