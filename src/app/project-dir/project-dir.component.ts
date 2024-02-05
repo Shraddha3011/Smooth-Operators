@@ -141,7 +141,8 @@ setSearch(inputel:HTMLInputElement){
         "pdescription":details.pdescription,
         "pstartDate":details.pstartDate,
         "pendDate":details.pendDate,
-        "selectUsers": this.accordionItems
+        "selectUsers": this.accordionItems,
+        "selectedStatus":this.selectedStatus
       } 
     }
     this.proj.saveProjectData(body).subscribe((result)=>{
@@ -156,7 +157,7 @@ setSearch(inputel:HTMLInputElement){
       myFormElement.style.display = 'none';
     }
   }
-  selectedStatus: string = '';
+  selectedStatus: string = 'Pending';
 
   handleRadioChange(status: string) {
     this.selectedStatus = status;

@@ -38,13 +38,13 @@ h2 {
 }
 
 .image-crop:hover {
-  transform: scale(2); /* Increase the size by 20% on hover */
+  transform: scale(2); 
 }
 
 .avatar {
   display: inline;
-  width: 100%; /* Make sure the image takes up the entire container */
-  height: auto; /* Maintain the aspect ratio */
+  width: 100%; 
+  height: auto; 
   margin-left: -38px;
 }
 
