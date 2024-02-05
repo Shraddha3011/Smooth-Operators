@@ -6,9 +6,6 @@ import { confirmSignUp } from 'aws-amplify/auth';
 import {signIn} from 'aws-amplify/auth';
 import {signOut} from 'aws-amplify/auth';
 import {getCurrentUser} from 'aws-amplify/auth';
-// import {currentUserPoolUser} from 'aws-amplify/auth';
-// import {updateUserAttributes} from 'aws-amplify/auth';
-
 
 export interface IUser {
   email: string;
