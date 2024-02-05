@@ -9,9 +9,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 const routes: Routes = [
   {path:'',component:LandingPageComponent},
   {path:'landing-page',component:LandingPageComponent},
+  // {path:'home',loadChildren: () => import('./project-dir/project-dir.module').then(m => m.ProjectDirModule) },
   {path:'project-dir',component:ProjectDirComponent},
   {path:'user-dir',component:UserDirComponent},
-  // {path:'**',component:UserDirComponent},
+  // {path:'project-dir/user-dir',component:UserDirComponent},
   
   {
     path: 'signIn',

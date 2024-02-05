@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { navbarData } from './nav-data';
 import { ProjectApiService } from '../project-api.service';
 
+
+
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
