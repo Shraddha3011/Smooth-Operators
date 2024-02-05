@@ -13,7 +13,7 @@ export class SideNavComponent {
   navData = navbarData;
 
   constructor( public sid:ProjectApiService) { }
-  
+   
 
   toggleDarkMode(): void {
     this.sid.toggleDarkMode();}
