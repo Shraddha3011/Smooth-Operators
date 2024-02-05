@@ -1,48 +1,66 @@
+*{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+
+}
 .box {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; 
-    background-color: #f0f8ff; 
-    border: 2px solid #000;
+    background-color: #f0f8ff;
+    border: 2px solid var(--primary-color);
   }
-
+  
   .outer-area {
-    background-color: #030e37; 
+    background-color:var(--primary-color);
     border-radius: 10px; 
   }
 
-.card {
-    margin-top: 20px;
+  .card {
     padding: 20px;
-    background-color: #f0f8ff; 
+    background-color: #e6f7ff; 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border: 2px solid #000;
+    height: 400px;
+    width: 300px;
+    
   }
-
+  
   .form-label {
     font-weight: bold;
     color: #333; 
+    /* margin-left: 100px; */
+    margin-top: 100px;
   }
   
   .form-control {
     border-radius: 5px;
+    margin-top: 20px;
+    width:260px; 
+    height: 20px;
   }
-  
+
   .input-group-btn {
     position: relative;
     top: -1px;
   }
- 
+
   .btn-success {
-    background-color: #4caf50; 
-    border-color: #4caf50;
+    background-color: rgb(65, 150, 219);
+    /* border-color: #4caf50; */
+    color: #ffffff;
+    width: 150px;
+    height:35px;
+    margin-left: 78px;
+    margin-top: 50px;
+    border-radius: 10px;
+    font-size: 16px;
   }
   
   .btn-success:hover {
-    background-color: #45a049;
+    background-color: #45a049; 
   }
 
   .spinner-border {
@@ -54,8 +72,8 @@
   }
  
   @media (max-width: 576px) {
-    .card {
-      margin-top: 0;
+    .box {
+      height: 576px;
     }
   }
   
