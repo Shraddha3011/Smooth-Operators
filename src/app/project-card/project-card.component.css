@@ -546,7 +546,14 @@
       position: relative;
       display: inline-block;
     }
-    
+    .dropbtn {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      font-size: 16px;
+      border: 0.8px solid #d5d5d5;
+      cursor: pointer;
+    }
     
     
     .dropdown-content {
