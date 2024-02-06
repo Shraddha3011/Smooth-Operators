@@ -5,16 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchFilterPipe implements PipeTransform {
 
-  transform(users: any[], searchText: string): any[] {
+  transform(projects: any[], searchText: string): any[] {
     if (!searchText) {
-      return users;
+      return projects;
     }
   
-    return users.filter(user => {
-      const uname = user.projectDetails.pname; 
+    return projects.filter(project => {
+      const pname = project.projectDetails.pname; 
       
   
-      return uname.toLowerCase().includes(searchText.toLowerCase());
+      return pname.toLowerCase().includes(searchText.toLowerCase());
     });
   }
 
