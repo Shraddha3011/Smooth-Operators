@@ -22,6 +22,164 @@
   }
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.light {
+  --mainColor: var(--primary-color);
+  --hoverColor: var(--secondary-color);
+  --backgroundColor: #faf8f8;
+  --lightOne: #919191;
+  --lightTwo: #aaa;
+}
+
+*{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  html, body * { box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  background:
+    linear-gradient(
+    rgba(246,247,249,0.8),
+    rgba(246,247,249,0.8)),
+    url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/sky-clouds-cloudy-mountain.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.big-wrapper {
+  position: relative;
+  padding: 1.7rem 0 2rem;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--backgroundColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container {
+  position: relative;
+  max-width: 81rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  z-index: 10;
+}
+
+header {
+  position: relative;
+  z-index: 70;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo img {
+  width: 100px;
+  margin-right: 0.6rem;
+  margin-top: -0.6rem;
+}
+
+.logo h3 {
+  color: var(--darkTwo);
+  font-size: 1.55rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.links ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+
+
+.btn {
+  display: inline-block;
+  padding: 0.9rem 1.9rem;
+  color: #fff !important;
+  background-color: var(--mainColor);
+  border-radius: 16px;
+  text-transform: capitalize;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--hoverColor);
+  transform: scale(1) !important;
+}
+.showcase-area .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+}
+
+.big-title {
+  font-size: 1.4rem;
+  color: var(--darkOne);
+  text-transform: capitalize;
+  line-height: 1.4;
+}
+
+.text {
+  color: var(--lightOne);
+  font-size: 1.1rem;
+  margin: 1.9rem 0 2.5rem;
+  max-width: 600px;
+  line-height: 2.3;
+}
+
+.showcase-area .btn {
+  box-shadow: 0 0 40px 2px rgba(0, 0, 0, 0.05);
+}
+
+.person {
+  width: 90%;
+  transform: translate(15%, 25px);
+  margin-left: 200px;
+  margin-top: -1400px;
+}
+
+
+.shape {
+  position: absolute;
+  z-index: 0;
+  width: 500px;
+  bottom: -180px;
+  left: -15px;
+  opacity: 0.35;
+}
+
+
+
+
 
 /* 
 *{
@@ -110,23 +268,9 @@
   }
    */
 
-   *{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    html, body * { box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
-  
-    body {
-      margin-top: 100px;
-      background:
-        linear-gradient(
-        rgba(246,247,249,0.8),
-        rgba(246,247,249,0.8)),
-        url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/sky-clouds-cloudy-mountain.jpg) no-repeat center center fixed;
-      background-size: cover;
-    }
-  
-  }
+
   .box {
-    margin-top: 100px;
+    margin-top: -800px;
 
     height: 575px;
     width: 430px;
@@ -154,6 +298,7 @@
   
     .box-long {
       height: 615px;
+
     }
     
     .box-short {
@@ -168,9 +313,6 @@
       border-radius: 10px; 
     } */
 
-    
-    
-   
     .card {
       padding-bottom: 10px;
       color: #ffffff;
@@ -178,8 +320,7 @@
       transition: all .25s ease;
       cursor: pointer;
       animation: fadeIn 0.5s ease-in-out; 
-  
-      
+   
       /* padding: 20px;
       background-color: #ffffff; 
       border-radius: 10px;
@@ -189,9 +330,7 @@
       width: 420px;
       box-shadow: 20px;
       opacity: 100;
-      animation: fadeIn 0.5s ease-in-out; */
-  
-      
+      animation: fadeIn 0.5s ease-in-out; */ 
     }
     
     .form-label {
@@ -228,6 +367,8 @@
       transition: all .25s ease;
       cursor: pointer;
       text-transform: uppercase;
+      padding-left: 17px;
+
       /* padding-left: 10px;
       display: inline;
       text-align: left;
@@ -249,7 +390,7 @@
         text-align: center;
         color: rgba(255,255,255, 1);
         margin-top: 40px;
-        background-color: rgba(16,89,255, 1);
+        background-color: rgb(90, 140, 255);
         left: 0px;
         top: 0px;
         transition: all .5s ease, top .5s ease .5s, height .5s ease .5s, background-color .5s ease .75s; 
