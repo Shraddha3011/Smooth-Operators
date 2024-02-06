@@ -16,6 +16,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     FilterPipe,
     SearchFilterPipe,
     LandingPageComponent
+    
   
   ],
   imports: [

@@ -21,7 +21,7 @@ export class ProjectApiService {
   url = "https://um0xzq5u4f.execute-api.ca-central-1.amazonaws.com/projectDev/projectDir";
   url1 = "https://k5kjv9bne2.execute-api.ca-central-1.amazonaws.com/userDev/userDir";
   getUrl = 'https://hv6tu8l99i.execute-api.ca-central-1.amazonaws.com/Dev/newedit';
-  
+idUrl = 'https://3q7gy5e75i.execute-api.ca-central-1.amazonaws.com/newdev/newuser';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -79,5 +79,8 @@ export class ProjectApiService {
     // let urlnew = 'https://hv6tu8l99i.execute-api.ca-central-1.amazonaws.com/Dev/newedit';
     console.log(body);
     return this.http.put(urlnew,body);
+  }
+  getProjectbyID(id: string): Promise<any> {
+      return this.http.get<any>(`${this.idUrl}/${id}`).toPromise();
   }
 }
