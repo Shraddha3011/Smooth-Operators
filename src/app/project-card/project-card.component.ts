@@ -39,9 +39,23 @@ export class ProjectCardComponent  {
 
   constructor(private user: ProjectApiService) { }
 
-    
+  // goToPage(pageName: string, recipeId: string): void {
+  //   this.router.navigate([`${pageName}`, `${recipeId}`]);
+  // }
     
     deleteItem(id:any){
+      
+      // this.user.getProjectbyID(id).then((response: any) => {
+      //   console.log('API Response:', response);
+        
+      //   // this.recipe = response['Items']['Item'];
+  
+      //   // // Convert ingredients and method to arrays
+      //   // this.recipe.recipeIngridents = this.convertToArray(
+      //   //   this.recipe.recipeIngridents
+      //   // );
+      //   // this.recipe.recipeMethod = this.convertToArray(this.recipe.recipeMethod);
+      // });
       // if(confirm("Are you sure to Delete ?")){
       //   this.user.deleteUser(id).subscribe((result)=>{
           
@@ -51,7 +65,7 @@ export class ProjectCardComponent  {
       //   delete this.projectArr.pid;
       //   alert("Deleted");
       // }
-      console.log(id);
+      // console.log(id);
       
       Swal.fire({
         title: 'Confirm Deletion',
