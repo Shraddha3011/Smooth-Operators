@@ -12,8 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { FilterPipe } from './filter.pipe';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-
-
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 
@@ -27,8 +27,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     SideNavComponent,
     FilterPipe,
     SearchFilterPipe,
-    LandingPageComponent
-    
+    LandingPageComponent,
+    SignUpComponent,
+    SignInComponent
+  
   
   ],
   imports: [
@@ -38,7 +40,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
