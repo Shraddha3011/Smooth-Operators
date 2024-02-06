@@ -70,9 +70,8 @@
               <div class="input-group input-group-sm">
                 
                 <input [type]="user.showPassword ? 'text' : 'password'" id="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control form-control-sm">
-                <button style="height: 20px; width:10px; margin-left: 2px;" type="button" class="btn btn-outline-secondary" (click)="user.showPassword = !user.showPassword">
-                  <i class="bi" [ngClass]="{'bi-eye-fill': !user.showPassword, 'bi-eye-slash-fill': user.showPassword}"></i>
-                </button>
+                <i class="bi" [ngClass]="{'bi-eye-fill': !user.showPassword, 'bi-eye-slash-fill': user.showPassword}"></i>
+                
               </div>
             </div>
           </div>
