@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { navbarData } from './nav-data';
 import { ProjectApiService } from '../project-api.service';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,8 +12,11 @@ import { ProjectApiService } from '../project-api.service';
 export class SideNavComponent {
   navData = navbarData;
 
-  constructor( public sid:ProjectApiService) { }
-   
+  constructor( public sid:ProjectApiService, private router:Router) { }
+   public Navigation()
+   {
+    this.router.navigate(['/landing-page'])
+   }
 
   toggleDarkMode(): void {
     this.sid.toggleDarkMode();}
