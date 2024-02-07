@@ -132,12 +132,12 @@
             <div *ngIf="userform.controls.urole.invalid && userform.controls.urole.touched" style="color: red;">role is
                 required</div>
             <label for="phone">Phone:</label>
-            <input type="text" [(ngModel)]="uphone"  name="uphone" formControlName="uphone">
+            <input type="text" [(ngModel)]="uphone"  name="uphone" formControlName="uphone" placeholder="Enter the Phone">
             <br>
             <div *ngIf="userform.controls.uphone.invalid && userform.controls.uphone.touched" style="color: red;">phone is
                 required</div>
             <label for="address">Address:</label>
-            <textarea style="width:max-content;" name="uaddress" id="" cols="67" rows="5" [(ngModel)]="uaddress" formControlName="uaddress"></textarea>
+            <textarea style="width:max-content;" name="uaddress" id="" cols="67" rows="5" [(ngModel)]="uaddress" formControlName="uaddress" placeholder="Enter the Description"></textarea>
             <br>
             <div *ngIf="userform.controls.uaddress.invalid && userform.controls.uaddress.touched" style="color: red;">address
                 is required</div>

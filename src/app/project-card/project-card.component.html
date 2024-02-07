@@ -144,7 +144,7 @@
     </thead>
     
     <tbody>
-        <tr *ngFor="let project of projectArr| searchFilter: searchText" >
+        <tr *ngFor="let project of projectArr| searchFilter: searchText | paginate:{itemsPerPage:4,currentPage:page}; " >
             <!-- <div *ngIf="searchText===''||project.projectDetails.pname.includes(searchText)"> -->
                 <td class="project-info" style="text-align:left">{{ project.projectDetails.pname }}</td>
 
@@ -165,8 +165,11 @@
                  
         </tr> 
     </tbody>
+    
 </table>
-
+<div class="pagination">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
 <!-- <div class="answer" id="ans" style="
 
 width: 500px;

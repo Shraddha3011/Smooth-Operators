@@ -22,6 +22,7 @@ export class ProjectCardComponent  {
   ];
   style: any;
   router: any;
+  page:number=1;
   
     toggleAccordion(accordion: any): void {
       accordion.active = !accordion.active;

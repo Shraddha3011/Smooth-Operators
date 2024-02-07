@@ -643,3 +643,10 @@
 /* ... Your existing CSS ... */
 
 
+.pagination{
+  /* padding: 20px 16px; */
+ 
+  font-size: 18px;
+  margin-top: 280px;
+  margin-right: 0px;
+}
