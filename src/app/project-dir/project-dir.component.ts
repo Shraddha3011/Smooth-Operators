@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectApiService } from '../project-api.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-project-dir',
   templateUrl: './project-dir.component.html',
@@ -90,8 +91,13 @@ setSearch(inputel:HTMLInputElement){
   selectUserArr:any={};
   unameArray: string[]=[];
 
-  constructor(private proj:ProjectApiService){
-    
+  constructor(private proj:ProjectApiService,public translate:TranslateService){
+    translate.addLangs(['en','hn']);
+    translate.setDefaultLang('en');
+
+  }
+  switchLang(lang:string){
+    this.translate.use(lang)
   }
 
   // toggleDarkMode(): void {

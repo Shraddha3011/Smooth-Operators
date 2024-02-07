@@ -645,8 +645,13 @@
 
 .pagination{
   /* padding: 20px 16px; */
- 
-  font-size: 18px;
-  margin-top: 280px;
-  margin-right: 0px;
+  /* font-size: 18px; */
+
+  position: fixed;
+    bottom: 1.3rem;
+  /* margin-top: 290px; */
+  margin-left: -200px;
+}
+.pagination::ng-deep .ngx-pagination .current{
+  background: #000d3a;
 }
