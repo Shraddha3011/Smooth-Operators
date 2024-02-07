@@ -144,7 +144,7 @@
     </thead>
     
     <tbody>
-        <tr *ngFor="let project of projectArr| searchFilter: searchText | paginate:{itemsPerPage:4,currentPage:page}; " >
+        <tr *ngFor="let project of projectArr| searchFilter: searchText | paginate:{itemsPerPage:9,currentPage:page}; " >
             <!-- <div *ngIf="searchText===''||project.projectDetails.pname.includes(searchText)"> -->
                 <td class="project-info" style="text-align:left">{{ project.projectDetails.pname }}</td>
 
