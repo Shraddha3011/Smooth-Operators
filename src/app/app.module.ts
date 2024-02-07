@@ -14,7 +14,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -38,7 +38,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]
