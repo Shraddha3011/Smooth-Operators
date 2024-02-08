@@ -609,7 +609,7 @@
         margin-left: 10px; 
     }
     
-    @media (max-width: 600px) {
+    @media (max-width: 620px) {
       #pform {
             max-width: 100%;
         }
@@ -619,6 +619,36 @@
             width: 100%; 
             margin-left: 0;
         }
+    }
+    @media (max-width: 900px) {
+      .table{
+        margin:auto;
+        margin-top: 30px;
+        /* margin-left: 90px; */
+
+    
+      }
+      table {
+        width: 90%;
+        border-collapse: collapse;
+  
+      
+      }
+    }
+    @media (max-width: 900px) {
+      .table{
+        margin:auto;
+        margin-top: 30px;
+        margin-left: 60px;
+
+    
+      }
+      table {
+        width: 90%;
+        border-collapse: collapse;
+  
+      
+      }
     }
     
 /* Add this to your styles.css or component styles */
@@ -655,3 +685,6 @@
 .pagination::ng-deep .ngx-pagination .current{
   background: #000d3a;
 }
+/* .picon{
+  margin-right: 0;
+} */

@@ -165,11 +165,11 @@
 
                 <td class="status">{{project.projectDetails.selectedStatus}}</td>
 
-                <td class="text-center">
-                    <div>
-                        <i (click)="updateItem(project)" class="fa-solid fa-pen" style="color:rgb(89, 255, 0);margin-right: 20px;" ></i>
-                        <i class="fa-solid fa-trash" style="color: red;;margin-right: 20px;" (click)="deleteItem(project.id)" ></i>
-                        <i (click)="viewItem(project)"class="fa-solid fa-eye" style="color: blue;"></i>
+                <td >
+                    <div class="picon">
+                        <i (click)="updateItem(project)" class="fa-solid fa-pen"  style="color:rgb(89, 255, 0);margin-right: 20px;" ></i>
+                        <i class="fa-solid fa-trash"  style="color: red;;margin-right: 20px;" (click)="deleteItem(project.id)" ></i>
+                        <i (click)="viewItem(project)" class="fa-solid fa-eye" style="color: blue;"></i>
                     </div>               
                 </td>   
             <!-- </div> -->
