@@ -2,6 +2,7 @@
 import { ProjectApiService } from '../project-api.service';
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-dir',
@@ -190,8 +191,13 @@ ngOnInit(){
   this.retrieveUsers();
 }
 
-constructor(private obj:ProjectApiService){ }
-
+constructor(private obj:ProjectApiService,public translate:TranslateService){
+  translate.addLangs(['English','Hindi','Marathi']);
+    translate.setDefaultLang('English');
+ }
+ switchLang(lang:string){
+  this.translate.use(lang)
+}
 
 // toggleDarkMode(): void {
 //   this.obj.toggleDarkMode();}

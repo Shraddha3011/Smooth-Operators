@@ -93,7 +93,7 @@ setSearch(inputel:HTMLInputElement){
 
   constructor(private proj:ProjectApiService,public translate:TranslateService){
     translate.addLangs(['English','Hindi','Marathi']);
-    translate.setDefaultLang('English');
+    // translate.setDefaultLang('English');
 
   }
   switchLang(lang:string){
