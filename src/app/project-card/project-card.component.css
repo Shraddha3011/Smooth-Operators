@@ -634,8 +634,38 @@
   
       
       }
+      .pagination{
+        margin-left: 10px;
+        margin-bottom: -43px;
+        margin-left: -30px;
+
+      }
     }
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
+     
+      .pagination{
+        margin-left: 10px;
+        margin-bottom: -43px;
+        margin-left: -80px;
+
+      }
+    }
+    @media (max-width: 1230px) {
+      .table{
+        margin:auto;
+        margin-top: 30px;
+        margin-left: 60px;
+
+    
+      }
+      table {
+        width: 90%;
+        border-collapse: collapse;
+  
+      
+      }
+    }
+    @media (max-width: 1400px) {
       .table{
         margin:auto;
         margin-top: 30px;
@@ -678,13 +708,11 @@
   /* font-size: 18px; */
 
   position: fixed;
-    bottom: 1.3rem;
+    bottom: 1.2rem;
+    left: 6rem;
   /* margin-top: 290px; */
-  margin-left: -200px;
+  /* margin-left: -200px; */
 }
 .pagination::ng-deep .ngx-pagination .current{
   background: #000d3a;
 }
-/* .picon{
-  margin-right: 0;
-} */

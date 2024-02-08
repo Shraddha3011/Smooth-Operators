@@ -219,7 +219,7 @@
   /* Style the container span */
 span {
   display: inline-block;
-  position: relative;
+  /* position: relative; */
   /* margin-left: 500px; */
   right: -250px;
 }
@@ -645,9 +645,17 @@ option:checked {
   label{
     margin-top: -4px;
   }
-  
+  select{
+    margin-left: 46px;
   }
   
+  }
+  @media (max-width: 900px) {
+   .search-bar{
+    margin-left: -70px;
+   }
+    
+    }
   @media (max-width: 770px) {
     form {
         width: 50%;
