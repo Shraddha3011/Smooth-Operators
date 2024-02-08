@@ -317,22 +317,22 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
     </div> -->
 
     <form  id="pform" #projectForm="ngForm">
-        <header>Project Details</header>
+        <header>{{ 'Project Details' | translate }}</header>
         <label for="name" style="display: none;">Project Id:</label >
         <input type="text" name="id" [(ngModel)]="id" style="display: none;">
-        <label for="name">Project Title:</label>
+        <label for="name">{{ 'Project Title' | translate }}:</label>
         <input type="text" name="name" [(ngModel)]="uname" style="width: 100%;">
          <div style="display: inline-block; columns: 2; column-gap: 100px;">
-            <label for="stdate" >Start Date:</label>
+            <label for="stdate" >{{ 'Start Date' | translate }}:</label>
         <input type="date" name="stdate"  [(ngModel)]="stdate" >
       
-        <label for="endate" >End Date:</label>
+        <label for="endate" >{{ 'End Date' | translate }}:</label>
         <input type="date" name="endate"  [(ngModel)]="endate" >
          </div>  
         
          
         
-        <label for="des">Description:</label>
+        <label for="des">{{ 'Description' | translate }}:</label>
         <textarea style="width:max-content;" name="description" id="" cols="15" rows="5"style="width: 391px; height: 123px;" [(ngModel)]="des" ></textarea>
         <br>
         <br>
@@ -361,8 +361,8 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
 
             </div>
         </div>
-        <button  class="bttn" style="background-color: var(--primary-color)" (click)="saveProjectFormData(projectForm.value)">update</button>   
-        <button style="background-color: var(--secondary-color);" class="close" (click)="closeform()">Close</button>
+        <button  class="bttn" style="background-color: var(--primary-color)" (click)="saveProjectFormData(projectForm.value)">{{ 'Update' | translate }}</button>   
+        <button style="background-color: var(--secondary-color);" class="close" (click)="closeform()">{{ 'Close' | translate }}</button>
 
       </form>
 

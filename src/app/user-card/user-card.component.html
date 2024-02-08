@@ -119,9 +119,9 @@
                     style="margin-right: 20px;font-size: 20px;"></i></div>
             <p style="display: inline;" class="s1">{{user.userDetails.uemail}}</p>
             <div>
-                <button class="addbtn" style="background: var(--primary-color);" (click)="editUser(user)">Edit</button>
+                <button class="addbtn" style="background: var(--primary-color);" (click)="editUser(user)">{{'Edit'|translate}}</button>
                 <button class="closebtn" style="background-color:var(--secondary-color);"
-                    (click)="deleteUser(user.id)">Delete</button>
+                    (click)="deleteUser(user.id)">{{'Delete'|translate}}</button>
     
             </div>
     
@@ -132,25 +132,25 @@
 
 
 <form  id="uform" #userForm="ngForm"  style="display: none;" >
-    <header style="margin-left: 180px;">User Details</header>
+    <header style="margin-left: 180px;">{{'User Details'|translate}}</header>
    
-    <label for="name">Name:</label>
+    <label for="name">{{'Name'|translate}}:</label>
     <input type="text"   name="uname"  [(ngModel)]="uname">
     <br>
     
-    <label for="email">Email:</label>
+    <label for="email">{{'Email'|translate}}:</label>
     <input type="text"    name="uemail"  [(ngModel)]="uemail">
     <br>
     
-    <label for="role">Role:</label>
+    <label for="role">{{'Role'|translate}}:</label>
     <input type="text"  name="urole"  [(ngModel)]="urole">
     <br>
     
-    <label for="phone">Phone:</label>
+    <label for="phone">{{'Phone'|translate}}:</label>
     <input type="text"  name="uphone"  [(ngModel)]="uphone">
     <br>
     
-    <label for="address">Address:</label>
+    <label for="address">{{'Address'|translate}}:</label>
     <textarea style="width:max-content;" name="uaddress" id="" cols="55" rows="5"  [(ngModel)]="uaddress"></textarea>
     <br>
     
@@ -158,9 +158,9 @@
     <input type="file"  name="photo" class="ph"> -->
 
     <br>
-    <button type="button"  class="btn" style="background-color: var(--primary-color);" (click)="updateUserData(userForm.value)">Update</button>
+    <button type="button"  class="btn" style="background-color: var(--primary-color);" (click)="updateUserData(userForm.value)">{{'Update'|translate}}</button>
 
 
-<button style="background-color: var(--secondary-color);" class="close" (click)="closeform()">Close</button>
+<button style="background-color: var(--secondary-color);" class="close" (click)="closeform()">{{'Close'|translate}}</button>
     
 </form>
