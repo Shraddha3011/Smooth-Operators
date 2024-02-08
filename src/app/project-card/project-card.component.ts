@@ -260,7 +260,7 @@ export class ProjectCardComponent {
         "pstartDate": details.stdate,
         "pendDate": details.endate,
         "selectUsers": this.newSelectArr,
-        "selectedStatus": this.sel
+        "selectedStatus": this.selectedStatus
       }
     }
     this.user.saveproject(body).subscribe((result) => {
