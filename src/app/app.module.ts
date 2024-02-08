@@ -17,7 +17,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { TranslateLoader,TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
-import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -42,14 +42,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // NgxPaginationModule,
     TranslateModule.forRoot({
       loader:{
         provide:TranslateLoader,
         useFactory:httpTranslateLoader,
         deps:[HttpClient]
       }
-    })
+    }),
     
   ],
   providers: [ ],
