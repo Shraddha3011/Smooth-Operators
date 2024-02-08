@@ -336,14 +336,14 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
         <textarea style="width:max-content;" name="description" id="" cols="15" rows="5"style="width: 391px; height: 123px;" [(ngModel)]="des" ></textarea>
         <br>
         <br>
-        <label for="radbtn">Project Status</label>
+        <label for="radbtn">{{ 'Project Status' | translate }}</label>
         
-        <input type="radio" name="status" id="completed"  (change)="handleRadioChange('Completed')"> Completed
-        <input type="radio" name="status" id="pending"   (change)="handleRadioChange('Pending')"checked > Pending
+        <input type="radio" name="status" id="completed"  (change)="handleRadioChange('Completed')"> {{'Completed' | translate}}
+        <input type="radio" name="status" id="pending"   (change)="handleRadioChange('Pending')"checked > {{'Pending' | translate}}
         <br>
         <br>
         <div class="dropdown">
-            <button class="dropbtn" >Select Users</button>
+            <button class="dropbtn" >{{'Select Users' | translate}}</button>
             <div class="dropdown-content">
                 <a *ngFor="let option of unameArray" (click)="addItemToAccordion(option)">{{ option }}</a>
             </div>
@@ -353,7 +353,7 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
             <br>
             <h4 class="sel" id="select"
                 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: lighter; margin-bottom: 0;" >
-                Selected Users :</h4>
+                {{'Select Users' | translate}} :</h4>
             <div class="accordion-item" *ngFor="let item of newSelectArr">
                 <div style="font-weight: lighter" class="accordion-header">
                     <h2>{{ item }} <i class="fa-solid fa-trash" (click)="deleteUser(item)" ></i></h2>

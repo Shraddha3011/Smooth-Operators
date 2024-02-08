@@ -173,7 +173,7 @@
             required</div>
             
         <div class="dropdown">
-            <button class="dropbtn">Select Users</button>
+            <button class="dropbtn">{{'Select Users' | translate}}</button>
             <div class="dropdown-content">
                 <a *ngFor="let option of unameArray" (click)="addItemToAccordion(option)">{{ option }}</a>
             </div>
@@ -183,7 +183,7 @@
             <br>
             <h4 class="sel" id="select"
                 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: lighter;">
-                Selected Users :</h4>
+                {{'Select Users' | translate}} :</h4>
             <div class="accordion-item" *ngFor="let item of accordionItems">
                 <div  class="accordion-header">
                     <p style="font-size:15px; margin-bottom: 12px;">{{ item }}</p>

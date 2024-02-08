@@ -29,6 +29,6 @@ export class LandingPageComponent {
 
   public SignIn()
   {
-    this.router.navigate(['/signUp']);
+    this.router.navigate(['/signIn']);
   }
 }
