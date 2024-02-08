@@ -112,7 +112,7 @@ export class ProjectCardComponent {
     console.log(project.id);
     this.selectedItem = this.selectedItem === project.projectDetails ? null : project.projectDetails;
     if (this.selectedItem) {
-      this.selectedItem.style.display = "block";
+      // this.selectedItem.style.display = "block";
     }
   }
   id: string = "";

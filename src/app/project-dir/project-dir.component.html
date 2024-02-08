@@ -81,8 +81,13 @@
             <p
                 style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">
                 {{'title'| translate}}</p>
+                <span>
+                    <select #selectLang (change)="switchLang(selectLang.value)">
+                        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang"> {{lang}}</option>
+                    </select>
+                </span>
             <div class="search-bar">
-                <input type="text" placeholder="Search Project" class="search-bar-input" [(ngModel)]="searchText">
+                <input type="text" placeholder="{{ 'Search Project' | translate }}" class="search-bar-input" [(ngModel)]="searchText">
 
 
                 <!-- <input type="text" placeholder="Search Project" class="search-bar-input" #searchInput> -->
@@ -103,7 +108,7 @@
     </div> -->
     <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus"></i> Create Project</div>
     <form id="myform" #projectForm="ngForm" [formGroup]="projectform">
-        <header>Project Details</header>
+        <header>{{ 'Project Details' | translate }}</header>
         <!-- <label for="name">Project Id:</label>
         
         <input type="number" [(ngModel)]="pid"  name="pid" placeholder="Enter the Id" formControlName="pid">
@@ -111,13 +116,13 @@
             <div *ngIf="projectform.controls.pid.invalid && projectform.controls.pid.touched" style="color: red;">id is
                 required</div> -->
 
-        <label for="name">Project Title:</label>
+        <label for="name">{{ 'Project Title' | translate }}:</label>
         <input type="text" [(ngModel)]="pname" name="pname" placeholder="Enter the title" formControlName="pname">
         <br>
         <div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched" style="color: red;">name
             is
             required</div>
-        <label for="description">Description:</label>
+        <label for="description">{{ 'Description' | translate }}:</label>
         <textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription"
             formControlName="pdescription" placeholder="Enter the Description"></textarea>
 
@@ -129,13 +134,13 @@
         <br> -->
            
         <div style="display: inline-block; columns: 2; column-gap: 100px;">
-            <label for="startDate">Start Date:</label>
+            <label for="startDate">{{ 'Start Date' | translate }}:</label>
             <input type="date" [(ngModel)]="pstartDate" name="pstartDate" formControlName="pstartDate">
             <br>
             <div *ngIf="projectform.controls.pstartDate.invalid && projectform.controls.pstartDate.touched"
                 style="color: red;">start is
                 required</div>
-            <label for="role">End Date:</label>
+            <label for="role">{{ 'End Date' | translate }}:</label>
             <input type="date" [(ngModel)]="pendDate" name="pendDate" formControlName="pendDate">
         </div>
         <br>
@@ -164,8 +169,8 @@
         </div>
         <!-- (click)="onsubmit()" type="submit" -->
         <button [disabled]="!projectform.valid" class="btn" style="background-color: var(--primary-color)"
-            (click)="saveProjectFormData(projectForm.value)">Add </button>
-        <button style="background-color: var(--secondary-color);" class="close" (click)="close()">Close</button>
+            (click)="saveProjectFormData(projectForm.value)">{{ 'Add' | translate }}</button>
+        <button style="background-color: var(--secondary-color);" class="close" (click)="close()">{{ 'Close' | translate }}</button>
     </form>
    <div>
    </div>
@@ -173,11 +178,7 @@
             <app-project-card  [projectArr]="projectArr" [searchText]="searchText" (testEvent)="retrieveProjects()"></app-project-card>
     </div>
 
-    <span>
-        <select #selectLang (change)="switchLang(selectLang.value)">
-            <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang"> {{lang}}</option>
-        </select>
-    </span>
+   
 </body>
 
 </html>
