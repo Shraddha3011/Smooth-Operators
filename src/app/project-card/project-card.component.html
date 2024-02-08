@@ -135,16 +135,16 @@
     <thead>
         <tr style="color: var(--primary-color); font-size: larger;font-weight: bold; height:60px">
             <!-- <th>ID</th> -->
-            <th>Project Title</th>
-            <th class="text-center" >Start Date</th>
-            <th class="text-center">End Date</th>
-            <th class="text-center">Status</th>
-            <th class="text-center">Actions</th>
+            <th>{{ 'Project Title' | translate }}</th>
+            <th class="text-center" >{{ 'Start Date' | translate }}</th>
+            <th class="text-center">{{ 'End Date' | translate }}</th>
+            <th class="text-center">{{ 'Status' | translate }}</th>
+            <th class="text-center">{{ 'Actions' | translate }}</th>
         </tr>
     </thead>
     
     <tbody>
-        <tr *ngFor="let project of projectArr | searchFilter: searchText | paginate:{itemsPerPage:9,currentPage:page}; " >
+        <tr *ngFor="let project of projectArr| searchFilter: searchText | paginate:{itemsPerPage:9,currentPage:page}; " >
             <!-- <div *ngIf="searchText===''||project.projectDetails.pname.includes(searchText)"> -->
                 <td class="project-info" style="text-align:left">{{ project.projectDetails.pname }}</td>
 
@@ -185,22 +185,22 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
 
      <div style="border-bottom: 2px solid #ccc;"> 
     <i class="fa-solid fa-xmark" style="margin-top: -40 ;margin-left: 580px; background-color: rgb(189, 26, 26);color: white;padding-right: 2px; padding-left: 2px; margin-top: 1px; " (click)="closeDetails()"></i>
-    <h1 style="text-align:left ;margin-top: -20px;font-weight: lighter;"> Project Details</h1>
+    <h1 style="text-align:left ;margin-top: -20px;font-weight: lighter;">{{ 'Project Details' | translate }}</h1>
 </div> 
 <div  class="popup-content" >
         
     <div style="columns: 2;">
-        <p>Project Title : </p>
+        <p>{{ 'Project Title' | translate }} : </p>
     <h4 style=" color:rgb(0, 0, 0);">{{ selectedItem.pname}}</h4>
 
         <br>
-    <p style="display: inline;">Start Date :   </p>
+    <p style="display: inline;">{{ 'Start Date' | translate }} :</p>
     <h4 style="display: inline;">{{ selectedItem.pstartDate}}</h4>
     <br>
-    <p style="display: inline;">End Date :   </p>
+    <p style="display: inline;">{{ 'End Date' | translate }} :</p>
     <h4 style="display: inline;">{{ selectedItem.pendDate }}</h4><br> <br>
     <section>
-        <p>Project Status :</p>
+        <p>{{ 'Project Status' | translate }} :</p>
         <h4>{{selectedItem.selectedStatus}}</h4>
     </section>
     <div class="accordion">
@@ -208,13 +208,13 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
         <p class="sel" id="select" >Selected Users :</p> 
         <div class="usercard">
 
-         <h5 style="display: list-item;margin-top: -2px;" *ngFor="let uname of selectedItem.selectUsers">{{ uname }} </h5>
+         <h5 style="display: list-item;margin-top: -2px; font-style: normal;font-weight: 520;" *ngFor="let uname of selectedItem.selectUsers">{{ uname }} </h5>
         </div>
     </div>
 
 </div>
 <br>
-<p >Description :</p>
+<p >{{ 'Description' | translate }} :</p>
     <h4>      {{ selectedItem.pdescription }}</h4>
 </div>
 </div>
