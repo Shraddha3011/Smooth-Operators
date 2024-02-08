@@ -136,7 +136,7 @@
         <tr style="color: var(--primary-color); font-size: larger;font-weight: bold; height:60px">
             <!-- <th>ID</th> -->
             <th>Project Title</th>
-            <th class="text-center">Start Date</th>
+            <th class="text-center" >Start Date</th>
             <th class="text-center">End Date</th>
             <th class="text-center">Status</th>
             <th class="text-center">Actions</th>
@@ -144,7 +144,7 @@
     </thead>
     
     <tbody>
-        <tr *ngFor="let project of projectArr| searchFilter: searchText" >
+        <tr *ngFor="let project of projectArr | searchFilter: searchText | paginate:{itemsPerPage:9,currentPage:page}; " >
             <!-- <div *ngIf="searchText===''||project.projectDetails.pname.includes(searchText)"> -->
                 <td class="project-info" style="text-align:left">{{ project.projectDetails.pname }}</td>
 
@@ -165,8 +165,11 @@
                  
         </tr> 
     </tbody>
+    
 </table>
-
+<div class="pagination">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
 <!-- <div class="answer" id="ans" style="
 
 width: 500px;
