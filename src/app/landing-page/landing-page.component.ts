@@ -21,5 +21,12 @@ export class LandingPageComponent {
 
     }
   }
-  
+  public SignIn()
+  {
+    this.router.navigate(['/signIn']);
+  }
+  public SignUp()
+  {
+    this.router.navigate(['/signUp']);
+  }
 }
