@@ -80,7 +80,7 @@
         <div class="header">
             <p
                 style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">
-                {{'title'| translate}}</p>
+                {{'Project Directory'| translate}}</p>
                 <span>
                     <select style="margin-right: 140px; border-color: var(--primary-color); border-width: 2px;" #selectLang (change)="switchLang(selectLang.value)" >
                         <option  *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang"> {{lang}}</option>
@@ -106,7 +106,7 @@
             <h3 style="color: black;">Operations</h3>
         </div>
     </div> -->
-    <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus"></i> Create Project</div>
+    <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus"></i> {{'Create Project'|translate}}</div>
     <form id="myform" #projectForm="ngForm" [formGroup]="projectform">
         <header>{{ 'Project Details' | translate }}</header>
         <!-- <label for="name">Project Id:</label>
