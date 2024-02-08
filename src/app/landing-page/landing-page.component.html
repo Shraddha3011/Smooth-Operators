@@ -18,7 +18,7 @@
 
             <div class="links">
               <ul>
-                <li><a href="signUp" class="btn">{{'Sign up'|translate}}</a></li>
+                <li><a (click)="SignUp()" class="btn">{{'Sign up'|translate}}</a></li>
               </ul>
             </div>
           </div>
@@ -37,7 +37,8 @@
                 vitae!
               </p>
               <div class="cta">
-                <a href="signIn" class="btn">{{'Get started'|translate}}</a>
+                <a (click)="SignIn()"
+                class="btn">{{'Get started'|translate}}</a>
               </div>
             </div>
             <div class="right">
