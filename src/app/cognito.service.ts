@@ -67,7 +67,7 @@ export class CognitoService {
       this.authenticationSubject.next(false);
     });
   }
-
+ 
   public isAuthenticated(): Promise<boolean> {
     if (this.authenticationSubject.value) {
       return Promise.resolve(true);
