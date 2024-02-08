@@ -81,13 +81,20 @@
             <p
                 style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">
                 {{'title'| translate}}</p>
-            <div class="search-bar">
+                <span>
+                    <select #selectLang (change)="switchLang(selectLang.value)">
+                        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang"> {{lang}}</option>
+                    </select>
+                </span>
+                <div class="search-bar">
+                    <input type="text" placeholder="{{ 'Search Project' | translate }}" class="search-bar-input" [(ngModel)]="searchText">
+                    <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
+                </div>
+                
+            <!-- <div class="search-bar">
                 <input type="text" placeholder="Search Project" class="search-bar-input" [(ngModel)]="searchText">
-
-
-                <!-- <input type="text" placeholder="Search Project" class="search-bar-input" #searchInput> -->
                 <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- <div class="accordian" style="background-color: white; width: 1000px;margin-left: 315px; padding: 20px ; margin-top: 20px;box-shadow: 1px 1px 5px rgb(255, 205, 255);">
@@ -101,9 +108,18 @@
             <h3 style="color: black;">Operations</h3>
         </div>
     </div> -->
-    <div class="add-project" (click)="openform()">+ Create Project</div>
+
+
+
+    <!-- <div class="add-project" (click)="openform()">+ Create Project</div>
     <form id="myform" #projectForm="ngForm" [formGroup]="projectform">
-        <header>Project Details</header>
+        <header>Project Details</header> -->
+        <div class="add-project" (click)="openform()">{{ 'Create Project' | translate }}</div>
+        <form id="myform" #projectForm="ngForm" [formGroup]="projectform">
+            <header>{{ 'Project Details' | translate }}</header>
+
+
+
         <!-- <label for="name">Project Id:</label>
         
         <input type="number" [(ngModel)]="pid"  name="pid" placeholder="Enter the Id" formControlName="pid">
@@ -111,7 +127,9 @@
             <div *ngIf="projectform.controls.pid.invalid && projectform.controls.pid.touched" style="color: red;">id is
                 required</div> -->
 
-        <label for="name">Project Title:</label>
+
+
+        <!-- <label for="name">Project Title:</label>
         <input type="text" [(ngModel)]="pname" name="pname" placeholder="Enter the title" formControlName="pname">
         <br>
         <div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched" style="color: red;">name
@@ -119,7 +137,14 @@
             required</div>
         <label for="description">Description:</label>
         <textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription"
-            formControlName="pdescription" placeholder="Enter the Description"></textarea>
+            formControlName="pdescription" placeholder="Enter the Description"></textarea> -->
+        
+            <label for="name">{{ 'Project Title' | translate }}:</label>
+<input type="text" [(ngModel)]="pname" name="pname" placeholder="{{ 'Enter the title' | translate }}" formControlName="pname">
+<br>
+<div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched" style="color: red;">{{ 'Name is required' | translate }}</div>
+<label for="description">{{ 'Description' | translate }}:</label>
+<textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription" formControlName="pdescription" placeholder="{{ 'Enter the Description' | translate }}"></textarea>
 
         <br>
         <!-- <label for="radbtn">Project Status</label>
@@ -127,8 +152,11 @@
         <input type="radio" name="status" id="completed"  (change)="handleRadioChange('Completed')"> Completed
         <input type="radio" name="status" id="pending"   (change)="handleRadioChange('Pending')" > Pending
         <br> -->
+
+
+
            
-        <div style="display: inline-block; columns: 2; column-gap: 100px;">
+        <!-- <div style="display: inline-block; columns: 2; column-gap: 100px;">
             <label for="startDate">Start Date:</label>
             <input type="date" [(ngModel)]="pstartDate" name="pstartDate" formControlName="pstartDate">
             <br>
@@ -137,7 +165,17 @@
                 required</div>
             <label for="role">End Date:</label>
             <input type="date" [(ngModel)]="pendDate" name="pendDate" formControlName="pendDate">
+        </div> -->
+
+        <div style="display: inline-block; columns: 2; column-gap: 100px;">
+            <label for="startDate">{{ 'Start Date' | translate }}:</label>
+            <input type="date" [(ngModel)]="pstartDate" name="pstartDate" formControlName="pstartDate">
+            <br>
+            <div *ngIf="projectform.controls.pstartDate.invalid && projectform.controls.pstartDate.touched" style="color: red;">{{ 'start is required' | translate }}</div>
+            <label for="role">{{ 'End Date' | translate }}:</label>
+            <input type="date" [(ngModel)]="pendDate" name="pendDate" formControlName="pendDate">
         </div>
+        
         <br>
         <div *ngIf="projectform.controls.pendDate.invalid && projectform.controls.pendDate.touched" style="color: red;">
             name is
@@ -163,9 +201,13 @@
             </div>
         </div>
         <!-- (click)="onsubmit()" type="submit" -->
-        <button [disabled]="!projectform.valid" class="btn" style="background-color: var(--primary-color)"
+        <!-- <button [disabled]="!projectform.valid" class="btn" style="background-color: var(--primary-color)"
             (click)="saveProjectFormData(projectForm.value)">Add </button>
-        <button style="background-color: var(--secondary-color);" class="close" (click)="close()">Close</button>
+        <button style="background-color: var(--secondary-color);" class="close" (click)="close()">Close</button> -->
+        
+        <button [disabled]="!projectform.valid" class="btn" style="background-color: var(--primary-color)" (click)="saveProjectFormData(projectForm.value)">{{ 'Add' | translate }}</button>
+<button style="background-color: var(--secondary-color);" class="close" (click)="close()">{{ 'Close' | translate }}</button>
+
     </form>
    <div>
    </div>
@@ -173,11 +215,7 @@
             <app-project-card  [projectArr]="projectArr" [searchText]="searchText" (testEvent)="retrieveProjects()"></app-project-card>
     </div>
 
-    <span>
-        <select #selectLang (change)="switchLang(selectLang.value)">
-            <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang"> {{lang}}</option>
-        </select>
-    </span>
+    
 </body>
 
 </html>

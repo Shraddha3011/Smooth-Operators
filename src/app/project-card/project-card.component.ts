@@ -5,6 +5,7 @@ import { SearchFilterPipe } from '../search-filter.pipe';
 import { NgForm } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { OrderModule } from 'ngx-order-pipe';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -39,7 +40,14 @@ export class ProjectCardComponent {
   @Input()
   accordionItems: any[] = [];
 
-  constructor(private user: ProjectApiService) {}
+  constructor(private user: ProjectApiService,public translate:TranslateService){
+    translate.addLangs(['en','hn','es','mr','fr']);
+    translate.setDefaultLang('en');
+
+  }
+  switchLang(lang:string){
+    this.translate.use(lang)
+  }
 
   // goToPage(pageName: string, recipeId: string): void {
   //   this.router.navigate([`${pageName}`, `${recipeId}`]);

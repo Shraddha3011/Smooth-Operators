@@ -92,7 +92,7 @@ setSearch(inputel:HTMLInputElement){
   unameArray: string[]=[];
 
   constructor(private proj:ProjectApiService,public translate:TranslateService){
-    translate.addLangs(['en','hn']);
+    translate.addLangs(['en','hn','es','mr','fr']);
     translate.setDefaultLang('en');
 
   }
