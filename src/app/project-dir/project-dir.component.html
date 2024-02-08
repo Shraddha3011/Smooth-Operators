@@ -135,7 +135,7 @@
         <div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched" style="color: red;">name
             is
             required</div>
-        <label for="description">Description:</label>
+        <label for="description">{{ 'Description' | translate }}:</label>
         <textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription"
             formControlName="pdescription" placeholder="Enter the Description"></textarea> -->
         

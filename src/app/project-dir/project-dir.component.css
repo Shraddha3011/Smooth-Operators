@@ -216,7 +216,50 @@
       /* color: white; */
     }
     
-  
+  /* Style the container span */
+span {
+  display: inline-block;
+  position: relative;
+  /* margin-left: 500px; */
+  right: -250px;
+}
+
+/* Style the select element */
+select {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  appearance: none; /* Removes default dropdown arrow */
+  -webkit-appearance: none; /* For older versions of Chrome/Safari */
+  -moz-appearance: none; /* For older versions of Firefox */
+}
+
+/* Style the dropdown arrow */
+select::after {
+  content: '\25BC'; /* Unicode character for down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none; /* Prevents click events on the arrow */
+}
+
+/* Style the options */
+option {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style the selected option */
+option:checked {
+  background-color: #f0f0f0;
+}
+
     /* .search-bar {
       display: flex;
       margin-left: 20px;
