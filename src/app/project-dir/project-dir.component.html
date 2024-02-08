@@ -80,7 +80,7 @@
         <div class="header">
             <p
                 style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">
-                Project Directory</p>
+                {{'title'| translate}}</p>
             <div class="search-bar">
                 <input type="text" placeholder="Search Project" class="search-bar-input" [(ngModel)]="searchText">
 
@@ -172,6 +172,12 @@
     <div  class="flex-container">
             <app-project-card  [projectArr]="projectArr" [searchText]="searchText" (testEvent)="retrieveProjects()"></app-project-card>
     </div>
+
+    <span>
+        <select #selectLang (change)="switchLang(selectLang.value)">
+            <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang"> {{lang}}</option>
+        </select>
+    </span>
 </body>
 
 </html>
