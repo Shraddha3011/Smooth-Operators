@@ -129,6 +129,7 @@ export class ProjectCardComponent {
   endate: string = "";
   des: string = "";
   newSelectArr: any = {}
+  sel:string=""
 
 
   updateItem(project: any) {
@@ -139,6 +140,7 @@ export class ProjectCardComponent {
     this.endate = project.projectDetails.pendDate;
     this.des = project.projectDetails.pdescription;
     this.newSelectArr = project.projectDetails.selectUsers;
+    this.sel = project.projectDetails.selectedStatus;
     const myFormElement = document.getElementById('pform');
     if (myFormElement) {
       myFormElement.style.display = 'block';
@@ -288,18 +290,23 @@ export class ProjectCardComponent {
       this.newSelectArr.splice(indexToRemove, 1);
     }
   }
-  selectedStatus: string = '';
-
+  
+  selectedStatus:string=''
   handleRadioChange(status: string) {
     this.selectedStatus = status;
-    console.log(this.selectedStatus);
   }
+  
   key: string = 'pstartDate';
   reverse: boolean = false;
   sort(key: string) {
     this.key = key;
     this.reverse = !this.reverse;
   }
+  // defaultStatus = 'Pending'
+  // statusArr=[
+  //   {"id":'1',"value":'Completed'},
+  //   {"id":'2',"value":'Pending'}
+  // ]
   
 }
   
