@@ -132,19 +132,30 @@
 </div> -->
 
   <table class="table" >
+    <!-- <thead>
+        <tr style="color: var(--primary-color); font-size: larger;font-weight: bold; height:60px">
+           
+            <th>Project Title</th>
+            <th class="text-center" >Start Date</th>
+            <th class="text-center">End Date</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead> -->
     <thead>
         <tr style="color: var(--primary-color); font-size: larger;font-weight: bold; height:60px">
             <!-- <th>ID</th> -->
             <th>{{ 'Project Title' | translate }}</th>
-            <th class="text-center" >{{ 'Start Date' | translate }}</th>
+            <th class="text-center">{{ 'Start Date' | translate }}</th>
             <th class="text-center">{{ 'End Date' | translate }}</th>
             <th class="text-center">{{ 'Status' | translate }}</th>
             <th class="text-center">{{ 'Actions' | translate }}</th>
         </tr>
     </thead>
     
+    
     <tbody>
-        <tr *ngFor="let project of projectArr| searchFilter: searchText | paginate:{itemsPerPage:9,currentPage:page}; " >
+        <tr *ngFor="let project of projectArr| searchFilter: searchText " >
             <!-- <div *ngIf="searchText===''||project.projectDetails.pname.includes(searchText)"> -->
                 <td class="project-info" style="text-align:left">{{ project.projectDetails.pname }}</td>
 
@@ -167,9 +178,10 @@
     </tbody>
     
 </table>
-<div class="pagination">
+
+<!-- <div class="pagination">
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
-</div>
+</div> -->
 <!-- <div class="answer" id="ans" style="
 
 width: 500px;
@@ -181,6 +193,39 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
 
 
 <div *ngIf="selectedItem" class="popup">
+    <div style="border-bottom: 2px solid #ccc;">
+        <i class="fa-solid fa-xmark" style="margin-top: -40; margin-left: 580px; background-color: rgb(189, 26, 26); color: white; padding-right: 2px; padding-left: 2px; margin-top: 1px;" (click)="closeDetails()"></i>
+        <h1 style="text-align:left; margin-top: -20px; font-weight: lighter;">{{ 'Project Details' | translate }}</h1>
+    </div> 
+    <div class="popup-content">
+        <div style="columns: 2;">
+            <p>{{ 'Project Title' | translate }} :</p>
+            <h4 style="color:rgb(0, 0, 0);">{{ selectedItem.pname}}</h4>
+            <br>
+            <p style="display: inline;">{{ 'Start Date' | translate }} :</p>
+            <h4 style="display: inline;">{{ selectedItem.pstartDate}}</h4>
+            <br>
+            <p style="display: inline;">{{ 'End Date' | translate }} :</p>
+            <h4 style="display: inline;">{{ selectedItem.pendDate }}</h4><br> <br>
+            <section>
+                <p>{{ 'Project Status' | translate }} :</p>
+                <h4>{{ selectedItem.selectedStatus}}</h4>
+            </section>
+            <div class="accordion">
+                <br>
+                <p class="sel" id="select">{{ 'Selected Users' | translate }} :</p> 
+                <div class="usercard">
+                    <h5 style="display: list-item; margin-top: -2px;" *ngFor="let uname of selectedItem.selectUsers">{{ uname }} </h5>
+                </div>
+            </div>
+        </div>
+        <br>
+        <p>{{ 'Description' | translate }} :</p>
+        <h4>{{ selectedItem.pdescription }}</h4>
+    </div>
+</div>
+
+<!-- <div *ngIf="selectedItem" class="popup">
    
 
      <div style="border-bottom: 2px solid #ccc;"> 
@@ -217,7 +262,11 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
 <p >{{ 'Description' | translate }} :</p>
     <h4>      {{ selectedItem.pdescription }}</h4>
 </div>
-</div>
+</div> -->
+
+
+
+
 
 
 
@@ -288,14 +337,14 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
         <textarea style="width:max-content;" name="description" id="" cols="15" rows="5"style="width: 391px; height: 123px;" [(ngModel)]="des" ></textarea>
         <br>
         <br>
-        <label for="radbtn">Project Status</label>
+        <label for="radbtn">{{ 'Project Status' | translate }}</label>
         
-        <input type="radio" name="status" id="completed"  (change)="handleRadioChange('Completed')" > Completed
-        <input type="radio" name="status" id="pending"   (change)="handleRadioChange('Pending')" checked> Pending
+        <input type="radio" name="status" id="completed"  (change)="handleRadioChange('Completed')"> {{'Completed' | translate}}
+        <input type="radio" name="status" id="pending"   (change)="handleRadioChange('Pending')"checked > {{'Pending' | translate}}
         <br>
         <br>
         <div class="dropdown">
-            <button class="dropbtn" >Select Users</button>
+            <button class="dropbtn" >{{'Select Users' | translate}}</button>
             <div class="dropdown-content">
                 <a *ngFor="let option of unameArray" (click)="addItemToAccordion(option)">{{ option }}</a>
             </div>
@@ -305,7 +354,7 @@ top: 50%;left: 50%;background-color: #ebe8e8 ;border: 1px solid black"; > -->
             <br>
             <h4 class="sel" id="select"
                 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: lighter; margin-bottom: 0;" >
-                Selected Users :</h4>
+                {{'Select Users' | translate}} :</h4>
             <div class="accordion-item" *ngFor="let item of newSelectArr">
                 <div style="font-weight: lighter" class="accordion-header">
                     <h2>{{ item }} <i class="fa-solid fa-trash" (click)="deleteUser(item)" ></i></h2>
