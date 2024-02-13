@@ -40,4 +40,8 @@ export class SignUpComponent {
       this.loading = false;
     });
   }
+
+  DoSignIn(){
+    this.router.navigate(['/signIn'])
+  }
 }

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import {Amplify} from 'aws-amplify';
-import { signUp } from 'aws-amplify/auth';
+import { ResetPasswordInput, signUp } from 'aws-amplify/auth';
 import { confirmSignUp } from 'aws-amplify/auth';
 import {signIn} from 'aws-amplify/auth';
 import {signOut} from 'aws-amplify/auth';
-import {getCurrentUser} from 'aws-amplify/auth';
+import {getCurrentUser,resetPassword,
+  confirmResetPassword,ResetPasswordOutput,
+  ConfirmResetPasswordInput} from 'aws-amplify/auth';
 
 export interface IUser {
   email: string;
@@ -95,4 +97,20 @@ export class CognitoService {
   //     return updateUserAttributes(cognitoUser, user);
   //   });
   // }
+
+  public resetPassword(user: IUser): Promise<ResetPasswordOutput> {
+    const resetPasswordInput: ResetPasswordInput = {
+      username: user.email,
+    };
+    return resetPassword(resetPasswordInput);
+  }
+
+  public confirmResetPassword(user: IUser, new_pass: string): Promise<void> {
+    const confirmResetPasswordInput: ConfirmResetPasswordInput = {
+      username: user.email,
+      confirmationCode: user.code,
+      newPassword: new_pass,
+    };
+    return confirmResetPassword(confirmResetPasswordInput);
+  }
 }
