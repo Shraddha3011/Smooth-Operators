@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://path/to/transcription-service/script.js"></script>
+
   </head>
   <body>
     <main>
@@ -19,6 +21,11 @@
             <div class="links">
               <ul>
                 <li><a (click)="SignUp()" class="btn">{{'Sign Up' | translate}}</a></li>
+                <li>
+                  <select style="margin-right: 140px; border-color: var(--primary-color); border-width: 2px;" #selectLang (change)="switchLang(selectLang.value)" >
+                    <option  *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang"> {{lang}}</option>
+                  </select>
+                </li>
               </ul>
             </div>
           </div>
