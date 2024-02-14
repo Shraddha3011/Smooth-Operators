@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProjectApiService } from './project-api.service';
+import { RouteGuardService } from './route-guard.service';
 
-describe('ProjectApiService', () => {
-  let service: ProjectApiService;
+describe('RouteGuardService', () => {
+  let service: RouteGuardService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ProjectApiService);
+    service = TestBed.inject(RouteGuardService);
   });
 
   it('should be created', () => {

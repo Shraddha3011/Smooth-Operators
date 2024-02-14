@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ProjectApiService } from '../project-api.service';
+import { ProjectApiService } from '../../service/project-api.service';
 import Swal from 'sweetalert2';
 import { SearchFilterPipe } from '../search-filter.pipe';
 import { NgForm } from '@angular/forms';
@@ -7,11 +7,10 @@ import { OnInit } from '@angular/core';
 import { OrderModule } from 'ngx-order-pipe';
 import { TranslateService } from '@ngx-translate/core';
 
-
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
-  styleUrls: ['./project-card.component.css']
+  styleUrls: ['./project-card.component.css'],
 })
 export class ProjectCardComponent {
   projectStatus: string = '';
@@ -20,7 +19,12 @@ export class ProjectCardComponent {
   projectArr: any = {};
 
   accordions = [
-    { question: 'Lorem ipsum dolor sit amet consectetur.', answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi incidunt doloremque eius recusandae quibusdam nihil beatae laudantium nesciunt praesentium?', active: false },
+    {
+      question: 'Lorem ipsum dolor sit amet consectetur.',
+      answer:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi incidunt doloremque eius recusandae quibusdam nihil beatae laudantium nesciunt praesentium?',
+      active: false,
+    },
   ];
   style: any;
   router: any;
@@ -40,13 +44,15 @@ export class ProjectCardComponent {
   @Input()
   accordionItems: any[] = [];
 
-  constructor(private user: ProjectApiService,public translate:TranslateService){
-    translate.addLangs(['en','hn','es','mr','fr']);
+  constructor(
+    private user: ProjectApiService,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'hn', 'es', 'mr', 'fr']);
     translate.setDefaultLang('en');
-
   }
-  switchLang(lang:string){
-    this.translate.use(lang)
+  switchLang(lang: string) {
+    this.translate.use(lang);
   }
 
   // goToPage(pageName: string, recipeId: string): void {
@@ -54,7 +60,6 @@ export class ProjectCardComponent {
   // }
 
   deleteItem(id: any) {
-
     // this.user.getProjectbyID(id).then((response: any) => {
     //   console.log('API Response:', response);
 
@@ -84,30 +89,28 @@ export class ProjectCardComponent {
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, delete it!',
     }).then((result: any) => {
       if (result.isConfirmed) {
-        this.user.deleteProject(id).subscribe(
-          (response) => {
+        this.user
+          .deleteProject(id)
+          .then((response) => {
             console.log('Project deleted successfully');
             Swal.fire('Success!', 'Project deleted successfully!', 'success');
             this.childMethod();
             // this.updateProjectArr(id);
-          },
-          (error: any) => {
-            console.error('Error deleting Project', error);
+          })
+          .catch((e) => {
+            console.error('Error deleting Project', e);
             Swal.fire('Error', 'Failed to delete the Project', 'error');
-          }
-        );
+          });
       }
     });
   }
 
-
   // onEditClicked(pid : string){
   //   let currentProject = this.projectArr.find((p: { pid: string; })=> {return p.pid ===pid})
   //   console.log(currentProject);
-
 
   //   // this.form.setValue({
   //   //   pname:currentProject.pname,
@@ -118,22 +121,23 @@ export class ProjectCardComponent {
 
   viewItem(project: any) {
     console.log(project.id);
-    this.selectedItem = this.selectedItem === project.projectDetails ? null : project.projectDetails;
+    this.selectedItem =
+      this.selectedItem === project.projectDetails
+        ? null
+        : project.projectDetails;
     if (this.selectedItem) {
       // this.selectedItem.style.display = "block";
     }
   }
-  id: string = "";
-  uname: string = "";
-  stdate: string = "";
-  endate: string = "";
-  des: string = "";
-  newSelectArr: any = {}
-  sel:string=""
-
+  id: string = '';
+  uname: string = '';
+  stdate: string = '';
+  endate: string = '';
+  des: string = '';
+  newSelectArr: any = {};
+  sel: string = '';
 
   updateItem(project: any) {
-
     this.id = project.id;
     this.uname = project.projectDetails.pname;
     this.stdate = project.projectDetails.pstartDate;
@@ -145,20 +149,16 @@ export class ProjectCardComponent {
     if (myFormElement) {
       myFormElement.style.display = 'block';
     }
-
-
   }
   closeform() {
     const myFormElement = document.getElementById('pform');
     if (myFormElement) {
       myFormElement.style.display = 'none';
     }
-
   }
   closeDetails() {
     this.selectedItem = null;
   }
-
 
   // viewItem(){
   //   const myFormElement = document.getElementById('ans');
@@ -183,12 +183,8 @@ export class ProjectCardComponent {
   //   }
   // }
 
-
-
-
   @Input()
-  searchText: string = "";
-
+  searchText: string = '';
 
   status: string = 'Pending';
 
@@ -201,13 +197,6 @@ export class ProjectCardComponent {
     this.testEvent.emit();
   }
 
-
-
-
-
-
-
-
   accordionItem: any[] = [];
 
   addItemToAccordion(option: any) {
@@ -215,7 +204,6 @@ export class ProjectCardComponent {
     const indexToRemove = this.unameArray.indexOf(option);
     if (indexToRemove !== -1) {
       this.unameArray.splice(indexToRemove, 1);
-
     }
     const myFormElement = document.getElementById('select');
     if (myFormElement) {
@@ -230,54 +218,55 @@ export class ProjectCardComponent {
     this.retrieveProjects();
   }
   retrieveProjects() {
-    this.user.getProjectData().subscribe(
+    this.user.getProjectData().then(
       (details: any) => {
-        this.projectArr = details.response.Items;
-        
-        console.log(details);
-        console.log("array is", this.projectArr);
+        this.projectArr = details.Items;
 
-      }, (error: { message: null; }) => {
+        console.log(details);
+        console.log('array is', this.projectArr);
+      },
+      (error: { message: null }) => {
         console.log(error);
         this.error = error.message;
-      })
+      }
+    );
 
-    this.user.getUserData().subscribe(
-      (details: any) => {
-        this.selectUserArr = details.response.Items;
-        this.unameArray = this.selectUserArr.map((user: { userDetails: { uname: string } }) => user.userDetails.uname);
-
+    this.user
+      .getUserData()
+      .then((details: any) => {
+        this.selectUserArr = details.Items;
+        this.unameArray = this.selectUserArr.map(
+          (user: { userDetails: { uname: string } }) => user.userDetails.uname
+        );
 
         console.log(details);
         // console.log("user array is",unameArray);
-
-      }, (error: { message: null; }) => {
-        console.log(error);
-        this.error = error.message;
       })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
-
   saveProjectFormData(details: any) {
-    console.log("details is", details)
+    console.log('details is', details);
     let body = {
-      "id": details.id,
-      "projectDetails": {
-        "pname": details.name,
-        "pdescription": details.description,
-        "pstartDate": details.stdate,
-        "pendDate": details.endate,
-        "selectUsers": this.newSelectArr,
-        "selectedStatus": this.selectedStatus
-      }
-    }
-    this.user.saveproject(body).subscribe((result) => {
-      console.log("res is", result);
+      id: details.id,
+      projectDetails: {
+        pname: details.name,
+        pdescription: details.description,
+        pstartDate: details.stdate,
+        pendDate: details.endate,
+        selectUsers: this.newSelectArr,
+        selectedStatus: this.selectedStatus,
+      },
+    };
+    this.user.saveproject(body).then((result) => {
+      console.log('res is', result);
       this.retrieveProjects();
-    })
+    });
 
-    this.closeform()
-    this.accordionItems = []
+    this.closeform();
+    this.accordionItems = [];
     // const myFormElement = document.getElementById('select');
     // if (myFormElement) {
     //   myFormElement.style.display = 'none';
@@ -290,12 +279,12 @@ export class ProjectCardComponent {
       this.newSelectArr.splice(indexToRemove, 1);
     }
   }
-  
-  selectedStatus:string=''
+
+  selectedStatus: string = '';
   handleRadioChange(status: string) {
     this.selectedStatus = status;
   }
-  
+
   key: string = 'pstartDate';
   reverse: boolean = false;
   sort(key: string) {
@@ -307,11 +296,4 @@ export class ProjectCardComponent {
   //   {"id":'1',"value":'Completed'},
   //   {"id":'2',"value":'Pending'}
   // ]
-  
 }
-  
-
-
-
-
-

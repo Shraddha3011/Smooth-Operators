@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {Amplify} from 'aws-amplify';
-import { signUp } from 'aws-amplify/auth';
+import { Amplify } from 'aws-amplify';
+import { fetchAuthSession, signUp } from 'aws-amplify/auth';
 import { confirmSignUp } from 'aws-amplify/auth';
-import {signIn} from 'aws-amplify/auth';
-import {signOut} from 'aws-amplify/auth';
-import {getCurrentUser} from 'aws-amplify/auth';
+import { signIn } from 'aws-amplify/auth';
+import { signOut } from 'aws-amplify/auth';
+import { getCurrentUser } from 'aws-amplify/auth';
 
 export interface IUser {
   email: string;
@@ -16,10 +16,9 @@ export interface IUser {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CognitoService {
-
   private authenticationSubject: BehaviorSubject<any>;
 
   constructor() {
@@ -46,8 +45,8 @@ export class CognitoService {
 
   public confirmSignUp(user: IUser): Promise<any> {
     return confirmSignUp({
-      username:user.email,
-      confirmationCode:user.code,
+      username: user.email,
+      confirmationCode: user.code,
     });
   }
 
@@ -55,33 +54,32 @@ export class CognitoService {
     return signIn({
       username: user.email,
       password: user.password,
-    })
-    .then(() => {
+    }).then(() => {
       this.authenticationSubject.next(true);
     });
   }
 
   public signOut(): Promise<any> {
-    return signOut()
-    .then(() => {
+    return signOut().then(() => {
       this.authenticationSubject.next(false);
     });
   }
- 
+
   public isAuthenticated(): Promise<boolean> {
     if (this.authenticationSubject.value) {
       return Promise.resolve(true);
     } else {
       return this.getUser()
-      .then((user: any) => {
-        if (user) {
-          return true;
-        } else {
+        .then((user: any) => {
+          if (user) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+        .catch(() => {
           return false;
-        }
-      }).catch(() => {
-        return false;
-      });
+        });
     }
   }
 
@@ -95,4 +93,10 @@ export class CognitoService {
   //     return updateUserAttributes(cognitoUser, user);
   //   });
   // }
+
+  public async getJwt() {
+    const { idToken } =
+      (await fetchAuthSession({ forceRefresh: true })).tokens ?? {};
+    return idToken?.toString();
+  }
 }
