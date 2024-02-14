@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectApiService } from '../../service/project-api.service';
-import { TranslateService } from '@ngx-translate/core';
+import { MultiLingualService } from '../../service/multi-lingual.service';
+
 @Component({
   selector: 'app-project-dir',
   templateUrl: './project-dir.component.html',
@@ -9,7 +10,16 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ProjectDirComponent {
   accordionItems: any[] = [];
-
+  translations: any;
+  // languages: any[] = [];// Default language
+  selectedLanguage: string = 'en'; // Default language
+languages: { code: string, name: string }[] = [
+  { code: 'en', name: 'English' },
+  { code: 'hn', name: 'Hindi' },
+  { code: 'mr', name: 'Marathi' }
+];
+  
+ 
   addItemToAccordion(option: any) {
     this.accordionItems.push(option);
     const indexToRemove = this.unameArray.indexOf(option);
@@ -84,20 +94,15 @@ export class ProjectDirComponent {
 
   constructor(
     private proj: ProjectApiService,
-    public translate: TranslateService
-  ) {
-    translate.addLangs(['English', 'Hindi', 'Marathi']);
-    // translate.setDefaultLang('English');
-  }
-  switchLang(lang: string) {
-    this.translate.use(lang);
-  }
-
-  // toggleDarkMode(): void {
-  //   this.proj.toggleDarkMode();}
+    private multiLingualService: MultiLingualService
+  ) {}
 
   ngOnInit() {
     this.retrieveProjects();
+    // this.fetchTranslations('en');
+    this.fetchTranslations(this.selectedLanguage);
+
+
   }
 
   retrieveProjects() {
@@ -121,7 +126,6 @@ export class ProjectDirComponent {
         );
 
         console.log(details);
-        // console.log("user array is",unameArray);
       })
       .catch((e) => {
         console.log(e);
@@ -130,7 +134,6 @@ export class ProjectDirComponent {
 
   saveProjectFormData(details: any) {
     let body = {
-      // "id":details.pid,
       projectDetails: {
         pname: details.pname,
         pdescription: details.pdescription,
@@ -158,4 +161,35 @@ export class ProjectDirComponent {
     this.selectedStatus = status;
     console.log(this.selectedStatus);
   }
+ 
+
+  
+  switchLanguage(event: any) {
+    const language = event?.target?.value;
+    if (language) {
+      this.selectedLanguage = language;
+      this.fetchTranslations(language);
+    }
+  }
+  
+  fetchTranslations(language: string) {
+    this.multiLingualService.getTranslations(language)
+      .subscribe(
+        (data: any) => {
+          // Filter translations based on the specified language code
+          const translationsForLanguage = data.filter((translation: any) => translation.language === language);
+          if (translationsForLanguage.length > 0) {
+            this.translations = translationsForLanguage[0]; // Assuming there's only one set of translations per language
+            console.log('Translations for', language + ':', this.translations);
+          } else {
+            console.warn('Translations not found for', language);
+          }
+        },
+        error => {
+          console.error('Error fetching translations:', error);
+        }
+      );
+  }
+  
+  
 }

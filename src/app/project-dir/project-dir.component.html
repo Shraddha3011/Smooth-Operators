@@ -81,11 +81,12 @@
             <p
                 style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">
                 {{'Project Directory'| translate}}</p>
-                <span>
-                    <select style="margin-right: 140px; border-color: var(--primary-color); border-width: 2px;" #selectLang (change)="switchLang(selectLang.value)" >
-                        <option  *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang"> {{lang}}</option>
-                    </select>
-                </span>
+                <select [(ngModel)]="selectedLanguage" (change)="switchLanguage($event)">
+                    <option value="en">English</option>
+                    <option value="hn">Hindi</option>
+                    <option value="mr">Marathi</option>
+                  </select>
+                  
                 <div class="search-bar">
                     <input type="text" placeholder="{{ 'Search Project' | translate }}" class="search-bar-input" [(ngModel)]="searchText">
                     <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
