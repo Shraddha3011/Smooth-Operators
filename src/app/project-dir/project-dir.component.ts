@@ -11,14 +11,13 @@ import { MultiLingualService } from '../../service/multi-lingual.service';
 export class ProjectDirComponent {
   accordionItems: any[] = [];
   translations: any;
-  // languages: any[] = [];// Default language
-  selectedLanguage: string = 'en'; // Default language
-languages: { code: string, name: string }[] = [
-  { code: 'en', name: 'English' },
-  { code: 'hn', name: 'Hindi' },
-  { code: 'mr', name: 'Marathi' }
-];
-  
+  selectedLanguage: string = 'en';
+  languages: { code: string, name: string }[] = [
+    { code: 'en', name: 'English' },
+    { code: 'hn', name: 'Hindi' },
+    { code: 'mr', name: 'Marathi' }
+  ];
+
  
   addItemToAccordion(option: any) {
     this.accordionItems.push(option);
@@ -49,6 +48,7 @@ languages: { code: string, name: string }[] = [
   pdescription: string = '';
   issubmitted: boolean = false;
   projectinfo: any[] = [];
+  
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
@@ -100,8 +100,10 @@ languages: { code: string, name: string }[] = [
   ngOnInit() {
     this.retrieveProjects();
     // this.fetchTranslations('en');
-    this.fetchTranslations(this.selectedLanguage);
+    // this.fetchTranslations(this.selectedLanguage);
+    this.getTranslations(this.selectedLanguage);
 
+    // this.getTranslations('en');
 
   }
 
@@ -164,32 +166,35 @@ languages: { code: string, name: string }[] = [
  
 
   
-  switchLanguage(event: any) {
-    const language = event?.target?.value;
-    if (language) {
-      this.selectedLanguage = language;
-      this.fetchTranslations(language);
-    }
+  
+
+  // fetchTranslations(language: string) {
+  //   this.multiLingualService.getTranslations(language)
+  //     .subscribe(
+  //       (data: any) => {
+  //         const translationsForLanguage = data.filter((translation: any) => translation.language === language);
+  //         if (translationsForLanguage.length > 0) {
+  //           this.translations = translationsForLanguage[0];
+  //         } else {
+  //           console.warn('Translations not found for', language);
+  //         }
+  //       },
+  //       error => {
+  //         console.error('Error fetching translations:', error);
+  //       }
+  //     );
+  // }
+  
+ 
+  getTranslations(language: string): void {
+    this.multiLingualService.getTranslations(language).subscribe(translations => {
+      this.translations = translations;
+      console.log(this.translations,"abc");
+    });
   }
-  
-  fetchTranslations(language: string) {
-    this.multiLingualService.getTranslations(language)
-      .subscribe(
-        (data: any) => {
-          // Filter translations based on the specified language code
-          const translationsForLanguage = data.filter((translation: any) => translation.language === language);
-          if (translationsForLanguage.length > 0) {
-            this.translations = translationsForLanguage[0]; // Assuming there's only one set of translations per language
-            console.log('Translations for', language + ':', this.translations);
-          } else {
-            console.warn('Translations not found for', language);
-          }
-        },
-        error => {
-          console.error('Error fetching translations:', error);
-        }
-      );
+
+  switchLanguage(language: string): void {
+    this.getTranslations(language);
   }
-  
-  
+
 }

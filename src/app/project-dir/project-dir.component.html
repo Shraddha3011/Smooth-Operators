@@ -1,66 +1,3 @@
-<!-- <app-side-nav></app-side-nav>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
-<body>
-    <div class="main-container">
-        <div class="header">
-            <p>Project Directory</p>
-            <div class="search-bar">
-                <input type="text" placeholder="Search Project" class="search-bar-input">
-                <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
-            </div>
-        </div>
-    </div>
-    <div class="accordian" style="background-color: white; width: 1000px;margin-left: 315px; padding: 20px ; margin-top: 20px;box-shadow: 1px 1px 5px rgb(255, 205, 255);">
-        <div class="question" style="display: flex;
-        align-items: center;
-        justify-content: space-between;">
-            <h2 style="color: black;margin-right: 280px;">Title</h2>
-            <h3 style="color: black;"> Start Date</h3>
-            <h3 style="color: black;">End Date</h3>
-            <h3 style="color: black;">Status </h3>
-            <h3 style="color: black;">Operations</h3>
-        </div>
-    </div>
-    <div class="add-project" (click)="openform()"><a routerLink="form"><i class="fa-solid fa-plus"></i></a></div>
-    <form id="myform" [formGroup]="projectform" >
-        <label for="name">Name:</label>
-        <input type="text" [(ngModel)]="name" formControlName="name" name="user" placeholder="Enter the name">
-        <br>
-        <label for="description">Description:</label>
-        <input type="text" [(ngModel)]="description" formControlName="description" name="description" placeholder="Enter the Description">
-        <br>
-        <label for="startDate">Start Date:</label>
-        <input type="text" [(ngModel)]="startDate" formControlName="startDate" name="startDate" placeholder="Enter the Start Date">
-        <br>
-        <label for="role">End Date:</label>
-        <input type="text" [(ngModel)]="endDate" formControlName="endDate" name="endDate" placeholder="Enter the End Date">
-        <br>
-        <button type="submit" [disabled]="!projectform.valid" class="btn" (click)="onsubmit()">Add </button>
-        <button class="close" (click)="closeform()">Close</button>
-    </form>
-   <div>
-   </div>
-    <div *ngIf="issubmitted" class="flex-container">
-            <app-project-card *ngFor="let msg of projectinfo" [projectinfo]="msg"></app-project-card>
-    </div>
-</body>
-
-</html> -->
-
-
-
-
 <app-side-nav> </app-side-nav>
 
 <!DOCTYPE html>
@@ -69,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ 'Document Title' | translate }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -78,103 +15,53 @@
 <body>
     <div class="main-container">
         <div class="header">
-            <p
-                style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">
-                {{'Project Directory'| translate}}</p>
-                <select [(ngModel)]="selectedLanguage" (change)="switchLanguage($event)">
-                    <option value="en">English</option>
-                    <option value="hn">Hindi</option>
-                    <option value="mr">Marathi</option>
-                  </select>
-                  
-                <div class="search-bar">
-                    <input type="text" placeholder="{{ 'Search Project' | translate }}" class="search-bar-input" [(ngModel)]="searchText">
-                    <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
+            <p style="color:#ffffff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600;">
+                {{ 'Project Directory' | translate}}</p>
+            <!-- <select #languageSelect (change)="switchLanguage(languageSelect.value)">
+                <option *ngFor="let lang of languages" [value]="lang.code">{{ lang.name | translate }}</option>
+            </select> -->
+            <select #languageSelect (change)="switchLanguage(languageSelect.value)">
+                <option value="en">English</option>
+                <option value="hn">Hindi</option>
+                <option value="mr">Marathi</option>
+              </select>
+              
+              <!-- <div *ngIf="translations">
+                <div *ngFor="let translation of translations">
+                  <div>{{ translation.key }}</div>
+                  <div>{{ translation[selectedLanguage] }}</div>
                 </div>
-                
-            <!-- <div class="search-bar">
-                <input type="text" placeholder="Search Project" class="search-bar-input" [(ngModel)]="searchText">
+              </div> -->
+              
+            <div class="search-bar">
+                <input type="text" placeholder="{{ 'Search Project' | translate }}" class="search-bar-input" [(ngModel)]="searchText">
                 <div class="search-bar-icon"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
-            </div> -->
+            </div>
         </div>
     </div>
-    <!-- <div class="accordian" style="background-color: white; width: 1000px;margin-left: 315px; padding: 20px ; margin-top: 20px;box-shadow: 1px 1px 5px rgb(255, 205, 255);">
-        <div class="question" style="display: flex;
-        align-items: center;
-        justify-content: space-between;">
-            <h2 style="color: black;margin-right: 280px;">Title</h2>
-            <h3 style="color: black;"> Start Date</h3>
-            <h3 style="color: black;">End Date</h3>
-            <h3 style="color: black;">Status </h3>
-            <h3 style="color: black;">Operations</h3>
-        </div>
-    </div> -->
-    <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus"></i> {{'Create Project'|translate}}</div>
+    <div class="add-project" (click)="openform()"><i class="fa-solid fa-plus"></i> {{translations.create_project}}</div>
     <form id="myform" #projectForm="ngForm" [formGroup]="projectform">
         <header>{{ 'Project Details' | translate }}</header>
-        <!-- <label for="name">Project Id:</label>
-        
-        <input type="number" [(ngModel)]="pid"  name="pid" placeholder="Enter the Id" formControlName="pid">
-            <br>
-            <div *ngIf="projectform.controls.pid.invalid && projectform.controls.pid.touched" style="color: red;">id is
-                required</div> -->
-
-
-
-        <!-- <label for="name">Project Title:</label>
-        <input type="text" [(ngModel)]="pname" name="pname" placeholder="Enter the title" formControlName="pname">
+        <label for="pname">{{ 'Project Title' | translate }}:</label>
+        <input type="text" [(ngModel)]="pname" name="pname" placeholder="{{ 'Enter the title' | translate }}" formControlName="pname">
         <br>
-        <div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched" style="color: red;">name
-            is
-            required</div>
-        <label for="description">{{ 'Description' | translate }}:</label>
-        <textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription"
-            formControlName="pdescription" placeholder="Enter the Description"></textarea> -->
-        
-            <label for="name">{{ 'Project Title' | translate }}:</label>
-<input type="text" [(ngModel)]="pname" name="pname" placeholder="{{ 'Enter the title' | translate }}" formControlName="pname">
-<br>
-<div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched" style="color: red;">{{ 'Name is required' | translate }}</div>
-<label for="description">{{ 'Description' | translate }}:</label>
-<textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription" formControlName="pdescription" placeholder="{{ 'Enter the Description' | translate }}"></textarea>
-
+        <div *ngIf="projectform.controls.pname.invalid && projectform.controls.pname.touched"
+            style="color: red;">{{ 'Name is required' | translate }}</div>
+        <label for="pdescription">{{ 'Description' | translate }}:</label>
+        <textarea style="width:max-content;" name="pdescription" id="" cols="67" rows="5" [(ngModel)]="pdescription" formControlName="pdescription" placeholder="{{ 'Enter the Description' | translate }}"></textarea>
         <br>
-        <!-- <label for="radbtn">Project Status</label>
-        
-        <input type="radio" name="status" id="completed"  (change)="handleRadioChange('Completed')"> Completed
-        <input type="radio" name="status" id="pending"   (change)="handleRadioChange('Pending')" > Pending
-        <br> -->
-
-
-
-           
-        <!-- <div style="display: inline-block; columns: 2; column-gap: 100px;">
-            <label for="startDate">Start Date:</label>
+        <div style="display: inline-block; columns: 2; column-gap: 100px;">
+            <label for="pstartDate">{{ 'Start Date' | translate }}:</label>
             <input type="date" [(ngModel)]="pstartDate" name="pstartDate" formControlName="pstartDate">
             <br>
             <div *ngIf="projectform.controls.pstartDate.invalid && projectform.controls.pstartDate.touched"
-                style="color: red;">start is
-                required</div>
-            <label for="role">End Date:</label>
-            <input type="date" [(ngModel)]="pendDate" name="pendDate" formControlName="pendDate">
-        </div> -->
-
-        <div style="display: inline-block; columns: 2; column-gap: 100px;">
-            <label for="startDate">{{ 'Start Date' | translate }}:</label>
-            <input type="date" [(ngModel)]="pstartDate" name="pstartDate" formControlName="pstartDate">
-            <br>
-            <div *ngIf="projectform.controls.pstartDate.invalid && projectform.controls.pstartDate.touched" style="color: red;">{{ 'start is required' | translate }}</div>
-            <label for="role">{{ 'End Date' | translate }}:</label>
+                style="color: red;">{{ 'start is required' | translate }}</div>
+            <label for="pendDate">{{ 'End Date' | translate }}:</label>
             <input type="date" [(ngModel)]="pendDate" name="pendDate" formControlName="pendDate">
         </div>
-        
         <br>
-        <div *ngIf="projectform.controls.pendDate.invalid && projectform.controls.pendDate.touched" style="color: red;">
-            name is
-            required</div>
-            
         <div class="dropdown">
-            <button class="dropbtn">{{'Select Users' | translate}}</button>
+            <button class="dropbtn">{{ 'Select Users' | translate }}</button>
             <div class="dropdown-content">
                 <a *ngFor="let option of unameArray" (click)="addItemToAccordion(option)">{{ option }}</a>
             </div>
@@ -184,30 +71,21 @@
             <br>
             <h4 class="sel" id="select"
                 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: lighter;">
-                {{'Select Users' | translate}} :</h4>
+                {{ 'Select Users' | translate }} :</h4>
             <div class="accordion-item" *ngFor="let item of accordionItems">
-                <div  class="accordion-header">
+                <div class="accordion-header">
                     <p style="font-size:15px; margin-bottom: 12px;">{{ item }}</p>
                 </div>
-
             </div>
         </div>
-        <!-- (click)="onsubmit()" type="submit" -->
-        <!-- <button [disabled]="!projectform.valid" class="btn" style="background-color: var(--primary-color)"
-            (click)="saveProjectFormData(projectForm.value)">Add </button>
-        <button style="background-color: var(--secondary-color);" class="close" (click)="close()">Close</button> -->
-        
+
         <button [disabled]="!projectform.valid" class="btn" style="background-color: var(--primary-color)" (click)="saveProjectFormData(projectForm.value)">{{ 'Add' | translate }}</button>
-<button style="background-color: var(--secondary-color);" class="close" (click)="close()">{{ 'Close' | translate }}</button>
+        <button style="background-color: var(--secondary-color);" class="close" (click)="close()">{{ 'Close' | translate }}</button>
 
     </form>
-   <div>
-   </div>
-    <div  class="flex-container">
-            <app-project-card  [projectArr]="projectArr" [searchText]="searchText" (testEvent)="retrieveProjects()"></app-project-card>
+    <div class="flex-container">
+        <app-project-card [projectArr]="projectArr" [searchText]="searchText" (testEvent)="retrieveProjects()"></app-project-card>
     </div>
-
-    
 </body>
 
 </html>

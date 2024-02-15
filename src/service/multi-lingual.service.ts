@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class MultiLingualService {
 
-  private apiUrl = 'https://evn698i8ce.execute-api.ca-central-1.amazonaws.com/dev/multi_lingual';
+  private apiUrl = 'https://evn698i8ce.execute-api.ca-central-1.amazonaws.com/dev/multi_langual';
 
-  constructor(private http: HttpClient) {}
+constructor(private http: HttpClient) {}
 
-  getTranslations(language: string): Observable<any> {
-    const url = `${this.apiUrl}?language=${language}`;
-    return this.http.get(url);
-  }
-  
+getTranslations(language: string): Observable<any[]> {
+  const url = `${this.apiUrl}?language=${language}`;
+  return this.http.get<any[]>(url);
+}
+
 }
