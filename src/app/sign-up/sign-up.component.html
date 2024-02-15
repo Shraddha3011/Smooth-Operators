@@ -77,8 +77,8 @@
             </div>
           </div>
           <div class="row">
-            <div>
-              <label >Already have a account <a (click)="DoSignIn()">SignUp</a></label>
+            <div class="sigin" >
+              <label >Already have a account? <a (click)="DoSignIn()">SignIn</a></label>
             </div>
             <div class="col d-grid">
               <button type="button" (click)="signUp()" class="btn btn-sm btn-success" [disabled]="loading">
@@ -88,6 +88,8 @@
             </div>
           </div>
         </div>
+      </div>
+    <div class="adjust" style="padding-left: 120px; padding-right: 120px;">
         <div class="card-body" *ngIf="isConfirm">
           <div class="row">
             <div class="col mb-2">
