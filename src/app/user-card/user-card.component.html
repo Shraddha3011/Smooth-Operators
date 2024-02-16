@@ -96,7 +96,9 @@
 </div>
   -->
 <div class="flex-container">
-    <div id="card" *ngFor="let user of userArr |filter:searchText">
+    <!-- <div id="card" *ngFor="let user of userArr |filter:searchText"> -->
+        <div id="card" *ngFor="let user of userArr | filter: searchText : language">
+
         <h2>{{user.userDetails.uname}} <h6 style="margin-bottom: 1px; margin-top: 2px;">{{user.userDetails.urole}}
             </h6>
         </h2>

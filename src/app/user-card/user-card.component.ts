@@ -3,6 +3,8 @@ import { ProjectApiService } from '../../service/project-api.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { Observable, of } from 'rxjs';
+
 
 @Component({
   selector: 'app-user-card',
@@ -12,12 +14,13 @@ import { ChangeDetectorRef } from '@angular/core';
 export class UserCardComponent {
   @Input() userArr: any = {};
   @Input() searchText: string = '';
+  language: string = '';
 
   constructor(
     private obj: ProjectApiService,
     private router: Router,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { this.language = '';}
 
   deleteUser(id: any) {
     Swal.fire({

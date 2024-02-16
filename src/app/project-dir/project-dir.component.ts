@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectApiService } from '../../service/project-api.service';
 import { MultiLingualService } from '../../service/multi-lingual.service';
+import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-project-dir',
@@ -10,7 +12,7 @@ import { MultiLingualService } from '../../service/multi-lingual.service';
 })
 export class ProjectDirComponent {
   accordionItems: any[] = [];
-  translations: any;
+  translations: any[]=[];
   selectedLanguage: string = 'en';
   languages: { code: string, name: string }[] = [
     { code: 'en', name: 'English' },
@@ -94,7 +96,9 @@ export class ProjectDirComponent {
 
   constructor(
     private proj: ProjectApiService,
-    private multiLingualService: MultiLingualService
+    private multiLingualService: MultiLingualService,
+    private http :HttpClient,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -102,7 +106,7 @@ export class ProjectDirComponent {
     // this.fetchTranslations('en');
     // this.fetchTranslations(this.selectedLanguage);
     this.getTranslations(this.selectedLanguage);
-
+    // this.getTranslations('hn');
     // this.getTranslations('en');
 
   }
@@ -166,33 +170,24 @@ export class ProjectDirComponent {
  
 
   
-  
 
-  // fetchTranslations(language: string) {
-  //   this.multiLingualService.getTranslations(language)
-  //     .subscribe(
-  //       (data: any) => {
-  //         const translationsForLanguage = data.filter((translation: any) => translation.language === language);
-  //         if (translationsForLanguage.length > 0) {
-  //           this.translations = translationsForLanguage[0];
-  //         } else {
-  //           console.warn('Translations not found for', language);
-  //         }
-  //       },
-  //       error => {
-  //         console.error('Error fetching translations:', error);
-  //       }
-  //     );
-  // }
-  
  
   getTranslations(language: string): void {
     this.multiLingualService.getTranslations(language).subscribe(translations => {
-      this.translations = translations;
-      console.log(this.translations,"abc");
+      this.translations = translations; // Make sure translations are correctly stored here
+      console.log(this.translations); // Check if translations are fetched correctly
     });
   }
-
+  // getTranslations(language: string): void {
+  //   this.multiLingualService.getTranslations(language).subscribe(translations => {
+  //     console.log('Translations:', translations); // Log translations to check data
+  //     this.translations = translations;
+  //     this.translate.setTranslation(language,translations);
+ 
+  //   });
+  // }
+  
+  
   switchLanguage(language: string): void {
     this.getTranslations(language);
   }
