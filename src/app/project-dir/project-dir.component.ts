@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectApiService } from '../../service/project-api.service';
-import { TranslateService } from '@ngx-translate/core';
+import { MultiLingualService } from '../../service/multi-lingual.service';
+import { HttpClient } from '@angular/common/http';
+// import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-project-dir',
   templateUrl: './project-dir.component.html',
@@ -9,7 +12,15 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ProjectDirComponent {
   accordionItems: any[] = [];
+  translations: any;
+  selectedLanguage: string = 'en';
+  languages: { code: string, name: string }[] = [
+    { code: 'en', name: 'English' },
+    { code: 'hn', name: 'Hindi' },
+    { code: 'mr', name: 'Marathi' }
+  ];
 
+ 
   addItemToAccordion(option: any) {
     this.accordionItems.push(option);
     const indexToRemove = this.unameArray.indexOf(option);
@@ -39,6 +50,7 @@ export class ProjectDirComponent {
   pdescription: string = '';
   issubmitted: boolean = false;
   projectinfo: any[] = [];
+  
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
@@ -84,20 +96,26 @@ export class ProjectDirComponent {
 
   constructor(
     private proj: ProjectApiService,
-    public translate: TranslateService
-  ) {
-    translate.addLangs(['English', 'Hindi', 'Marathi']);
-    // translate.setDefaultLang('English');
-  }
-  switchLang(lang: string) {
-    this.translate.use(lang);
-  }
-
-  // toggleDarkMode(): void {
-  //   this.proj.toggleDarkMode();}
+    private multiLingualService: MultiLingualService,
+    private http :HttpClient,
+    // private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.retrieveProjects();
+    // this.fetchTranslations('en');
+    // this.fetchTranslations(this.selectedLanguage);
+    // this.getTranslations(this.selectedLanguage);
+    // this.translations= this.multiLingualService.multilingual;
+    // console.log("vajidA",this.translations);
+    // this.translations=this.multiLingualService.getTranslations(localStorage.getItem('selectedLanguage'));
+    // console.log("vajidA",this.translations);
+    console.log(localStorage.getItem('selectedLanguage'),"language");
+    this.multiLingualService.getTranslations(localStorage.getItem('selectedLanguage')).subscribe(translations => {
+      this.translations = translations; // Make sure translations are correctly stored here
+      console.log(this.translations); // Check if translations are fetched correctly
+      // this.multiLingualService.multilingual=this.translations;
+    });
   }
 
   retrieveProjects() {
@@ -121,7 +139,6 @@ export class ProjectDirComponent {
         );
 
         console.log(details);
-        // console.log("user array is",unameArray);
       })
       .catch((e) => {
         console.log(e);
@@ -130,7 +147,6 @@ export class ProjectDirComponent {
 
   saveProjectFormData(details: any) {
     let body = {
-      // "id":details.pid,
       projectDetails: {
         pname: details.pname,
         pdescription: details.pdescription,
@@ -158,4 +174,21 @@ export class ProjectDirComponent {
     this.selectedStatus = status;
     console.log(this.selectedStatus);
   }
+ 
+
+  
+
+ 
+  getTranslations(language: string): void {
+    this.multiLingualService.getTranslations(language).subscribe(translations => {
+      this.translations = translations; // Make sure translations are correctly stored here
+      console.log(this.translations); // Check if translations are fetched correctly
+      // this.multiLingualService.multilingual=this.translations;
+    });
+  }
+ 
+  switchLanguage(language: string): void {
+    this.getTranslations(language);
+  }
+
 }

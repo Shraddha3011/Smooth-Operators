@@ -17,6 +17,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { TranslateLoader,TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { ObjectToArrayPipe } from './object-to-array.pipe';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HttpClient } from '@angular/common/http';
     SearchFilterPipe,
     LandingPageComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    ObjectToArrayPipe
   
   
   ],

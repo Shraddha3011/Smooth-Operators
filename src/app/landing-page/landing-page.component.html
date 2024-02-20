@@ -17,15 +17,23 @@
             <div class="logo">
               <img src="assets/logo1.png" alt="Logo" />
             </div>
-
+            <!-- <select #languageSelect (change)="switchLanguage(languageSelect.value)">
+              <option *ngFor="let lang of languages" [value]="lang.code">{{ lang.name  }}</option>
+          </select> -->
+          <span class="select-lang-container">
+            <select #selectLang (change)="switchLanguage(selectLang.value)">
+              <option
+                *ngFor="let lang of languages"
+                [value]="lang.code"
+                [selected]="lang.code === CurrentLanguage()"
+              >
+                {{ lang.name }}
+              </option>
+            </select>
+          </span>
             <div class="links">
               <ul>
-                <li><a (click)="SignUp()" class="btn">{{'Sign Up' | translate}}</a></li>
-                <li>
-                  <select style="margin-right: 140px; border-color: var(--primary-color); border-width: 2px;" #selectLang (change)="switchLang(selectLang.value)" >
-                    <option  *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang"> {{lang}}</option>
-                  </select>
-                </li>
+                <li><a (click)="SignUp()" class="btn">{{translations.sign_up}}</a></li>
               </ul>
             </div>
           </div>
@@ -35,14 +43,14 @@
           <div class="container">
             <div class="left">
               <div class="big-title">
-                <h1>{{'Future is here'|translate}},</h1>
-                <h1>{{'Start Exploring now'|translate}}.</h1>
+                <h1>{{translations.future_is_here}},</h1>
+                <h1>{{translations.start_exploring_now}}.</h1>
               </div>
               <p class="text">
-                Experience the ease and efficiency of our Project Management System today. Say goodbye to scattered project details and hello to streamlined project management!
+                {{translations.data}}
               </p>
               <div class="cta">
-                <a (click)="SignIn()" class="btn">{{'Get started' | translate}}</a>
+                <a (click)="SignIn()" class="btn">{{translations.get_started}}</a>
               </div>
             </div>
             <div class="right">
