@@ -5,7 +5,7 @@ import { MultiLingualService } from 'src/service/multi-lingual.service';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.css'],
+  styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent {
   constructor(
@@ -40,15 +40,21 @@ export class LandingPageComponent {
     const isAuthenticated: boolean =
       await this.cognitoService.isAuthenticated();
 
-    if (isAuthenticated) {
+    if (isAuthenticated) 
+    {
       this.cognitoService.signOut();
-    } else {
+    } 
+    else 
+    {
+
     }
   }
-  public SignIn() {
+  public SignIn()
+  {
     this.router.navigate(['/signIn']);
   }
-  public SignUp() {
+  public SignUp()
+  {
     this.router.navigate(['/signUp']);
   }
   getTranslations(language: string | null): void {
