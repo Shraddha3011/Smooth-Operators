@@ -5,6 +5,7 @@ import { SearchFilterPipe } from '../search-filter.pipe';
 import { NgForm } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { OrderModule } from 'ngx-order-pipe';
+import { MultiLingualService } from '../../service/multi-lingual.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -14,6 +15,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ProjectCardComponent {
   projectStatus: string = '';
+  translations: any;
+  // selectedLanguage: string = 'hn';
+  // languages: { code: string, name: string }[] = [
+  //   { code: 'en', name: 'English' },
+  //   { code: 'hn', name: 'Hindi' },
+  //   { code: 'mr', name: 'Marathi' }
+  // ];
+
   // @ViewChild('#projectForm') form: NgForm;
   @Input()
   projectArr: any = {};
@@ -46,10 +55,12 @@ export class ProjectCardComponent {
 
   constructor(
     private user: ProjectApiService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private multiLingualService: MultiLingualService,
+
   ) {
-    translate.addLangs(['en', 'hn', 'es', 'mr', 'fr']);
-    translate.setDefaultLang('en');
+    // translate.addLangs(['en', 'hn', 'es', 'mr', 'fr']);
+    // translate.setDefaultLang('en');
   }
   switchLang(lang: string) {
     this.translate.use(lang);
@@ -216,7 +227,19 @@ export class ProjectCardComponent {
   error = null;
   ngOnInit() {
     this.retrieveProjects();
+    // // this.getTranslations(this.selectedLanguage);
+    // this.translations= this.multiLingualService.multilingual;
+    // console.log("vajidA",this.translations);
+    console.log(localStorage.getItem('selectedLanguage'),"language");
+    this.multiLingualService.getTranslations(localStorage.getItem('selectedLanguage')).subscribe(translations => {
+      this.translations = translations; // Make sure translations are correctly stored here
+      console.log(this.translations); // Check if translations are fetched correctly
+      // this.multiLingualService.multilingual=this.translations;
+    });
+ 
   }
+ 
+
   retrieveProjects() {
     this.user.getProjectData().then(
       (details: any) => {
@@ -296,4 +319,14 @@ export class ProjectCardComponent {
   //   {"id":'1',"value":'Completed'},
   //   {"id":'2',"value":'Pending'}
   // ]
+  getTranslations(language: string): void {
+    this.multiLingualService.getTranslations(language).subscribe(translations => {
+      this.translations = translations; // Make sure translations are correctly stored here
+      console.log(this.translations); // Check if translations are fetched correctly
+    });
+  }
+ 
+  switchLanguage(language: string): void {
+    this.getTranslations(language);
+  }
 }

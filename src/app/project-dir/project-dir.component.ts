@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectApiService } from '../../service/project-api.service';
 import { MultiLingualService } from '../../service/multi-lingual.service';
 import { HttpClient } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
+// import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-project-dir',
@@ -12,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ProjectDirComponent {
   accordionItems: any[] = [];
-  translations: any[]=[];
+  translations: any;
   selectedLanguage: string = 'en';
   languages: { code: string, name: string }[] = [
     { code: 'en', name: 'English' },
@@ -98,17 +98,24 @@ export class ProjectDirComponent {
     private proj: ProjectApiService,
     private multiLingualService: MultiLingualService,
     private http :HttpClient,
-    private translate: TranslateService
+    // private translate: TranslateService
   ) {}
 
   ngOnInit() {
     this.retrieveProjects();
     // this.fetchTranslations('en');
     // this.fetchTranslations(this.selectedLanguage);
-    this.getTranslations(this.selectedLanguage);
-    // this.getTranslations('hn');
-    // this.getTranslations('en');
-
+    // this.getTranslations(this.selectedLanguage);
+    // this.translations= this.multiLingualService.multilingual;
+    // console.log("vajidA",this.translations);
+    // this.translations=this.multiLingualService.getTranslations(localStorage.getItem('selectedLanguage'));
+    // console.log("vajidA",this.translations);
+    console.log(localStorage.getItem('selectedLanguage'),"language");
+    this.multiLingualService.getTranslations(localStorage.getItem('selectedLanguage')).subscribe(translations => {
+      this.translations = translations; // Make sure translations are correctly stored here
+      console.log(this.translations); // Check if translations are fetched correctly
+      // this.multiLingualService.multilingual=this.translations;
+    });
   }
 
   retrieveProjects() {
@@ -176,18 +183,10 @@ export class ProjectDirComponent {
     this.multiLingualService.getTranslations(language).subscribe(translations => {
       this.translations = translations; // Make sure translations are correctly stored here
       console.log(this.translations); // Check if translations are fetched correctly
+      // this.multiLingualService.multilingual=this.translations;
     });
   }
-  // getTranslations(language: string): void {
-  //   this.multiLingualService.getTranslations(language).subscribe(translations => {
-  //     console.log('Translations:', translations); // Log translations to check data
-  //     this.translations = translations;
-  //     this.translate.setTranslation(language,translations);
  
-  //   });
-  // }
-  
-  
   switchLanguage(language: string): void {
     this.getTranslations(language);
   }
