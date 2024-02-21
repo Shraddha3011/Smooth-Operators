@@ -178,6 +178,20 @@ header .container {
   opacity: 0.35;
 }
 
+.sigin{
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  color: rgba(255,255,255,.7);
+  display: block;
+}
+
+.adjust{
+  padding-left: 110px;
+  padding-right: 110px;
+}
 
 
 /* 

@@ -56,11 +56,11 @@
     <div class="col-4">
       <div class="card">
         <div style="font-size: large;" class="card-body" *ngIf="!isConfirm">
-          <h1 style=" margin-top: -40px; margin-bottom: 50px; padding-left: 18px;">{{translations.sign_up}}</h1>
+          <h1 style=" margin-top: -40px; margin-bottom: 50px; padding-left: 18px;">{{translations?.sign_up}}</h1>
 
           <div class="row">
             <div class="col mb-2">
-              <label for="email" class="form-label">{{translations.email}}</label>
+              <label for="email" class="form-label">{{translations?.email}}</label>
               <div>
               <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control form-control-sm">
             </div>
@@ -69,7 +69,7 @@
           </div>
           <div class="row">
             <div class="col mb-2">
-              <label for="password" class="form-label">{{translations.password}}</label>
+              <label for="password" class="form-label">{{translations?.password}}</label>
               <div class="input-group input-group-sm">
                 <input [type]="user.showPassword ? 'text' : 'password'" id="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control form-control-sm">
                   <i class="bi" [ngClass]="{'bi-eye-fill': !user.showPassword, 'bi-eye-slash-fill': user.showPassword}"></i>
@@ -77,14 +77,19 @@
             </div>
           </div>
           <div class="row">
+            <div class="sigin" >
+              <label >Already have a account? <a (click)="DoSignIn()">SignIn</a></label>
+            </div>
             <div class="col d-grid">
               <button type="button" (click)="signUp()" class="btn btn-sm btn-success" [disabled]="loading">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
-                {{translations.sign_up}}
+                {{translations?.sign_up}}
               </button>
             </div>
           </div>
         </div>
+      </div>
+    <div class="adjust" style="padding-left: 120px; padding-right: 120px;">
         <div class="card-body" *ngIf="isConfirm">
           <div class="row">
             <div class="col mb-2">

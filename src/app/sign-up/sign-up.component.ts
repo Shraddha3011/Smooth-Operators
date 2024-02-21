@@ -51,4 +51,7 @@ export class SignUpComponent {
       // this.multiLingualService.multilingual=this.translations;
     });
   }
+  DoSignIn(){
+    this.router.navigate(['/signIn'])
+  }
 }

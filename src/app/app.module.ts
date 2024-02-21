@@ -18,6 +18,7 @@ import { TranslateLoader,TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { ObjectToArrayPipe } from './object-to-array.pipe';
+import { EmployeeComponent } from './employee/employee.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ObjectToArrayPipe } from './object-to-array.pipe';
     LandingPageComponent,
     SignUpComponent,
     SignInComponent,
-    ObjectToArrayPipe
+    ObjectToArrayPipe,
+    EmployeeComponent
   
   
   ],

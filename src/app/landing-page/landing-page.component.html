@@ -33,7 +33,7 @@
           </span>
             <div class="links">
               <ul>
-                <li><a (click)="SignUp()" class="btn">{{translations.sign_up}}</a></li>
+                <li><a (click)="SignUp()" class="btn">{{translations?.sign_up}}</a></li>
               </ul>
             </div>
           </div>
@@ -43,14 +43,14 @@
           <div class="container">
             <div class="left">
               <div class="big-title">
-                <h1>{{translations.future_is_here}},</h1>
-                <h1>{{translations.start_exploring_now}}.</h1>
+                <h1>{{translations?.future_is_here}},</h1>
+                <h1>{{translations?.start_exploring_now}}.</h1>
               </div>
               <p class="text">
-                {{translations.data}}
+                {{translations?.data}}
               </p>
               <div class="cta">
-                <a (click)="SignIn()" class="btn">{{translations.get_started}}</a>
+                <a (click)="SignIn()" class="btn">{{translations?.get_started}}</a>
               </div>
             </div>
             <div class="right">
