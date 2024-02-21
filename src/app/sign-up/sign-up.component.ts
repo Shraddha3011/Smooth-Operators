@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUser, CognitoService } from '../../service/cognito.service';
+import { MultiLingualService } from 'src/service/multi-lingual.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,8 +12,8 @@ export class SignUpComponent {
   loading: boolean;
   isConfirm: boolean;
   user: IUser;
-
-  constructor(private router: Router, private cognitoService: CognitoService) {
+  translations : any;
+  constructor(private router: Router, private cognitoService: CognitoService,private multiLingualService : MultiLingualService) {
     this.loading = false;
     this.isConfirm = false;
     this.user = {} as IUser;
@@ -42,7 +43,14 @@ export class SignUpComponent {
         this.loading = false;
       });
   }
-
+  ngOnInit(){
+    console.log(localStorage.getItem('selectedLanguage'),"language");
+    this.multiLingualService.getTranslations(localStorage.getItem('selectedLanguage')).subscribe(translations => {
+      this.translations = translations; // Make sure translations are correctly stored here
+      console.log(this.translations); // Check if translations are fetched correctly
+      // this.multiLingualService.multilingual=this.translations;
+    });
+  }
   DoSignIn(){
     this.router.navigate(['/signIn'])
   }

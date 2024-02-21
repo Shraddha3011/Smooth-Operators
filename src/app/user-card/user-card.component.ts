@@ -3,6 +3,9 @@ import { ProjectApiService } from '../../service/project-api.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { MultiLingualService } from 'src/service/multi-lingual.service';
+
 
 @Component({
   selector: 'app-user-card',
@@ -12,12 +15,14 @@ import { ChangeDetectorRef } from '@angular/core';
 export class UserCardComponent {
   @Input() userArr: any = {};
   @Input() searchText: string = '';
-
+  language: string = '';
+  translations : any;
   constructor(
     private obj: ProjectApiService,
     private router: Router,
-    private cdr: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef,
+    private multiLingualService :MultiLingualService
+  ) { this.language = '';}
 
   deleteUser(id: any) {
     Swal.fire({
@@ -165,5 +170,14 @@ export class UserCardComponent {
     if (myFormElement) {
       myFormElement.style.display = 'block';
     }
+  }
+  ngOnInit() {
+    this.retrieveUsers();
+    console.log(localStorage.getItem('selectedLanguage'),"language");
+    this.multiLingualService.getTranslations(localStorage.getItem('selectedLanguage')).subscribe(translations => {
+      this.translations = translations; // Make sure translations are correctly stored here
+      console.log(this.translations); // Check if translations are fetched correctly
+      // this.multiLingualService.multilingual=this.translations;
+    });
   }
 }

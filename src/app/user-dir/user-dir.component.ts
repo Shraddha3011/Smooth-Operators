@@ -2,6 +2,7 @@ import { ProjectApiService } from '../../service/project-api.service';
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { MultiLingualService } from 'src/service/multi-lingual.service';
 
 @Component({
   selector: 'app-user-dir',
@@ -9,55 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./user-dir.component.css'],
 })
 export class UserDirComponent {
-  // userform = new FormGroup(
-  //   {
-  //     name:new FormControl('',Validators.required),
-  //     role:new FormControl('',Validators.required),
-  //     email:new FormControl('',[Validators.required,Validators.email]),
-  //     address:new FormControl('',Validators.required),
-  //     phone:new FormControl('',[Validators.required,Validators.required])
-
-  //   }
-  // )
-  // title = 'user';
-  // selectedValue: string = '';
-  // dropdownOpen: boolean = false;
-  // name: string = "";
-  // email: string = "";
-  // role: string = "";
-  // phone: string = "";
-  // address: string = "";
-  // isvisible:boolean=false;
-  // issubmitted: boolean = false;
-  // userinfo: any[] = [];
-  // toggleDropdown() {
-  //   this.dropdownOpen = !this.dropdownOpen;
-  // }
-  // onsubmit() {
-  //   this.issubmitted = true;
-  //   this.userinfo.push({
-  //     "name": this.name,
-  //     "email": this.email,
-  //     "role": this.role,
-  //     "phone": this.phone,
-  //     "address": this.address
-  //   });
-  //   this.issubmitted=true;
-  // }
-
-  // openform() {
-  //   const myFormElement = document.getElementById('myform');
-  //   if (myFormElement) {
-  //     myFormElement.style.display = 'block';
-  //   }
-  // }
-  // closeform() {
-  //   const myFormElement = document.getElementById('myform');
-  //   if (myFormElement) {
-  //     myFormElement.style.display = 'none';
-  //   }
-
-  // }
+  translations : any;
   userform = new FormGroup({
     // uid:new FormControl('',Validators.required),
     uname: new FormControl('', Validators.required),
@@ -184,11 +137,18 @@ export class UserDirComponent {
 
   ngOnInit() {
     this.retrieveUsers();
+    console.log(localStorage.getItem('selectedLanguage'),"language");
+    this.multiLingualService.getTranslations(localStorage.getItem('selectedLanguage')).subscribe(translations => {
+      this.translations = translations; // Make sure translations are correctly stored here
+      console.log(this.translations); // Check if translations are fetched correctly
+      // this.multiLingualService.multilingual=this.translations;
+    });
   }
 
   constructor(
     private obj: ProjectApiService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private multiLingualService :MultiLingualService
   ) {
     translate.addLangs(['English', 'Hindi', 'Marathi']);
     translate.setDefaultLang('English');
