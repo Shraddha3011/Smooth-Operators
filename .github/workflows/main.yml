@@ -12,12 +12,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        
-
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
-        
 
       - name: Install Angular CLI and Dependencies
         run: |
@@ -29,8 +26,8 @@ jobs:
 
       - name: Deploy Lambda Functions
         run: |
-          aws lambda update-function --function-name smooth-operators-Postusers --handler index.handler --runtime nodejs20.x --role arn:aws:lambda:ca-central-1:839728096237:function:smooth-operators-Postusers --zip-file fileb://./lambda-functions/lambda-bundle.zip
-          aws lambda update-function --function-name smooth-operators-Getprojects --handler index.handler --runtime nodejs20.x --role arn:aws:lambda:ca-central-1:839728096237:function:smooth-operators-Getprojects --zip-file fileb://./lambda-functions/lambda-bundle.zip
+          aws lambda update-function-code --function-name smooth-operators-Postusers --zip-file fileb://./lambda-functions/lambda-bundle.zip
+          aws lambda update-function-code --function-name smooth-operators-Getprojects --zip-file fileb://./lambda-functions/lambda-bundle.zip
           
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
@@ -46,5 +43,3 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.WS_SECRET_ACCESS_KEYY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-
-
