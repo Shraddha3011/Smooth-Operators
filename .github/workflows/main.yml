@@ -3,7 +3,7 @@ name: Deploy Angular App to AWS
 on:
   push:
     branches:
-      - dev 
+      - dev
 
 jobs:
   deploy:
@@ -13,8 +13,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      
-
       - name: Install Angular CLI and Dependencies
         run: |
           npm install -g @angular/cli
@@ -22,7 +20,6 @@ jobs:
       
       - name: Build Angular App
         run: ng build 
-  
 
       - name: Deploy Lambda Functions
         run: |
@@ -30,17 +27,15 @@ jobs:
           aws lambda update-function --function-name smooth-operators-Getprojects --handler index.handler --runtime nodejs20.x --role arn:aws:lambda:ca-central-1:839728096237:function:smooth-operators-Getprojects --zip-file fileb://./lambda-functions/lambda-bundle.zip
           
       - name: Deploy to S3
-          uses: jakejarvis/s3-sync-action@master
-          with:
-            folder: build
-            AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET}}
-            dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-            invalidation: '/*
-      
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          folder: build
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+          invalidation: '/*'
 
-    
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET}}
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
