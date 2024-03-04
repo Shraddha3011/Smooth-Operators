@@ -40,11 +40,11 @@ jobs:
           dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
           invalidation: '/*'
 
-- name: 'Configure AWS Credentials'
-  uses: aws-actions/configure-aws-credentials@v1
-  with:
-    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    aws-secret-access-key: ${{ secrets.WS_SECRET_ACCESS_KEYY }}
-    aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+      - name: 'Configure AWS Credentials'
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.WS_SECRET_ACCESS_KEYY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
 
