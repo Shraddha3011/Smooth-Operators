@@ -26,8 +26,8 @@ jobs:
 
       - name: Deploy Lambda Functions
         run: |
-          aws lambda update-function-code --function-name smooth-operators-Postusers --zip-file fileb://./lambda-functions/lambda-bundle.zip
-          aws lambda update-function-code --function-name smooth-operators-Getprojects --zip-file fileb://./lambda-functions/lambda-bundle.zip
+          aws lambda create-function --function-name smooth-operators-Postusers --handler index.handler --runtime nodejs14.x --role arn:aws:lambda:ca-central-1:839728096237:function:smooth-operators-Postusers --zip-file fileb://./lambda-functions/lambda-bundle.zip
+          
           
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
