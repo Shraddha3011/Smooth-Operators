@@ -1,45 +1,32 @@
-name: Deploy Angular App to AWS
+name: Deploy
 
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-
-      - name: Install Angular CLI and Dependencies
-        run: |
-          npm install -g @angular/cli
-          npm install
+    - name: Checkout code
+      uses: actions/checkout@v2
       
-      - name: Build Angular App
-        run: ng build 
-
-      - name: Deploy Lambda Functions
-        run: |
-          aws lambda create-function --function-name smooth-operators-Postusers --handler index.handler --runtime nodejs14.x --role arn:aws:lambda:ca-central-1:839728096237:function:smooth-operators-Postusers --zip-file fileb://./lambda-functions/lambda-bundle.zip
-          
-          
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          folder: build
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          invalidation: '/*'
-
-      - name: 'Configure AWS Credentials'
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.WS_SECRET_ACCESS_KEYY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Deploy Serverless application
+      run: |
+        npm install -g serverless
+        serverless deploy --stage dev --region ca-central-1
+        
+    - name: Create S3 bucket and CloudFront distribution
+      run: |
+        aws s3 mb s3://batch2024-smooth --region ca-central-1
+        aws cloudfront create-distribution --distribution-config file://cloudfront-config.json
