@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   deploy:
@@ -11,22 +11,29 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v3
       with:
         node-version: '20'
+        
+    - name: Install AWS CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install awscli
         
     - name: Install dependencies
       run: npm install
       
-    - name: Deploy Serverless application
-      run: |
-        npm install -g serverless
-        serverless deploy --stage dev --region ca-central-1
-        
-    - name: Create S3 bucket and CloudFront distribution
+    - name: Create S3 bucket
       run: |
         aws s3 mb s3://batch2024-smooth --region ca-central-1
+        
+    - name: Deploy to S3 bucket
+      run: |
+        aws s3 sync dist/final-ui s3://batch2024-smooth --delete --region ca-central-1
+      
+    - name: Create CloudFront distribution
+      run: |
         aws cloudfront create-distribution --distribution-config file://cloudfront-config.json
