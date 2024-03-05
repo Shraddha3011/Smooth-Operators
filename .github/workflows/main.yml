@@ -42,4 +42,4 @@ jobs:
       
     - name: Create CloudFront distribution
       run: |
-        aws cloudfront create-distribution --origin-domain-name batch2024-smooth.s3.amazonaws.com --default-root-object index.html
+        aws cloudfront create-distribution --origin-domain-name batch2024-smooth1.s3.amazonaws.com --default-root-object index.html
