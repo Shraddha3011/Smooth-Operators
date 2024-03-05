@@ -40,7 +40,7 @@ jobs:
       
     - name: Create CloudFront distribution
       run: |
-        aws cloudfront create-distribution --distribution-config file://cloudfront-config.json
+        aws cloudfront create-distribution --origin-domain-name batch2024-smooth.s3.amazonaws.com --default-root-object index.html
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
