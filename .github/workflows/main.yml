@@ -12,6 +12,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      PATH: ${{ github.workspace }}/.npm-global/bin:$PATH
     
     steps:
     - name: Checkout code
@@ -28,14 +29,11 @@ jobs:
     - name: Build project
       run: yarn build
 
-    - name: Install Serverless Framework
-      run: 
-          npm install -g serverless
-          serverless plugin install -n serverless-sync-s3buckets
+    - name: Install Serverless Framework and Plugins
+      run: |
+        npm install -g serverless
+        npm install -g serverless-sync-s3buckets
 
     - name: Deploy with Serverless Framework
       working-directory: smooth
       run: serverless deploy
-      
-
-
