@@ -1,0 +1,96 @@
+service: smooth
+frameworkVersion: '3'
+
+plugins:
+  - serverless-sync-s3buckets
+
+
+provider:
+  name: aws
+  stage: dev 
+  region: ca-central-1
+
+resources:
+  Resources:
+    WebAppstaticBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.staticBucket}
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+        OwnershipControls:
+          Rules:
+            - ObjectOwnership: ObjectWriter
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: false
+          BlockPublicPolicy: false
+          IgnorePublicAcls: false
+          RestrictPublicBuckets: false
+    WebAppStaticBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket: 
+          Ref: WebAppstaticBucket
+        PolicyDocument:
+          Statement:
+            - Sid: PublicReadGetObject
+              Effect: Allow
+              Principal: "*"
+              Action:
+                - s3:GetObject
+              Resource: 
+                Fn::Join:
+                  - ""
+                  - - "arn:aws:s3:::"
+                    - ${self:custom.staticBucket}
+                    - "/*"
+    myDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Enabled: true
+          DefaultRootObject: /index.html
+          Origins:
+            - Id: myS3Origin
+              DomainName: !GetAtt WebAppstaticBucket.RegionalDomainName
+              S3OriginConfig:
+                OriginAccessIdentity: ''
+          DefaultCacheBehavior:
+            AllowedMethods:
+              - GET
+              - HEAD
+              - OPTIONS
+            MinTTL: 0
+            MaxTTL: 0
+            DefaultTTL: 0
+            TargetOriginId: myS3Origin
+            ForwardedValues:
+              QueryString: true
+              Cookies:
+                Forward: all
+            ViewerProtocolPolicy: redirect-to-https
+          CacheBehaviors:
+            - PathPattern: static/*
+              AllowedMethods:
+                - GET
+                - HEAD
+                - OPTIONS
+              TargetOriginId: myS3Origin
+              ForwardedValues:
+                QueryString: false
+              ViewerProtocolPolicy: https-only
+              MinTTL: 0
+              MaxTTL: 6
+              DefaultTTL: 3
+          CustomErrorResponses:
+            - ErrorCachingMinTTL: 0
+              ErrorCode: 403
+              ResponseCode: 200
+              ResponsePagePath: /index.html
+
+custom:
+  staticBucket: batch2024-smooth
+  syncS3Buckets:
+    - bucketRef: WebAppstaticBucket
+      localDir: dist/final-ui
