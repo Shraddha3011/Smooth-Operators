@@ -4,7 +4,6 @@ frameworkVersion: '3'
 plugins:
   - serverless-sync-s3buckets
 
-
 provider:
   name: aws
   stage: dev 
