@@ -8,7 +8,6 @@ provider:
   name: aws
   stage: dev 
   region: ca-central-1
-
 resources:
   Resources:
     WebAppstaticBucket:
@@ -26,8 +25,10 @@ resources:
           BlockPublicPolicy: false
           IgnorePublicAcls: false
           RestrictPublicBuckets: false
+
     WebAppStaticBucketPolicy:
       Type: AWS::S3::BucketPolicy
+      DependsOn: WebAppstaticBucket  # Add this line
       Properties:
         Bucket: 
           Ref: WebAppstaticBucket
@@ -44,6 +45,7 @@ resources:
                   - - "arn:aws:s3:::"
                     - ${self:custom.staticBucket}
                     - "/*"
+
     myDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
