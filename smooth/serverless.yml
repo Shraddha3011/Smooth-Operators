@@ -5,9 +5,9 @@ provider:
   name: aws
   stage: dev 
   region: ca-central-1
-
-
-
+  
+plugins:
+  - serverless-sync-s3buckets
 resources:
   Resources:
     WebAppstaticBucket:
@@ -25,7 +25,6 @@ resources:
           BlockPublicPolicy: false
           IgnorePublicAcls: false
           RestrictPublicBuckets: false
-
     WebAppStaticBucketPolicy:
       Type: AWS::S3::BucketPolicy
       DependsOn: WebAppstaticBucket  
