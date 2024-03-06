@@ -33,6 +33,7 @@ jobs:
           npm install -g serverless
           npm install -g serverless-sync-s3buckets
           serverless plugin install -n serverless-sync-s3buckets
+          serverless plugin install -n serverless-s3-sync
 
     - name: Deploy with Serverless Framework
       working-directory: smooth
