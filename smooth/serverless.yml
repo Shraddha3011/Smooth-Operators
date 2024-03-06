@@ -91,5 +91,5 @@ resources:
 custom:
   staticBucket: batch2024-smooth
   syncS3Buckets:
-    - bucketRef: WebAppStaticBucket
-      localDir: dist
+    - bucketRef: staticBucket
+      localDir: dist/final-ui
