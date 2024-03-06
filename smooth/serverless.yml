@@ -5,6 +5,7 @@ provider:
   name: aws
   stage: dev 
   region: ca-central-1
+  
 plugins:
   - serverless-s3-sync
 
