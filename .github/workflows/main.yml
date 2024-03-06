@@ -27,6 +27,10 @@ jobs:
       
     - name: Build project
       run: yarn build
+    
+    - name: Upload dist folder to S3
+      run: |
+        aws s3 sync dist s3://batch2024-smooth
 
     - name: Install Serverless Framework and Plugins
       run: |
