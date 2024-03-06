@@ -29,15 +29,13 @@ jobs:
       run: yarn build
   
 
-    - name: Install Serverless Framework and Plugins
+    - name: Deploy with Serverless Framework
+      working-directory: smooth
       run: |
         npm install -g serverless
         serverless plugin install -n serverless-sync-s3buckets
         npm install -g serverless-s3-sync
-
-    - name: Deploy with Serverless Framework
-      working-directory: smooth
-      run: serverless deploy
+        serverless deploy
 
 
 
