@@ -13,7 +13,7 @@ resources:
     WebAppstaticBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${self:custom.staticBucket}
+        BucketName: batch2024-smooth
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
@@ -91,7 +91,6 @@ resources:
               ResponsePagePath: /index.html
 
 custom:
-  staticBucket: batch2024-smooth
   syncS3Buckets:
     - bucketRef: WebAppstaticBucket
       localDir: dist/final-ui
