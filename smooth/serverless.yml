@@ -41,10 +41,7 @@ resources:
                 - s3:GetObject
               Resource: 
                 Fn::Join:
-                  - ""
-                  - - "arn:aws:s3:::"
-                    - ${self:custom.staticBucket}
-                    - "/*"
+                  ["", ["arn:aws:s3:::", { "Ref": WebAppstaticBucket }, "/*"]]
 
     myDistribution:
       Type: AWS::CloudFront::Distribution
