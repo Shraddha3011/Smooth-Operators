@@ -5,12 +5,12 @@ provider:
   name: aws
   stage: dev 
   region: ca-central-1
-  
+
 plugins:
   - serverless-sync-s3buckets
 resources:
   Resources:
-    WebAppstaticBucket:
+    SmoothOperatorBucket:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: batch2024-smooth
@@ -25,12 +25,12 @@ resources:
           BlockPublicPolicy: false
           IgnorePublicAcls: false
           RestrictPublicBuckets: false
-    WebAppStaticBucketPolicy:
+    SmoothOperatorBucketPolicy:
       Type: AWS::S3::BucketPolicy
-      DependsOn: WebAppstaticBucket  
+      DependsOn: SmoothOperatorBucket  
       Properties:
         Bucket: 
-          Ref: WebAppstaticBucket
+          Ref: SmoothOperatorBucket
         PolicyDocument:
           Statement:
             - Sid: PublicReadGetObject
@@ -40,7 +40,7 @@ resources:
                 - s3:GetObject
               Resource: 
                 Fn::Join:
-                  ["", ["arn:aws:s3:::", { "Ref": WebAppstaticBucket }, "/*"]]
+                  ["", ["arn:aws:s3:::", { "Ref": SmoothOperatorBucket }, "/*"]]
 
     myDistribution:
       Type: AWS::CloudFront::Distribution
@@ -50,7 +50,7 @@ resources:
           DefaultRootObject: /index.html
           Origins:
             - Id: myS3Origin
-              DomainName: !GetAtt WebAppstaticBucket.RegionalDomainName
+              DomainName: !GetAtt SmoothOperatorBucket.RegionalDomainName
               S3OriginConfig:
                 OriginAccessIdentity: ''
           DefaultCacheBehavior:
@@ -88,5 +88,5 @@ resources:
 
 custom:
   syncS3Buckets:
-    - bucketRef: WebAppstaticBucket
+    - bucketRef: SmoothOperatorBucket
       localDir: dist/final-ui
