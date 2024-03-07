@@ -1,4 +1,4 @@
-service: serverless
+service: batch2024-smooth-operators
 frameworkVersion: "3"
 
 provider:
