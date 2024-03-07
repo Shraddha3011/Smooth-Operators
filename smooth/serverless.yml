@@ -99,4 +99,9 @@ resources:
     SmoothOperatorsSiteURL:
       Value: !GetAtt CloudFrontDistribution.DomainName
 
+custom:
+  syncS3Buckets:
+    - bucketRef: SmoothOperatorsBucket
+      localDir: dist/final-ui
+
 
