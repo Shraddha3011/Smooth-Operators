@@ -16,22 +16,24 @@ functions:
       - http:
           path: /projects
           method: get
+    environment:                 
+      DYNAMODB_TABLE: "smooth-operators-project-table" 
           
 resources:
   Resources:
-    SmoothOperatorsProjectTable:
-          Type: AWS::DynamoDB::Table
-          Properties:
-            TableName: smooth-operators-project-table
-            AttributeDefinitions:
-              - AttributeName: id
-                AttributeType: S
-            KeySchema:
-              - AttributeName: id
-                KeyType: HASH
-            ProvisionedThroughput:
-              ReadCapacityUnits: 1
-              WriteCapacityUnits: 1
+    # SmoothOperatorsProjectTable:
+    #       Type: AWS::DynamoDB::Table
+    #       Properties:
+    #         TableName: smooth-operators-project-table
+    #         AttributeDefinitions:
+    #           - AttributeName: id
+    #             AttributeType: S
+    #         KeySchema:
+    #           - AttributeName: id
+    #             KeyType: HASH
+    #         ProvisionedThroughput:
+    #           ReadCapacityUnits: 1
+    #           WriteCapacityUnits: 1
   
     SmoothOperatorsBucket:
       Type: AWS::S3::Bucket
