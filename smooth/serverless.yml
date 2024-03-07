@@ -9,20 +9,15 @@ provider:
 plugins:
   - serverless-sync-s3buckets
 
-
 resources:
   Resources:
     SmoothOperatorsBucket:
       Type: AWS::S3::Bucket
-      DeletionPolicy: Delete
       Properties:
         BucketName: batch2024-smooth-operators
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
-        OwnershipControls:
-          Rules:
-            - ObjectOwnership: ObjectWriter
         PublicAccessBlockConfiguration:
           BlockPublicAcls: false
           BlockPublicPolicy: false
@@ -32,8 +27,7 @@ resources:
     SmoothOperatorsBucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
-        Bucket:
-          Ref: SmoothOperatorsBucket
+        Bucket: !Ref SmoothOperatorsBucket
         PolicyDocument:
           Statement:
             - Sid: PublicReadGetObject
@@ -41,9 +35,7 @@ resources:
               Principal: "*"
               Action:
                 - s3:GetObject
-              Resource:
-                Fn::Join:
-                  ["", ["arn:aws:s3:::", { "Ref": SmoothOperatorsBucket}, "/*"]]
+              Resource: !Join ["", ["arn:aws:s3:::", !Ref SmoothOperatorsBucket, "/*"]]
 
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
@@ -51,11 +43,11 @@ resources:
         DistributionConfig:
           Origins:
             - Id: SmoothOperatorsOrigin
-              DomainName:
-                { "Fn::GetAtt": ["SmoothOperatorsBucket", "RegionalDomainName"] }
+              DomainName: !GetAtt SmoothOperatorsBucket.RegionalDomainName
               S3OriginConfig:
                 OriginAccessIdentity: ""
-          Enabled: "true"
+
+          Enabled: true
           DefaultRootObject: index.html
           CustomErrorResponses:
             - ErrorCode: 404
@@ -70,20 +62,20 @@ resources:
               - PATCH
               - POST
               - PUT
-            TargetOriginId: SSmoothOperatorsBucketOrigin
+            TargetOriginId: SmoothOperatorsOrigin
             ForwardedValues:
-              QueryString: "false"
+              QueryString: false
               Cookies:
                 Forward: none
             ViewerProtocolPolicy: redirect-to-https
           ViewerCertificate:
-            CloudFrontDefaultCertificate: "true"
+            CloudFrontDefaultCertificate: true
 
   Outputs:
     SmoothOperatorsBucketName:
-      Value: { "Ref": "SmoothOperatorsBucket" }
+      Value: !Ref SmoothOperatorsBucket
     SmoothOperatorsSiteURL:
-      Value: { "Fn::GetAtt": ["CloudFrontDistribution", "DomainName"] }
+      Value: !GetAtt CloudFrontDistribution.DomainName
 
 custom:
   syncS3Buckets:
