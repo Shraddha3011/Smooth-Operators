@@ -5,10 +5,7 @@ provider:
   name: aws
   runtime: nodejs20.x
   region: ca-central-1
-
-plugins:
-  - serverless-sync-s3buckets
-
+  
 functions:
   smooth-operators-Getprojects:
     handler: smooth-operators-Getprojects/handler.handler
@@ -16,7 +13,8 @@ functions:
       - http:
           path: /projects
           method: get
-
+plugins:
+  - serverless-sync-s3buckets
 resources:
   Resources:
     SmoothOperatorsProjectTable:
