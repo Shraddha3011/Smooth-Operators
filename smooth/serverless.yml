@@ -6,9 +6,6 @@ provider:
   runtime: nodejs20.x
   region: ca-central-1
 
-plugins:
-  - serverless-sync-s3buckets
-
 resources:
   Resources:
     SmoothOperatorsBucket:
@@ -76,8 +73,3 @@ resources:
       Value: !Ref SmoothOperatorsBucket
     SmoothOperatorsSiteURL:
       Value: !GetAtt CloudFrontDistribution.DomainName
-
-custom:
-  syncS3Buckets:
-    - bucketRef: SmoothOperatorsBucket
-      localDir: dist/final-ui
