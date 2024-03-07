@@ -1,19 +1,22 @@
-service: smooth
-frameworkVersion: '3'
+service: serverless
+frameworkVersion: "3"
 
 provider:
   name: aws
-  stage: dev 
+  runtime: nodejs20.x
   region: ca-central-1
 
 plugins:
   - serverless-sync-s3buckets
+
+
 resources:
   Resources:
-    SmoothOperatorBucket:
+    SmoothOperatorsBucket:
       Type: AWS::S3::Bucket
+      DeletionPolicy: Delete
       Properties:
-        BucketName: batch2024-smooth
+        BucketName: batch2024-smooth-operators
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
@@ -25,12 +28,12 @@ resources:
           BlockPublicPolicy: false
           IgnorePublicAcls: false
           RestrictPublicBuckets: false
-    SmoothOperatorBucketPolicy:
+
+    SmoothOperatorsBucketPolicy:
       Type: AWS::S3::BucketPolicy
-      DependsOn: SmoothOperatorBucket  
       Properties:
-        Bucket: 
-          Ref: SmoothOperatorBucket
+        Bucket:
+          Ref: SmoothOperatorsBucket
         PolicyDocument:
           Statement:
             - Sid: PublicReadGetObject
@@ -38,55 +41,51 @@ resources:
               Principal: "*"
               Action:
                 - s3:GetObject
-              Resource: 
+              Resource:
                 Fn::Join:
-                  ["", ["arn:aws:s3:::", { "Ref": SmoothOperatorBucket }, "/*"]]
+                  ["", ["arn:aws:s3:::", { "Ref": SmoothOperatorsBucket}, "/*"]]
 
-    myDistribution:
+    CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
         DistributionConfig:
-          Enabled: true
-          DefaultRootObject: /index.html
           Origins:
-            - Id: myS3Origin
-              DomainName: !GetAtt SmoothOperatorBucket.RegionalDomainName
+            - Id: SmoothOperatorsOrigin
+              DomainName:
+                { "Fn::GetAtt": ["SmoothOperatorsBucket", "RegionalDomainName"] }
               S3OriginConfig:
-                OriginAccessIdentity: ''
+                OriginAccessIdentity: ""
+          Enabled: "true"
+          DefaultRootObject: index.html
+          CustomErrorResponses:
+            - ErrorCode: 404
+              ResponseCode: 200
+              ResponsePagePath: /index.html
           DefaultCacheBehavior:
             AllowedMethods:
+              - DELETE
               - GET
               - HEAD
               - OPTIONS
-            MinTTL: 0
-            MaxTTL: 0
-            DefaultTTL: 0
-            TargetOriginId: myS3Origin
+              - PATCH
+              - POST
+              - PUT
+            TargetOriginId: SSmoothOperatorsBucketOrigin
             ForwardedValues:
-              QueryString: true
+              QueryString: "false"
               Cookies:
-                Forward: all
+                Forward: none
             ViewerProtocolPolicy: redirect-to-https
-          CacheBehaviors:
-            - PathPattern: static/*
-              AllowedMethods:
-                - GET
-                - HEAD
-                - OPTIONS
-              TargetOriginId: myS3Origin
-              ForwardedValues:
-                QueryString: false
-              ViewerProtocolPolicy: https-only
-              MinTTL: 0
-              MaxTTL: 6
-              DefaultTTL: 3
-          CustomErrorResponses:
-            - ErrorCachingMinTTL: 0
-              ErrorCode: 403
-              ResponseCode: 200
-              ResponsePagePath: /index.html
+          ViewerCertificate:
+            CloudFrontDefaultCertificate: "true"
+
+  Outputs:
+    SmoothOperatorsBucketName:
+      Value: { "Ref": "SmoothOperatorsBucket" }
+    SmoothOperatorsSiteURL:
+      Value: { "Fn::GetAtt": ["CloudFrontDistribution", "DomainName"] }
 
 custom:
   syncS3Buckets:
-    - bucketRef: SmoothOperatorBucket
+    - bucketRef: SmoothOperatorsBucket
       localDir: dist/final-ui
