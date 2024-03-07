@@ -6,8 +6,25 @@ provider:
   runtime: nodejs20.x
   region: ca-central-1
 
+plugins:
+  - serverless-sync-s3buckets
 resources:
   Resources:
+
+    SmoothOperatorsProjectTable:
+          Type: AWS::DynamoDB::Table
+          Properties:
+            TableName: smooth-operators-project-table
+            AttributeDefinitions:
+              - AttributeName: id
+                AttributeType: S
+            KeySchema:
+              - AttributeName: id
+                KeyType: HASH
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
+  
     SmoothOperatorsBucket:
       Type: AWS::S3::Bucket
       Properties:
