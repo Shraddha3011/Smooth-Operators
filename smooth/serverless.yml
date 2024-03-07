@@ -6,6 +6,9 @@ provider:
   runtime: nodejs20.x
   region: ca-central-1
 
+plugins:
+  - serverless-sync-s3buckets
+
 functions:
   smooth-operators-Getprojects:
     handler: smooth-operators-Getprojects/handler.handler
@@ -13,7 +16,7 @@ functions:
       - http:
           path: /projects
           method: get
-
+          
 resources:
   Resources:
     SmoothOperatorsProjectTable:
@@ -96,5 +99,4 @@ resources:
     SmoothOperatorsSiteURL:
       Value: !GetAtt CloudFrontDistribution.DomainName
 
-plugins:
-  - serverless-sync-s3buckets
+
