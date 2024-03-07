@@ -8,9 +8,17 @@ provider:
 
 plugins:
   - serverless-sync-s3buckets
+
+functions:
+  smooth-operators-Getprojects:
+    handler: smooth-operators-Getprojects/handler.handler
+    events:
+      - http:
+          path: /projects
+          method: get
+
 resources:
   Resources:
-
     SmoothOperatorsProjectTable:
           Type: AWS::DynamoDB::Table
           Properties:
