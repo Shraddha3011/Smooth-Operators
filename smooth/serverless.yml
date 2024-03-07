@@ -102,6 +102,6 @@ resources:
 custom:
   syncS3Buckets:
     - bucketRef: SmoothOperatorsBucket
-      localDir: dist/final-ui
+      localDir: dist/final-ui
 
 
